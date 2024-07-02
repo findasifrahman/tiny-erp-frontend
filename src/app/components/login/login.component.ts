@@ -20,6 +20,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
+    // TEST CODE: Remove this code and implement the login logic
+    localStorage.setItem('user', JSON.stringify({ username: 'admin', role: 'superadmin' }));
+    this.router.navigate(['/AddMainCompany']);
+    //
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
         next: response => {

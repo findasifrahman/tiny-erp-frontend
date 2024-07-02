@@ -1,0 +1,8 @@
+<mat-nav-list>
+  <ng-container *ngFor="let item of menuItems">
+    <a mat-list-item *ngIf="hasAccess(item.roles)" [routerLink]="item.link">
+      <mat-icon matListIcon>home</mat-icon> <!-- Use appropriate icons -->
+      <span>{{ item.label }}</span>
+    </a>
+  </ng-container>
+</mat-nav-list>
