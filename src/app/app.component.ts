@@ -12,10 +12,11 @@ export class AppComponent {
   showSidebar: boolean = false;
 
   constructor(private router: Router, public authService: AuthService) {
+    /*
     this.router.events.pipe(
       filter((event: RouterEvent): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       this.showSidebar = this.authService.isLoggedIn() && !['/login', '/change-password'].includes(event.urlAfterRedirects);
-    });
+    })*/
   }
 }

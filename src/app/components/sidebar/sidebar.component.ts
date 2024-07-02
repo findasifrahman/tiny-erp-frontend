@@ -49,7 +49,7 @@ export class SidebarComponent {
     // Add other menu items similarly from the provided list
   ];
 
-  hasAccess(roles: string[]): boolean {
-    return roles.some(role => this.authService.hasRole(role));
+  hasAccess(roles: string[]) {
+    //return roles.some(role => this.authService.getrole(role));
   }
 }
