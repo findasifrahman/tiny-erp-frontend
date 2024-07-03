@@ -50,7 +50,7 @@ export class AuthService {
   getUserLogStatus() {
     const token = localStorage.getItem('jwt');
     if(token !=null){
-      console.log('get user logged in -----------');
+      console.log('get user logged in -----------',this.getUser(), this.getrole());
       return !this.jwtHelper.isTokenExpired(token);
     }
     else return false;

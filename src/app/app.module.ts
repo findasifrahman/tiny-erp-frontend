@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { AddMainCompanyComponent } from './components/add-main-company/add-main-company.component';
+
 
 //////////material modules
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -47,6 +47,19 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+/////////////////////////////////////////////////////////////////////////////////////////
+import { AddUsersComponent } from './components/users/add-users/add-users.component';
+import { EditUsersComponent } from './components/users/edit-users/edit-users.component';
+import { ListUsersComponent } from './components/users/list-users/list-users.component';
+import { AddMainCompanyComponent } from './components/mainCompany/add-main-company/add-main-company.component';
+import { EditMainCompanyComponent } from './components/mainCompany/edit-main-company/edit-main-company.component';
+import { ListMainCompanyComponent } from './components/mainCompany/list-main-company/list-main-company.component';
+
+
+
+/////////////////////// Models
+import { maincompanymodels } from './models/main-company.models';
+
 ///////////////
 @NgModule({
   declarations: [
@@ -54,7 +67,12 @@ import { MatTreeModule } from '@angular/material/tree';
     LoginComponent,
     ChangePasswordComponent,
     SidebarComponent,
-    AddMainCompanyComponent
+    AddUsersComponent,
+    EditUsersComponent,
+    ListUsersComponent,
+    AddMainCompanyComponent,
+    EditMainCompanyComponent,
+    ListMainCompanyComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +111,9 @@ import { MatTreeModule } from '@angular/material/tree';
     MatSortModule,
     MatRippleModule,
     MatNativeDateModule,
-    MatBadgeModule
+    MatBadgeModule,
+    // models
+    maincompanymodels
     
   ],
   providers: [

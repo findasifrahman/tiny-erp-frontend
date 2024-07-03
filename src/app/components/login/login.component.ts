@@ -21,10 +21,10 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     // TEST CODE: Remove this code and implement the login logic
-    const sample_tpken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidXNlciIsInJvbGUiOiJzdXBlcmFkbWluIiwiaWF0IjoxNzE5OTU1MTgwLCJleHAiOjE3MTk5NTg3ODAsImlzcyI6IjEwMy4yMTguMjUuOTY6ODA4NiJ9.s5aC-9zdTxxl8A4fMF-fbrf4FgDw51tJ5_KqLxzyFgc'
+    const sample_tpken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidXNlciIsInJvbGUiOiJzdXBlcmFkbWluIiwiaWF0IjoxNzE5OTkzNDI2LCJleHAiOjE3MjAwMjk0MjYsImlzcyI6IjEwMy4yMTguMjUuOTY6ODA4NiJ9.t_KzgGm6NakWlVyhQ4R0Ikfrxvaqzr4xvH3K3A9tUSQ'
     //localStorage.setItem('user', JSON.stringify({ username: 'admin', role: 'superadmin' }));
     localStorage.setItem("jwt", sample_tpken);
-    this.router.navigate(['admin/AddMainCompany']);
+    this.router.navigate(['/AddMainCompany']);
     //
     /*if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({

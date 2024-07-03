@@ -1,12 +1,110 @@
-.sidenav {
-  width: 250px;
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
+.no-gutters {
+	margin-right: 0;
+	margin-left: 0; }
+	.no-gutters > .col,
+	.no-gutters > [class*="col-"] {
+	  padding-right: 0;
+	  padding-left: 0; }
+
+#viewport {
+  padding-left: 200px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
-.mat-nav-list {
-  padding: 0;
+#sidebar {
+//z-index: 1000;
+  position: fixed;
+  left: 200px;
+  width: 300px;
+  height: 100%;
+  margin-left: -200px;
+  //overflow-y: auto;
+
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+#sidebar header {
+  background-color: #000000;
+  font-size: 20px;
+  line-height: 52px;
+  //text-align: ;
+  padding-left: 40px;
+}
+#sidebar header a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
 }
 
-.mat-list-item {
-  display: flex;
-  align-items: center;
+#sidebar header a:hover {
+  color: yellow;
+}
+#sidebar .nav{
+  background: none;
+  border-bottom: 1px solid #455A64;
+  font-size: 14px;
+
+
+}
+
+#sidebar .nav a{
+  color: #CFD8DC;
+  font-size: 14px;
+  text-align: right;
+
+}
+
+#sidebar .nav a:hover{
+  background: none;
+  color: #ECEFF1;
+}
+
+#sidebar .nav a i{
+  margin-right: 16px;
+}
+
+
+
+
+
+.mat-card {
+    color: #fff;
+    margin-bottom: 0 !important;
+    padding-bottom: 10 !important;
+    margin-top: 0 !important;
+    padding-top: 10 !important;
+    .mat-card-header {
+      width: 100%;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+    .mat-card-title {
+      font-size: 30px !important;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+    .mat-card-subtitle {
+      color: #fff;
+      white-space: nowrap;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+}
+
+.example-card {
+    max-width: 400px;
 }

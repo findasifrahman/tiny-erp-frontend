@@ -1,8 +1,51 @@
-<mat-nav-list>
-  <ng-container *ngFor="let item of menuItems">
-    <a mat-list-item  [routerLink]="item.link">
-      <mat-icon matListIcon>home</mat-icon> <!-- Use appropriate icons -->
-      <span>{{ item.label }}</span>
-    </a>
-  </ng-container>
-</mat-nav-list>
+
+  <!-- Sidebar -->
+<mat-drawer-container class="example-container" fullscreen style=" overflow-y: hidden !important; width: 100% !important;">
+  <h1 style="text-align: center;justify-content: center;">asasddgdsgbdg gsdfgsfgsfgrsg sfg fsga</h1>
+        <mat-drawer mode="side" #sidenav opened position="start" id="sidebar"
+            [opened]="screenWidth > 240" [mode]="(screenWidth > 240) ? 'side' : 'over'" >
+
+            <header style="padding-top: 40px;padding-bottom: 30px;background-color: #006994;">
+              <h6  style="font-size: 18px;color:yellow;text-align: center;justify-content: center;">ERP Panel</h6>
+            </header>
+
+
+            <mat-nav-list>
+              <mat-tree  [dataSource]="dataSource" [treeControl]="treeControl">
+                <mat-tree-node  *matTreeNodeDef="let node" matTreeNodeToggle>
+                  <li *ngIf="node.visible">
+                    <div class="mat-tree-node">
+                      <button mat-icon-button disabled></button>
+                      <a [routerLink]="node.link">{{ node.name }}</a>
+                    </div>
+                  </li>
+                </mat-tree-node>
+        
+                <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+                  <li>
+                    <div class="mat-tree-node">
+                      <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
+                        <mat-icon>
+                          {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+                        </mat-icon>
+                      </button>
+                      {{ node.name }}
+                    </div>
+                  </li>
+                  <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+                    <ng-container matTreeNodeOutlet></ng-container>
+                  </ul>
+                </mat-tree-node>
+              </mat-tree>
+            </mat-nav-list>
+
+      </mat-drawer>
+
+
+      <mat-drawer-content style="background-color: '#000000';width: 100% !important;" >
+          
+          <router-outlet ></router-outlet>
+      
+      </mat-drawer-content>
+
+</mat-drawer-container>

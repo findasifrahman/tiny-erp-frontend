@@ -1,6 +1,6 @@
 export const routeurls = Object.freeze({
     BASE_API_URL: 'http://localhost:5020',
-    PICTURE_VIEW_URL: "/picture/getpic?picid=",
+    MAIN_COMPANY_URL: "/mainCompany",
     FILE_UPLOAD_BASE_URL:"/picture/upload",
     FILE_DELETE_BASE_URL:"/picture/delete",
     File_UPLOAD_STATIC_VIEW_URL: "/api/uploads/",
