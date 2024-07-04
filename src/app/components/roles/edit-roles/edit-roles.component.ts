@@ -1,27 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsersService } from '../../../services/users.service';
-import { Router } from '@angular/router';
+import { RolesService } from '../../../services/roles.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { usersmodel  } from '../../../models/user.model';
+import { rolesmodels  } from '../../../models/roles.model';
 
 @Component({
-  selector: 'app-add-users',
-  templateUrl: './add-users.component.html',
-  styleUrl: './add-users.component.scss'
+  selector: 'app-edit-roles',
+  templateUrl: './edit-roles.component.html',
+  styleUrl: './edit-roles.component.scss'
 })
-export class AddUsersComponent {
+export class EditRolesComponent {
+  id: number;
   spinner_value = 50;
   loading = false;
   form!: FormGroup;
-  constructor(private service: UsersService,private snackBar: MatSnackBar,
+  constructor(private service: RolesService,private snackBar: MatSnackBar,private route:ActivatedRoute,
     private formBuilder: FormBuilder, private router: Router,
-    private models : usersmodel ) { }
+    private models : rolesmodels ) { }
   ngOnInit(): void {
     // Implement the initialization logic here
     this.form = this.models.modelForms;
     this.form.reset();
+      
+      this.route.params.subscribe(params => {
+        this.id =  parseInt(params['id']);
+        console.log("update id--" + params['id']);
+        this.service.getbyid(this.id).subscribe({
+          next: response => {
+            console.log("data by id", response);
+            this.form.patchValue(response[0]);
+          },
+          error: error => {
+            // handle login error
+            console.log("error getting data", error);
+          }
+  
+        });
+  
+      })
     
   }
   async onSubmit() {
@@ -34,17 +52,17 @@ export class AddUsersComponent {
 
     if(formValue.maincompanyid != null){
       this.loading = true;
-        await this.service.Add(formValue).subscribe({
+        await this.service.update(this.id,formValue).subscribe({
           next: response => {
             // handle successful login
             console.log("post req successfull");
-            this.snackBar.open('Data Added Successfully', "Remove", {
+            this.snackBar.open('Data Edited Successfully', "Remove", {
               duration: 6000,
               verticalPosition: 'top',
               panelClass: ['blue-snackbar']
             });
             this.loading = false;
-            this.router.navigate(["/ListUsers"]);
+            this.router.navigate(["/ListRoles"]);
           },
           error: error => {
             // handle login error

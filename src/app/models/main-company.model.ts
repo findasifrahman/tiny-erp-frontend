@@ -1,24 +1,26 @@
 
+
 import { NgModule } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-export interface User {
-  username: string;
-  password: string;
+export interface MainCompany {
+    maincompanyid: number;
+    companyname: string;
+    datecreated: string;
+    logo: string;
 }
-
 @NgModule({
   imports: [ReactiveFormsModule, FormsModule],
   exports:[]
 })
-export class usersmodel {
+export class maincompanymodels {
   modelForms: FormGroup = this.formBuilder.group({
-    maincompanyid: ["",Validators.required],
-    username: ["",Validators.required],
-    password: ["",Validators.required],
-    roleid: ["",Validators.required]
+    companyname:["", Validators.required],
+    datecreated: [""],
+    logo: [""],
+    other: [""]
   });
 
   constructor(private formBuilder: FormBuilder) {}
 
-} 
+}

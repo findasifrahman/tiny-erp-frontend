@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-center h-100 w-100">
       <div class="card">
         <div class="card-header">
-          <h3>Add New User</h3>
+          <h3>Add New Role</h3>
         </div>
 
 
@@ -23,16 +23,12 @@
     <ng-template #content>
           <form class="example-container" [formGroup]="form">
             <mat-form-field appearance="outline">
-                <mat-label>username</mat-label>
-                <input matInput placeholder="User Name" type="Text"  formControlName="username" >
+                <mat-label>Role Name</mat-label>
+                <input matInput placeholder="Role Name" type="Text"  formControlName="rolename" >
             </mat-form-field>
             <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input matInput placeholder="password" type="password" formControlName="password" >
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Role Id</mat-label>
-                <input matInput placeholder="Role ID" type="number" formControlName="roleid" >
+                <mat-label>Role Priviledge</mat-label>
+                <input matInput placeholder="Role Preiv" type="number" formControlName="rolepriviledge" >
             </mat-form-field>
 
             <br/>

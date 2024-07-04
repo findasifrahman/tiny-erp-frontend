@@ -10,7 +10,12 @@ import { AddUsersComponent } from './components/users/add-users/add-users.compon
 import { ListUsersComponent } from './components/users/list-users/list-users.component';
 import { EditUsersComponent } from './components/users/edit-users/edit-users.component';
 
-
+import { AddRolesComponent } from './components/roles/add-roles/add-roles.component';
+import { EditRolesComponent } from './components/roles/edit-roles/edit-roles.component';
+import { ListRolesComponent } from './components/roles/list-roles/list-roles.component';
+import { AddCustomerComponent } from './components/customer/add-customer/add-customer.component';
+import { EditCustomerComponent } from './components/customer/edit-customer/edit-customer.component';
+import { ListCustomerComponent } from './components/customer/list-customer/list-customer.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
@@ -38,6 +43,23 @@ const routes: Routes = [
         }
       },
 
+      { path: 'AddRoles', component: AddRolesComponent, canActivate: [RoleGuard], 
+        data: {
+          expectedRole: ['superadmin']
+        }
+      },
+      { 
+        path: 'editRoles/:id', component: EditRolesComponent, canActivate: [RoleGuard],
+        data: {
+          expectedRole: ['superadmin']
+        }
+      },
+      { path: 'ListRoles', component: ListRolesComponent, canActivate: [RoleGuard], 
+        data: {
+          expectedRole: ['superadmin']
+        }
+      },
+
       { path: 'AddUsers', component: AddUsersComponent, canActivate: [RoleGuard], 
         data: {
           expectedRole: ['superadmin']
@@ -49,6 +71,23 @@ const routes: Routes = [
         }
       },
       { path: 'ListUsers', component: ListUsersComponent, canActivate: [RoleGuard], 
+        data: {
+          expectedRole: ['superadmin']
+        }
+      },
+
+      { path: 'AddCustomer', component: AddCustomerComponent, canActivate: [RoleGuard], 
+        data: {
+          expectedRole: ['superadmin']
+        }
+      },
+      { 
+        path: 'editCustomer/:id', component: EditCustomerComponent, canActivate: [RoleGuard],
+        data: {
+          expectedRole: ['superadmin']
+        }
+      },
+      { path: 'ListCustomer', component: ListCustomerComponent, canActivate: [RoleGuard], 
         data: {
           expectedRole: ['superadmin']
         }

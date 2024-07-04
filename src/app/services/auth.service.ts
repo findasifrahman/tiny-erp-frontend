@@ -15,37 +15,14 @@ export class AuthService {
 
   constructor(private http: HttpClient,private jwtHelper: JwtHelperService) {}
 
-  /*login(user: User): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, user).pipe(
-      map(response => {
-        this.currentUser = response.user;
-        localStorage.setItem('user', JSON.stringify(this.currentUser));
-        return response;
-      })
-    );
-  }
-
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('user');
-  }
-
-  getUserRole(): string {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user ? user.role : null;
-  }
-
-  hasRole(role: string): boolean {
-    const userRole = this.getUserRole();
-    return userRole && userRole === role;
-  }*/
-
+ 
   changePassword(passwordData: { username: string, oldPassword: string, newPassword: string }): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/change-password`, passwordData);
   }
   /////
   login(form: any) : Observable<any>  {
     let credentials = form;//JSON.stringify(form.value);
-    return this.http.post(routeurls.BASE_API_URL +  routeurls.LOGIN_API_BASE_URL, credentials);
+    return this.http.post(routeurls.BASE_API_URL +  routeurls.USERS_URL, credentials);
   }
   getUserLogStatus() {
     const token = localStorage.getItem('jwt');

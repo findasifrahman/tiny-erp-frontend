@@ -11,12 +11,17 @@ export interface User {
   imports: [ReactiveFormsModule, FormsModule],
   exports:[]
 })
-export class usersmodel {
+export class customermodel {
   modelForms: FormGroup = this.formBuilder.group({
     maincompanyid: ["",Validators.required],
-    username: ["",Validators.required],
-    password: ["",Validators.required],
-    roleid: ["",Validators.required]
+    customercompany: ["",Validators.required],
+    companycontactperson: ["",Validators.required],
+    contactnumber1: ["",Validators.required],
+    contactnumber2: [""],
+    address: ["",Validators.required],
+    olddue: [""],
+    createdat: [""],
+
   });
 
   constructor(private formBuilder: FormBuilder) {}

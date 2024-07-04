@@ -55,10 +55,23 @@ import { AddMainCompanyComponent } from './components/mainCompany/add-main-compa
 import { EditMainCompanyComponent } from './components/mainCompany/edit-main-company/edit-main-company.component';
 import { ListMainCompanyComponent } from './components/mainCompany/list-main-company/list-main-company.component';
 
-
+import { AddRolesComponent } from './components/roles/add-roles/add-roles.component';
+import { EditRolesComponent } from './components/roles/edit-roles/edit-roles.component';
+import { ListRolesComponent } from './components/roles/list-roles/list-roles.component';
+import { AddCustomerComponent } from './components/customer/add-customer/add-customer.component';
+import { EditCustomerComponent } from './components/customer/edit-customer/edit-customer.component';
+import { ListCustomerComponent } from './components/customer/list-customer/list-customer.component';
 
 /////////////////////// Models
-import { maincompanymodels } from './models/main-company.models';
+import { maincompanymodels } from './models/main-company.model';
+import { rolesmodels } from './models/roles.model';
+import { usersmodel } from './models/user.model';
+import { customermodel } from './models/customers.model';
+/////////////////////// others
+import { ConfirmationdialogComponent } from './components/commoncomponents/confirmationdialog/confirmationdialog.component';
+
+
+
 
 ///////////////
 @NgModule({
@@ -72,7 +85,15 @@ import { maincompanymodels } from './models/main-company.models';
     ListUsersComponent,
     AddMainCompanyComponent,
     EditMainCompanyComponent,
-    ListMainCompanyComponent
+    ListMainCompanyComponent,
+    ConfirmationdialogComponent,
+    AddRolesComponent,
+    EditRolesComponent,
+    ListRolesComponent,
+    AddCustomerComponent,
+    EditCustomerComponent,
+    ListCustomerComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -113,7 +134,10 @@ import { maincompanymodels } from './models/main-company.models';
     MatNativeDateModule,
     MatBadgeModule,
     // models
-    maincompanymodels
+    maincompanymodels,
+    rolesmodels,
+    usersmodel,
+    customermodel
     
   ],
   providers: [

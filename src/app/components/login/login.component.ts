@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     // TEST CODE: Remove this code and implement the login logic
-    const sample_tpken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidXNlciIsInJvbGUiOiJzdXBlcmFkbWluIiwiaWF0IjoxNzE5OTkzNDI2LCJleHAiOjE3MjAwMjk0MjYsImlzcyI6IjEwMy4yMTguMjUuOTY6ODA4NiJ9.t_KzgGm6NakWlVyhQ4R0Ikfrxvaqzr4xvH3K3A9tUSQ'
-    //localStorage.setItem('user', JSON.stringify({ username: 'admin', role: 'superadmin' }));
+    const sample_tpken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYXNpZiIsInJvbGUiOiJzdXBlcmFkbWluIiwiaWF0IjoxNzIwMDg1MjMyLCJleHAiOjE3MjAxMjEyMzIsImlzcyI6IjEwMy4yMTguMjUuOTY6ODA4NiJ9.HK0EBiE5ybPPMc7b42I9lbNNtp_2J-jHdi5lNwhjpjk'
+    localStorage.setItem('maincompanyid', "1");
     localStorage.setItem("jwt", sample_tpken);
     this.router.navigate(['/AddMainCompany']);
     //

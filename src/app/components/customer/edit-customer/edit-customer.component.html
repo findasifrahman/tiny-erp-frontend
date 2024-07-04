@@ -1,0 +1,61 @@
+
+<div style="margin: 10vh;">
+    <div class="d-flex justify-content-center h-100 w-100">
+      <div class="card">
+        <div class="card-header">
+          <h3>Edit Customer</h3>
+        </div>
+
+
+    <div *ngIf="loading; else content">
+
+        <div class="spinner__loading">
+          <div>
+            <mat-progress-spinner
+              diameter="60"
+              [value]="spinner_value"
+              mode="determinate">
+              </mat-progress-spinner>
+          </div>
+        </div>
+    </div>
+
+    <ng-template #content>
+          <form class="example-container" [formGroup]="form">
+            <mat-form-field appearance="outline">
+                <mat-label>Customer Company</mat-label>
+                <input matInput placeholder="Customer Company" type="Text"  formControlName="customercompany" >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Company Contact Person</mat-label>
+                <input matInput placeholder="Company Contact Person" type="text" formControlName="companycontactperson" >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Contact Number 1</mat-label>
+                <input matInput placeholder="Contact Number 1" type="number"  formControlName="contactnumber1" >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Contact Number 2</mat-label>
+                <input matInput placeholder="Contact Number 2" type="number"  formControlName="contactnumber2" >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="address" type="text"  formControlName="address" >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Old Due</mat-label>
+                <input matInput placeholder="Old Due" type="number"  formControlName="olddue" >
+            </mat-form-field>
+            <br/>
+            <div class="input-group btn-group">
+              <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:50vh;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
+            </div>
+  
+        </form>
+
+    </ng-template>
+  </div>
+</div>
+</div>
+
+

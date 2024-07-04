@@ -1,1 +1,50 @@
-<p>edit-users works!</p>
+
+<div style="margin: 10vh;">
+    <div class="d-flex justify-content-center h-100 w-100">
+      <div class="card">
+        <div class="card-header">
+          <h3>Edit User</h3>
+        </div>
+
+
+    <div *ngIf="loading; else content">
+
+        <div class="spinner__loading">
+          <div>
+            <mat-progress-spinner
+              diameter="60"
+              [value]="spinner_value"
+              mode="determinate">
+              </mat-progress-spinner>
+          </div>
+        </div>
+    </div>
+
+    <ng-template #content>
+          <form class="example-container" [formGroup]="form">
+            <mat-form-field appearance="outline">
+                <mat-label>username</mat-label>
+                <input matInput placeholder="User Name" type="Text"  formControlName="username" >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="password" type="password" formControlName="password" >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Role Id</mat-label>
+                <input matInput placeholder="Role ID" type="number" formControlName="roleid" >
+            </mat-form-field>
+
+            <br/>
+            <div class="input-group btn-group">
+              <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:50vh;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
+            </div>
+  
+        </form>
+
+    </ng-template>
+  </div>
+</div>
+</div>
+
+

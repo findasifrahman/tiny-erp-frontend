@@ -3,22 +3,21 @@
 import { NgModule } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-export interface MainCompany {
-    MainCompanyID: number;
-    CompanyName: string;
-    Date_created: string;
-    logo: string;
+export interface roles {
+    roleid: number;
+    maincompanyid: string;
+    rolename: string;
+    rolepriviledge: string;
 }
 @NgModule({
   imports: [ReactiveFormsModule, FormsModule],
   exports:[]
 })
-export class maincompanymodels {
+export class rolesmodels {
   modelForms: FormGroup = this.formBuilder.group({
-    MainCompanyID: ["", Validators.required],
-    CompanyName:["", Validators.required],
-    Date_created: ["", Validators.required],
-    logo: [""]
+    maincompanyid: ["",Validators.required],
+    rolename: ["",Validators.required],
+    rolepriviledge: ["",Validators.required],
   });
 
   constructor(private formBuilder: FormBuilder) {}

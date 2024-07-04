@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsersService } from '../../../services/users.service';
+import { RolesService } from '../../../services/roles.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { usersmodel  } from '../../../models/user.model';
+import { rolesmodels  } from '../../../models/roles.model';
 
 @Component({
-  selector: 'app-add-users',
-  templateUrl: './add-users.component.html',
-  styleUrl: './add-users.component.scss'
+  selector: 'app-add-roles',
+  templateUrl: './add-roles.component.html',
+  styleUrl: './add-roles.component.scss'
 })
-export class AddUsersComponent {
+export class AddRolesComponent {
   spinner_value = 50;
   loading = false;
   form!: FormGroup;
-  constructor(private service: UsersService,private snackBar: MatSnackBar,
+  constructor(private service: RolesService,private snackBar: MatSnackBar,
     private formBuilder: FormBuilder, private router: Router,
-    private models : usersmodel ) { }
+    private models : rolesmodels ) { }
   ngOnInit(): void {
     // Implement the initialization logic here
     this.form = this.models.modelForms;
@@ -44,7 +44,7 @@ export class AddUsersComponent {
               panelClass: ['blue-snackbar']
             });
             this.loading = false;
-            this.router.navigate(["/ListUsers"]);
+            this.router.navigate(["/ListRoles"]);
           },
           error: error => {
             // handle login error
@@ -69,4 +69,5 @@ export class AddUsersComponent {
 
     /**/
   }
+
 }

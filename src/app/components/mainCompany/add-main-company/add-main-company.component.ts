@@ -4,7 +4,7 @@ import { MainCompanyService } from '../../../services/main-company.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { maincompanymodels  } from '../../../models/main-company.models';
+import { maincompanymodels  } from '../../../models/main-company.model';
 @Component({
   selector: 'app-add-main-company',
   templateUrl: './add-main-company.component.html',
@@ -54,32 +54,7 @@ export class AddMainCompanyComponent implements OnInit{
     });
 
 
-    /*try {
-      await this.userService.Add(formValue).subscribe(
-        data => {
-          console.log("post req successfull");
-          this.snackBar.open('Data Added Successfully', "Remove", {
-            duration: 6000,
-            verticalPosition: 'top',
-            panelClass: ['blue-snackbar']
-          });
-          this.loading = false;
-          this.router.navigate(["/ListMainCompany"]);
-        },
-        error => {
-          console.log("error post", error);
-          this.snackBar.open('Unsuccessfull', "Remove", {
-            duration: 6000,
-            verticalPosition: 'top',
-            panelClass: ['red-snackbar']
-          });
-          this.loading = false;
-        }
-      );
-
-    }
-    catch (err) {
-    }*/
+    /**/
   }
 
 

@@ -27,29 +27,41 @@
                     <div class="col-md-12">
                         <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8">
                         <!-- Position Column -->
-                        <ng-container matColumnDef="companyname">
-                            <mat-header-cell *matHeaderCellDef> Company Name </mat-header-cell>
-                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.companyname}} </mat-cell>
-                        </ng-container>
                         <ng-container matColumnDef="maincompanyid">
-                            <mat-header-cell *matHeaderCellDef> Company ID </mat-header-cell>
+                            <mat-header-cell *matHeaderCellDef> Main Company Id </mat-header-cell>
                             <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.maincompanyid}} </mat-cell>
                         </ng-container>
-                        <ng-container matColumnDef="datecreated">
-                            <mat-header-cell *matHeaderCellDef> DateCreated </mat-header-cell>
-                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.datecreated}} </mat-cell>
+                        <ng-container matColumnDef="customercompany">
+                            <mat-header-cell *matHeaderCellDef> Customer Company </mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.customercompany}} </mat-cell>
                         </ng-container>
-                        <ng-container matColumnDef="other">
-                            <mat-header-cell *matHeaderCellDef> Info </mat-header-cell>
-                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.other}} </mat-cell>
+                        <ng-container matColumnDef="companycontactperson">
+                            <mat-header-cell *matHeaderCellDef> Contact Person</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.companycontactperson}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="contactnumber1">
+                            <mat-header-cell *matHeaderCellDef> Contact Number 1</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.contactnumber1}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="contactnumber2">
+                            <mat-header-cell *matHeaderCellDef>Contact Number 2</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.contactnumber2}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="address">
+                            <mat-header-cell *matHeaderCellDef> Address</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.address}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="olddue">
+                            <mat-header-cell *matHeaderCellDef> Old Due</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.olddue}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="buttons">
                             <mat-header-cell *matHeaderCellDef></mat-header-cell>
                             <mat-cell *matCellDef="let AllElement" (click)="$event.stopPropagation()">
-                            <button mat-button color="warn" (click)="onDelete(AllElement.maincompanyid)">
+                            <button mat-button color="warn" (click)="onDelete(AllElement.roleid)">
                                 <mat-icon>delete</mat-icon>
                             </button>
-                            <button mat-button color="warn" (click)="onUpdate(AllElement.maincompanyid)">
+                            <button mat-button color="warn" (click)="onUpdate(AllElement.roleid)">
                                 <mat-icon>update</mat-icon>
                             </button>
                             </mat-cell>

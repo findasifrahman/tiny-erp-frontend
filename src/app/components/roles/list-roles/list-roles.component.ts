@@ -1,5 +1,5 @@
 import { Component, OnInit,ViewChild,Inject } from '@angular/core';
-import { UsersService } from '../../../services/users.service';
+import { RolesService } from '../../../services/roles.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
@@ -8,18 +8,18 @@ import { ConfirmationdialogComponent } from '../../commoncomponents/confirmation
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-list-users',
-  templateUrl: './list-users.component.html',
-  styleUrl: './list-users.component.scss'
+  selector: 'app-list-roles',
+  templateUrl: './list-roles.component.html',
+  styleUrl: './list-roles.component.scss'
 })
-export class ListUsersComponent {
+export class ListRolesComponent {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  displayedColumns: string[] = ['maincompanyid','username','password','roleid','buttons'];
-  displayedColumnsName: string[] = ['maincompanyid','username','password','roleid','buttons'];
+  displayedColumns: string[] = ['rolename','maincompanyid','rolepriviledge','buttons'];
+  displayedColumnsName: string[] = ['rolename','maincompanyid','rolepriviledge','buttons'];
   AllElement: MatTableDataSource<any>;
   loading = false;
   spinner_value = 50;
-  constructor(private snackBar: MatSnackBar, private service: UsersService, public dialog: MatDialog,
+  constructor(private snackBar: MatSnackBar, private service: RolesService, public dialog: MatDialog,
     public _router: Router) { }
 
   ngOnInit() {
@@ -79,7 +79,7 @@ export class ListUsersComponent {
   }//Delete end
 
   onUpdate(id: any) {
-    this._router.navigate(['/editUsers', id]);
+    this._router.navigate(['/editRoles', id]);
   }
 
 }
