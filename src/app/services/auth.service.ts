@@ -43,6 +43,13 @@ export class AuthService {
     let token = localStorage.getItem("jwt");
     return (this.jwtHelper.decodeToken(token)["role"]);
   }
+  getmaincompanyid(){
+    return localStorage.getItem("maincompanyid");
+  }
+  getmaincompanyname(){
+    return localStorage.getItem("maincompanyname");
+  
+  }
   getrolefromtoken(token:any){
     return (this.jwtHelper.decodeToken(token)["role"]);
   }

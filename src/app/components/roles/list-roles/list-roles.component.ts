@@ -30,8 +30,8 @@ export class ListRolesComponent {
     this.AllElement.filter = filterValue.trim().toLowerCase();
   }
 
-  ngAfterViewInit(): void {
-    this.service.getAll().subscribe((posts) => {
+  async ngAfterViewInit() {
+    this.service.getAll(await localStorage.getItem('maincompanyid')).subscribe((posts) => {
       this.AllElement = new MatTableDataSource(posts as any);
       this.AllElement.paginator = this.paginator;
       //setTimeout(() => this.AllElement.paginator = this.paginator);

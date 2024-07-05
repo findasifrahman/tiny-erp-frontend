@@ -36,16 +36,22 @@ export class LoginComponent implements OnInit {
         next: response => {
           // handle successful login
           let token = (<any>response).token;
-          console.log(token);
+          let maincaompanyname = (<any>response).maincompanyname;
+          let maincompanyid = (<any>response).maincompanyid;
+          localStorage.setItem("maincompanyid", maincompanyid);
+          localStorage.setItem("maincompanyname", maincaompanyname);
+
+          console.log("maincompany--",maincaompanyname, maincompanyid);
           localStorage.setItem("jwt", token);
           let role = this.authService.getrolefromtoken(token)
-          console.log(role);
+          console.log("role", role);
+          console.log('user', this.authService.getUser())
           this.loading = false;
           this.router.navigate(['/AddMainCompany']);
         },
         error: error => {
           // handle login error
-          this.snackBar.open(error,"Undo",{
+          this.snackBar.open("Incorrect Username or Password","Undo",{
             duration: 6000,
             verticalPosition: 'top',
             panelClass: ['red-snackbar']

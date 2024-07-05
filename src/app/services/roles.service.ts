@@ -15,8 +15,8 @@ export class RolesService {
         //let header = headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         return this.http.post(routeurls.BASE_API_URL + routeurls.ROLES_URL,formval,options)
       }
-      getAll(): Observable<any> {
-        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.ROLES_URL).pipe(
+      getAll(mid: any): Observable<any> {
+        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.ROLES_URL + "/" + mid ).pipe(
           retry(3),
           map(res => {
             console.log(res);
@@ -31,9 +31,9 @@ export class RolesService {
       }
 
       getbyid(id: number): Observable<any> {
-        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.ROLES_URL, { params: new HttpParams().set('id', id) })
+        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.ROLES_URL + "/getbyid" , { params: new HttpParams().set('id', id).set('maincompanyid',localStorage.getItem('maincompanyid')) })
         .pipe(
-          retry(3),
+          retry(2),
           map(res => {
             console.log(res);
             if (!res) {

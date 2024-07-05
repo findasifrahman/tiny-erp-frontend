@@ -1,11 +1,11 @@
 
 
-<div *ngIf="loading; else content">
+<div  *ngIf="loading; else content" >
 
   <div class="spinner__loading">
     <div>
       <mat-progress-spinner
-        diameter="60"
+        diameter="200"
         [value]="spinner_value"
         mode="determinate">
         </mat-progress-spinner>

@@ -106,7 +106,6 @@ const routes: Routes = [
 ];
 export function mytokenGetter() {
   //return this.logservice.getUserLogStatus();
-  console.log("route is using tokennnnnnnn", localStorage.getItem('jwt'))
   return localStorage.getItem('jwt');
 }
 @NgModule({
