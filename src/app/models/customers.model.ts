@@ -13,7 +13,7 @@ export interface User {
 })
 export class customermodel {
   modelForms: FormGroup = this.formBuilder.group({
-    maincompanyid: ["",Validators.required],
+    maincompanyid: [""],
     customercompany: ["",Validators.required],
     companycontactperson: ["",Validators.required],
     contactnumber1: ["",Validators.required],

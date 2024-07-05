@@ -196,7 +196,12 @@ const TREE_DATA: MenuNode[] = [
         ]
       }
     ]
-  }
+  },
+  {
+    name: 'Logout',
+    visible: true,
+    link: ''
+  },
   // Add more nodes as needed following the structure in sidebar.txt
 ];
 

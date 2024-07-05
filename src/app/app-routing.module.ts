@@ -20,6 +20,7 @@ import { ListCustomerComponent } from './components/customer/list-customer/list-
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
 import { JwtModule } from '@auth0/angular-jwt';
+import { HttpClientModule } from "@angular/common/http";
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent, },
@@ -76,18 +77,18 @@ const routes: Routes = [
         }
       },
 
-      { path: 'AddCustomer', component: AddCustomerComponent, canActivate: [RoleGuard], 
+      { path: 'AddCustomer', component: AddCustomerComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
           expectedRole: ['superadmin']
         }
       },
       { 
-        path: 'editCustomer/:id', component: EditCustomerComponent, canActivate: [RoleGuard],
+        path: 'editCustomer/:id', component: EditCustomerComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
           expectedRole: ['superadmin']
         }
       },
-      { path: 'ListCustomer', component: ListCustomerComponent, canActivate: [RoleGuard], 
+      { path: 'ListCustomer', component: ListCustomerComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
           expectedRole: ['superadmin']
         }
@@ -105,6 +106,7 @@ const routes: Routes = [
 ];
 export function mytokenGetter() {
   //return this.logservice.getUserLogStatus();
+  console.log("route is using tokennnnnnnn", localStorage.getItem('jwt'))
   return localStorage.getItem('jwt');
 }
 @NgModule({
@@ -112,7 +114,10 @@ export function mytokenGetter() {
     JwtModule.forRoot({/* automatically assign bearer token with every http request service*/
       config: {
         tokenGetter: mytokenGetter,
+        allowedDomains: ['localhost:5000'],
+        disallowedRoutes: ['localhost:5000/api/auth']
       }
+      
     }) 
 
   ],

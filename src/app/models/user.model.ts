@@ -13,7 +13,7 @@ export interface User {
 })
 export class usersmodel {
   modelForms: FormGroup = this.formBuilder.group({
-    maincompanyid: ["",Validators.required],
+    maincompanyid: [""],
     username: ["",Validators.required],
     password: ["",Validators.required],
     roleid: ["",Validators.required]

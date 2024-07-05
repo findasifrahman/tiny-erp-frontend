@@ -1,3 +1,21 @@
+
+
+<div *ngIf="loading; else content">
+
+  <div class="spinner__loading">
+    <div>
+      <mat-progress-spinner
+        diameter="60"
+        [value]="spinner_value"
+        mode="determinate">
+        </mat-progress-spinner>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #content>
 <div class="login-container">
     <h3 class="header">ERP Login</h3>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -23,4 +41,4 @@
     </form>
     <button mat-button (click)="changePassword()">Change Password</button>
   </div>
-  
+<ng-template #content>

@@ -22,7 +22,7 @@ export class AuthService {
   /////
   login(form: any) : Observable<any>  {
     let credentials = form;//JSON.stringify(form.value);
-    return this.http.post(routeurls.BASE_API_URL +  routeurls.USERS_URL, credentials);
+    return this.http.post(routeurls.BASE_API_URL +  routeurls.LOGIN_URL, credentials);
   }
   getUserLogStatus() {
     const token = localStorage.getItem('jwt');

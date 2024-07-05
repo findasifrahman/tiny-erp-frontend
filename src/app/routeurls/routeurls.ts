@@ -4,6 +4,7 @@ export const routeurls = Object.freeze({
     ROLES_URL: "/roles",
     USERS_URL: "/users",
     CUSTOMER_URL: "/customer",
-    //... more of your variable
+    LOGIN_URL: "/login",
+
   });
   

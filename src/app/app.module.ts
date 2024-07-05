@@ -9,7 +9,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 // Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient,HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
@@ -70,8 +70,9 @@ import { customermodel } from './models/customers.model';
 /////////////////////// others
 import { ConfirmationdialogComponent } from './components/commoncomponents/confirmationdialog/confirmationdialog.component';
 
-
-
+import { AuthGuard } from './guards/auth.guard';
+import { RoleGuard } from './guards/role.guard';
+import { JwtInterceptor } from './services/interceptors/jwt.service';
 
 ///////////////
 @NgModule({
@@ -137,12 +138,15 @@ import { ConfirmationdialogComponent } from './components/commoncomponents/confi
     maincompanymodels,
     rolesmodels,
     usersmodel,
-    customermodel
+    customermodel,
+    HttpClientModule
     
   ],
   providers: [
     provideAnimationsAsync(),
-    provideHttpClient()
+    provideHttpClient(),
+    AuthGuard,RoleGuard,
+    //{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

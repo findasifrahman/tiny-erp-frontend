@@ -15,7 +15,7 @@ export interface roles {
 })
 export class rolesmodels {
   modelForms: FormGroup = this.formBuilder.group({
-    maincompanyid: ["",Validators.required],
+    maincompanyid: [""],
     rolename: ["",Validators.required],
     rolepriviledge: ["",Validators.required],
   });
