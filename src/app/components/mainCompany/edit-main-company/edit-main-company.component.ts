@@ -32,7 +32,7 @@ export class EditMainCompanyComponent {
       this.userService.getbyid(this.id).subscribe({
         next: response => {
           console.log("data by id", response);
-          this.mainCompanyForm.patchValue(response[0]);
+          this.mainCompanyForm.patchValue(response);
         },
         error: error => {
           // handle login error

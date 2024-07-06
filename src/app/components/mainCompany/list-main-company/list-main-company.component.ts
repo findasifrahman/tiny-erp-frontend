@@ -31,7 +31,7 @@ export class ListMainCompanyComponent implements OnInit{
     this.AllElement.filter = filterValue.trim().toLowerCase();
   }
 
-  ngAfterViewInit(): void {
+  async ngAfterViewInit() {
     this.mainCompanyService.getAll().subscribe((posts) => {
       this.AllElement = new MatTableDataSource(posts as any);
       this.AllElement.paginator = this.paginator;

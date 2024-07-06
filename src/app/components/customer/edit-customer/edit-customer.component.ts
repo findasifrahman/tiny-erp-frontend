@@ -30,7 +30,7 @@ export class EditCustomerComponent {
         this.service.getbyid(this.id).subscribe({
           next: response => {
             console.log("data by id", response);
-            this.form.patchValue(response[0]);
+            this.form.patchValue(response);
           },
           error: error => {
             // handle login error

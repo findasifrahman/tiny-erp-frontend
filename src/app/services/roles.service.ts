@@ -31,7 +31,7 @@ export class RolesService {
       }
 
       getbyid(id: number): Observable<any> {
-        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.ROLES_URL + "/getbyid" , { params: new HttpParams().set('id', id).set('maincompanyid',localStorage.getItem('maincompanyid')) })
+        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.ROLES_URL + "/getbyid" , { params: new HttpParams().set('id', id) })
         .pipe(
           retry(2),
           map(res => {

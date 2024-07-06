@@ -12,34 +12,30 @@
 </div>
 
 
-<div style="margin: 10vh;">
-    <div class="d-flex justify-content-center h-100 w-100">
-      <div class="card">
-        <div class="card-header">
-          <h3>Edit Company Info</h3>
-        </div>
+<ng-template  #content>
+    <div class="container">
+
+                <h3 class="header">Edit Company Info</h3>
+      
+                  <form  [formGroup]="mainCompanyForm">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Company Name</mat-label>
+                        <input matInput placeholder="User Name" type="Text"  formControlName="companyname" >
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Other</mat-label>
+                        <input matInput placeholder="Other" type="text" formControlName="other" >
+                    </mat-form-field>
+
+                    <br/>
+                    <div class="input-group btn-group">
+                      <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!mainCompanyForm.valid">Submit</button>
+                    </div>
+          
+                </form>
 
 
-    <ng-template #content>
-          <form class="example-container" [formGroup]="mainCompanyForm">
-            <mat-form-field appearance="outline">
-                <mat-label>Company Name</mat-label>
-                <input matInput placeholder="User Name" type="Text"  formControlName="companyname" >
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Other</mat-label>
-                <input matInput placeholder="Other" type="text" formControlName="other" >
-            </mat-form-field>
+    </div>
 
-            <br/>
-            <div class="input-group btn-group">
-              <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:50vh;background-color:black;color:whitesmoke" [disabled]="!mainCompanyForm.valid">Submit</button>
-            </div>
-  
-        </form>
 
-    </ng-template>
-  </div>
-</div>
-</div>
-
+</ng-template>

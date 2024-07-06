@@ -12,15 +12,10 @@
 </div>
 
 
-<div style="margin: 10vh;">
-    <div class="d-flex justify-content-center h-100 w-100">
-      <div class="card">
-        <div class="card-header">
-          <h3>Edit Role</h3>
-        </div>
-
 
     <ng-template #content>
+      <div class="container">
+          <h3>Edit Role</h3>
           <form class="example-container" [formGroup]="form">
             <mat-form-field appearance="outline">
                 <mat-label>Role Name</mat-label>
@@ -33,14 +28,12 @@
 
             <br/>
             <div class="input-group btn-group">
-              <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:50vh;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
+              <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
             </div>
   
         </form>
-
+      </div>
     </ng-template>
-  </div>
-</div>
-</div>
+
 
 

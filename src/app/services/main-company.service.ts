@@ -17,7 +17,7 @@ export class MainCompanyService {
         return this.http.post(routeurls.BASE_API_URL + routeurls.MAIN_COMPANY_URL,formval,options)
       }
       getAll(): Observable<any> {
-        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.MAIN_COMPANY_URL).pipe(
+        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.MAIN_COMPANY_URL ).pipe(
           retry(3),
           map(res => {
             console.log(res);
@@ -32,7 +32,7 @@ export class MainCompanyService {
       }
 
       getbyid(id: number): Observable<any> {
-        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.MAIN_COMPANY_URL, { params: new HttpParams().set('id', id) })
+        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.MAIN_COMPANY_URL + "/getbyid", { params: new HttpParams().set('id', id) })
         .pipe(
           retry(3),
           map(res => {

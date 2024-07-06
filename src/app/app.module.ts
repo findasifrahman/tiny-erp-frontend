@@ -72,7 +72,6 @@ import { ConfirmationdialogComponent } from './components/commoncomponents/confi
 
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
-import { JwtInterceptor } from './services/interceptors/jwt.service';
 
 ///////////////
 @NgModule({
