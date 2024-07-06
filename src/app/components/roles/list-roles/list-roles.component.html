@@ -27,6 +27,10 @@
                     <div class="col-md-12">
                         <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8">
                         <!-- Position Column -->
+                        <ng-container matColumnDef="roleid">
+                            <mat-header-cell *matHeaderCellDef> Role ID </mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.roleid}} </mat-cell>
+                        </ng-container>
                         <ng-container matColumnDef="rolename">
                             <mat-header-cell *matHeaderCellDef> Role Name </mat-header-cell>
                             <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.rolename}} </mat-cell>

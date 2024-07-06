@@ -12,6 +12,8 @@ import { employeemodel  } from '../../../models/employee.model';
   styleUrl: './edit-employee.component.scss'
 })
 export class EditEmployeeComponent {
+  categoryName_arr = ["sales_agent","staff","admin"]
+  roleName_arr = ["admin","sales","purchase","hr"]
   id: number;
   spinner_value = 50;
   loading = false;

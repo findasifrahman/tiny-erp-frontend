@@ -48,14 +48,27 @@
                 <mat-label>Employee Grade</mat-label>
                 <input matInput placeholder="Employee Grade" type="text"  formControlName="grade" >
               </mat-form-field>
-              <mat-form-field appearance="outline">
-                <mat-label>Role ID</mat-label>
-                <input matInput placeholder="Role ID" type="number"  formControlName="roleid" >
+
+              <mat-form-field>
+                <mat-label>Role</mat-label>
+                <select matNativeControl formControlName="roleid" name="roleid" >   
+                  <option *ngFor="let car of roleName_arr" [value]="car">
+                    {{car}}
+                  </option>
+                </select>
+                <mat-hint>Admin or staff</mat-hint>
               </mat-form-field>
-              <mat-form-field appearance="outline">
-                <mat-label>state</mat-label>
-                <input matInput placeholder="state" type="text"  formControlName="state" >
+
+              <mat-form-field>
+                <mat-label>Employee Type</mat-label>
+                <select matNativeControl formControlName="state" name="state" >   
+                  <option *ngFor="let car of categoryName_arr" [value]="car">
+                    {{car}}
+                  </option>
+                </select>
+                <mat-hint>Sales_Agent or Direct</mat-hint>
               </mat-form-field>
+
               <mat-form-field appearance="outline">
                 <mat-label>Description</mat-label>
                 <input matInput placeholder="Description" type="text"  formControlName="description" >

@@ -21,7 +21,7 @@ export class employeemodel {
     nidnumber: [''],
     salary: ['', Validators.required],
     grade: ['', Validators.maxLength(10)],
-    roleid: ['', Validators.required],
+    roleid: ['', [Validators.maxLength(20),Validators.required]],
     state: ['', Validators.maxLength(20)],
     description: [''],
     image: [''] // Assuming handling of bytea as string for form control

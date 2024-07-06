@@ -14,8 +14,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ListRolesComponent {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  displayedColumns: string[] = ['rolename','maincompanyid','rolepriviledge','buttons'];
-  displayedColumnsName: string[] = ['rolename','maincompanyid','rolepriviledge','buttons'];
+  displayedColumns: string[] = ['roleid','rolename','maincompanyid','rolepriviledge','buttons'];
+  displayedColumnsName: string[] = ['roleid','rolename','maincompanyid','rolepriviledge','buttons'];
   AllElement: MatTableDataSource<any>;
   loading = false;
   spinner_value = 50;

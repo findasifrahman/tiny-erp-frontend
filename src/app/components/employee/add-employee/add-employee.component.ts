@@ -12,6 +12,8 @@ import { employeemodel  } from '../../../models/employee.model';
   styleUrl: './add-employee.component.scss'
 })
 export class AddEmployeeComponent {
+  categoryName_arr = ["sales_agent","staff","admin"]
+  roleName_arr = ["admin","sales","purchase","hr"]
   spinner_value = 50;
   loading = false;
   form!: FormGroup;
@@ -30,8 +32,9 @@ export class AddEmployeeComponent {
     formValue['maincompanyid'] = await localStorage.getItem('maincompanyid');
 
     console.log(formValue);
-   
 
+
+    
     if(formValue.maincompanyid != null){
       this.loading = true;
         await this.service.Add(formValue).subscribe({
@@ -66,7 +69,7 @@ export class AddEmployeeComponent {
       });
 
     }
-
+    
     /**/
   }
 }
