@@ -1,0 +1,79 @@
+<div *ngIf="loading; else content">
+
+    <div class="spinner__loading">
+      <div>
+        <mat-progress-spinner
+          diameter="200"
+          [value]="spinner_value"
+          mode="determinate">
+          </mat-progress-spinner>
+      </div>
+    </div>
+  </div>
+  
+  
+      <ng-template #content>
+        <div class="container">
+            <h3>Edit Employee</h3>
+            <form class="example-container" [formGroup]="form">
+              <mat-form-field appearance="outline">
+                  <mat-label>Joining Date</mat-label>
+                  <input matInput placeholder="Joining Date" type="date"  formControlName="joiningdate" >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                  <mat-label>employee Name</mat-label>
+                  <input matInput placeholder="Employee Name" type="text" formControlName="employeename" >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                  <mat-label>Age</mat-label>
+                  <input matInput placeholder="Age" type="number"  formControlName="age" >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                  <mat-label>Contact Number</mat-label>
+                  <input matInput placeholder="Contact Number" type="text"  formControlName="contactno" >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                  <mat-label>Address</mat-label>
+                  <input matInput placeholder="address" type="text"  formControlName="address" >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                  <mat-label>Nid Number</mat-label>
+                  <input matInput placeholder="Nid Number" type="text"  formControlName="nidnumber" >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Salary</mat-label>
+                <input matInput placeholder="Salary" type="number"  formControlName="salary" >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Employee Grade</mat-label>
+                <input matInput placeholder="Employee Grade" type="text"  formControlName="grade" >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Role ID</mat-label>
+                <input matInput placeholder="Role ID" type="number"  formControlName="roleid" >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>state</mat-label>
+                <input matInput placeholder="state" type="text"  formControlName="state" >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <input matInput placeholder="Description" type="text"  formControlName="description" >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Image</mat-label>
+                <input matInput placeholder="Image" type="text"  formControlName="image" >
+              </mat-form-field>
+              <br/>
+              <div class="input-group btn-group">
+                <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
+              </div>
+    
+          </form>
+        </div>
+  
+      </ng-template>
+  
+  
+  
+  

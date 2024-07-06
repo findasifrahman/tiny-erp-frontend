@@ -59,16 +59,16 @@ const TREE_DATA: MenuNode[] = [
             name: 'Sales Order',
             visible: true,
             children: [
-              { name: 'Add Sales Orders', link: '/AddSalesOrders',   visible: true},
-              { name: 'Sales Order List', link: '/ListSalesOrders', visible: true}
+              { name: 'Add Sales Orders', link: '/AddSalesOrder',   visible: true},
+              { name: 'Sales Order List', link: '/ListSalesOrder', visible: true}
             ]
           },
           {
             name: 'Order Details',
             visible: true,
             children: [
-              { name: 'Add Order Details', link: '/AddOrderDetails',  visible: true},
-              { name: 'Order Details list', link: '/ListOrderDetails',  visible: true}
+              { name: 'Add Order Details', link: '/AddSalesOrderDetails',  visible: true},
+              { name: 'Order Details list', link: '/ListSalesOrderDetails',  visible: true}
             ]
           }
         ]
@@ -77,8 +77,8 @@ const TREE_DATA: MenuNode[] = [
         name: 'Payment Voucher',
         visible: true,
         children: [
-          { name: 'Add Payment Voucher', link: '/AddPayment',   visible: true},
-          { name: 'Payment Voucher list', link: '/ListPayment',  visible: true}
+          { name: 'Add Payment Voucher', link: '/AddPaymentSales',   visible: true},
+          { name: 'Payment Voucher list', link: '/ListPaymentSales',  visible: true}
         ]
       }
     ]
@@ -116,7 +116,7 @@ const TREE_DATA: MenuNode[] = [
         visible: true,
         children: [
           { name: 'Add Puchase Order', link: '/AddPurchaseOrder',  visible: true},
-          { name: 'Purchase Order List', link: '/LiskPurchaseOrder', visible: true}
+          { name: 'Purchase Order List', link: '/ListPurchaseOrder', visible: true}
         ]
       },
       {
@@ -145,16 +145,16 @@ const TREE_DATA: MenuNode[] = [
         name: 'Salary Payroll',
         visible: true,
         children: [
-          { name: 'Add Payroll', link: '/SalaryPayroll',  visible: true},
-          { name: 'Payroll List', link: '/ListPayroll', visible: true}
+          { name: 'Add Payroll', link: '/AddSalaryPayroll',  visible: true},
+          { name: 'Payroll List', link: '/ListSalaryPayroll', visible: true}
         ]
       },
       {
         name: 'Office expenditure products',
         visible: true,
         children: [
-          { name: 'Add expenditure products', link: '/AddOfficeExpenditureProducts',  visible: true},
-          { name: 'expenditure products List', link: '/ListOfficeExpenditureProducts', visible: true}
+          { name: 'Add expenditure products', link: '/AddOfficePurchaseItemList',  visible: true},
+          { name: 'expenditure products List', link: '/ListOfficePurchaseItemList', visible: true}
         ]
       },
       {

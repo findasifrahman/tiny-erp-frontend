@@ -11,7 +11,7 @@ export interface User {
   imports: [ReactiveFormsModule, FormsModule],
   exports:[]
 })
-export class officeipurchasetemlistmodel {
+export class officepurchaseitemlistmodel {
   modelForms: FormGroup = this.formBuilder.group({
     itemname: ['', [Validators.required, Validators.maxLength(256)]],
     price: [0, [Validators.required, Validators.min(0)]],

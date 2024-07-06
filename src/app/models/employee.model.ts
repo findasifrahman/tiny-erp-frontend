@@ -13,7 +13,6 @@ export interface Employee {
 })
 export class employeemodel {
   modelForms: FormGroup = this.formBuilder.group({
-    maincompanyid: ['', Validators.required],
     joiningdate: ['', Validators.required],
     employeename: ['', [Validators.required, Validators.maxLength(128)]],
     age: ['', [Validators.required, Validators.min(0)]],
