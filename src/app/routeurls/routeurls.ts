@@ -7,5 +7,7 @@ export const routeurls = Object.freeze({
     LOGIN_URL: "/login",
     EMPLOYEE_URL: "/employee",
     SALESORDERS_URL: "/salesorders",
+    PRODUCT_CATEGORY_URL: "/productcategory",
+    PRODUCT_SUB_CATEGORY_URL: "/productsubcategory",
   });
   
