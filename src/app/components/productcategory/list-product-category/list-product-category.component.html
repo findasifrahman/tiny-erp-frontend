@@ -27,6 +27,10 @@
                     <div class="col-md-12" style="max-width: 100% !important;">
                         <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8" style="width: 80%;max-width: 80% !important;">
                         <!-- Position Column -->
+                        <ng-container matColumnDef="productcategoryid">
+                            <mat-header-cell *matHeaderCellDef> Product Category ID</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.productcategoryid}} </mat-cell>
+                        </ng-container>
                         <ng-container matColumnDef="categoryname">
                             <mat-header-cell *matHeaderCellDef> Product Category name</mat-header-cell>
                             <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.categoryname}} </mat-cell>
@@ -48,7 +52,7 @@
                         <mat-row style="background-color:black" *matRowDef="let row; columns: displayedColumns;"></mat-row>
                     
                         </mat-table>
-                        <mat-paginator [pageSize]="10" [pageSizeOptions]="[2, 4, 6, 10, 20]"></mat-paginator>
+                        <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
                     </div>
                 </div>
             </ng-template>

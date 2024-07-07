@@ -1,5 +1,5 @@
 import { Component, OnInit,ViewChild,Inject } from '@angular/core';
-import { ProductCategoryService } from '../../../services/product-category.service';
+import { ProductSubCategoryService } from '../../../services/product-sub-category.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
@@ -14,12 +14,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ListProductSubCategoryComponent {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  displayedColumns: string[] = ['categoryname','subcategoryname','buttons'];
-  displayedColumnsName: string[] = ['categoryname','subcategoryname','buttons'];
+  displayedColumns: string[] = ['categoryname','productsubcategoryid','subcategoryname','buttons'];
+  displayedColumnsName: string[] = ['categoryname','productsubcategoryid','subcategoryname','buttons'];
   AllElement: MatTableDataSource<any>;
   loading = false;
   spinner_value = 50;
-  constructor(private snackBar: MatSnackBar, private service: ProductCategoryService, public dialog: MatDialog,
+  constructor(private snackBar: MatSnackBar, private service: ProductSubCategoryService, public dialog: MatDialog,
     public _router: Router) { }
 
   ngOnInit() {
@@ -63,7 +63,8 @@ export class ListProductSubCategoryComponent {
           },
           error: error => {
             // handle login error
-            console.log("error post", error);
+            console.log("error post", error.error);
+            console.log("error post", error.error);
             this.snackBar.open('Unsuccessfull', "Remove", {
               duration: 6000,
               verticalPosition: 'top',

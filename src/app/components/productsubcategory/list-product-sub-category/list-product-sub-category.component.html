@@ -31,6 +31,10 @@
                             <mat-header-cell *matHeaderCellDef> Product Category</mat-header-cell>
                             <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.categoryname}} </mat-cell>
                         </ng-container>
+                        <ng-container matColumnDef="productsubcategoryid">
+                            <mat-header-cell *matHeaderCellDef> Sub Category ID </mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.productsubcategoryid}} </mat-cell>
+                        </ng-container>
                         <ng-container matColumnDef="subcategoryname">
                             <mat-header-cell *matHeaderCellDef>Sub Product Category</mat-header-cell>
                             <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.subcategoryname}} </mat-cell>

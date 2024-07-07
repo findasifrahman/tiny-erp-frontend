@@ -14,8 +14,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ListProductCategoryComponent {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  displayedColumns: string[] = ['categoryname',,'buttons'];
-  displayedColumnsName: string[] = ['categoryname','buttons'];
+  displayedColumns: string[] = ['productcategoryid','categoryname','buttons'];
+  displayedColumnsName: string[] = ['productcategoryid','categoryname','buttons'];
   AllElement: MatTableDataSource<any>;
   loading = false;
   spinner_value = 50;
@@ -62,9 +62,8 @@ export class ListProductCategoryComponent {
 
           },
           error: error => {
-            // handle login error
-            console.log("error post", error);
-            this.snackBar.open('Unsuccessfull', "Remove", {
+            console.log("error post", error.error.message);
+            this.snackBar.open('Unsuccessfull ' + error.error.message, "Remove", {
               duration: 6000,
               verticalPosition: 'top',
               panelClass: ['red-snackbar']
