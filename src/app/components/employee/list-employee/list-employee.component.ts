@@ -79,6 +79,6 @@ export class ListEmployeeComponent {
   }//Delete end
 
   onUpdate(id: any) {
-    this._router.navigate(['/editCustomer', id]);
+    this._router.navigate(['/editEmployee', id]);
   }
 }

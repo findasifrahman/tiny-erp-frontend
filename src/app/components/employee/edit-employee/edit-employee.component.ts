@@ -5,7 +5,7 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { employeemodel  } from '../../../models/employee.model';
-
+import moment from 'moment';
 @Component({
   selector: 'app-edit-employee',
   templateUrl: './edit-employee.component.html',
@@ -33,6 +33,7 @@ export class EditEmployeeComponent {
           this.service.getbyid(this.id).subscribe({
             next: response => {
               console.log("data by id", response);
+              response["joiningdate"] = moment(response['joiningdate']).format("YYYY-MM-DD")
               this.form.patchValue(response);
             },
             error: error => {

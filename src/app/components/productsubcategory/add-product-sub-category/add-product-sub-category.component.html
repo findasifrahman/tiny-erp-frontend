@@ -1,1 +1,50 @@
-<p>add-product-sub-category works!</p>
+<div *ngIf="loading; else content">
+    <div class="spinner__loading">
+      <div>
+        <mat-progress-spinner
+          diameter="200"
+          [value]="spinner_value"
+          mode="determinate">
+          </mat-progress-spinner>
+      </div>
+    </div>
+  </div>
+  
+      <ng-template #content>
+        <div class="container">
+            <h3>Add Product Sub Category</h3>
+            <form class="example-container" [formGroup]="form">
+              <mat-form-field>
+               <mat-label>Customer ID</mat-label>
+                    <select matNativeControl formControlName="productcategoryid" (ngModelChange)="productcategoryIDChanged($event)" name="customerid" >   
+                        <option *ngFor="let car of productcategoryID_arr" [value]="car">
+                        {{car}}
+                        </option>
+                    </select>
+                    <mat-hint>Product Category ID</mat-hint>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label>Product Category</mat-label>
+                  <input matInput placeholder="Product Category" type="text" formControlName="categoryname" readonly>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>CategoryName</mat-label>
+                <input matInput placeholder="Category Name" type="text"  formControlName="subcategoryname">
+             </mat-form-field>
+            
+
+              <br/>
+              <div class="input-group btn-group">
+                <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
+              </div>
+    
+          </form>
+        </div>
+  
+      </ng-template>
+  
+  
+  
+  

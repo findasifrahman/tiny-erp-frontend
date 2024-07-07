@@ -1,1 +1,36 @@
-<p>add-product-category works!</p>
+<div *ngIf="loading; else content">
+    <div class="spinner__loading">
+      <div>
+        <mat-progress-spinner
+          diameter="200"
+          [value]="spinner_value"
+          mode="determinate">
+          </mat-progress-spinner>
+      </div>
+    </div>
+  </div>
+  
+      <ng-template #content>
+        <div class="container">
+            <h3>Add Product Category</h3>
+            <form class="example-container" [formGroup]="form">
+
+              <mat-form-field appearance="outline">
+                <mat-label>CategoryName</mat-label>
+                <input matInput placeholder="Category Name" type="text"  formControlName="categoryname">
+             </mat-form-field>
+            
+
+              <br/>
+              <div class="input-group btn-group">
+                <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
+              </div>
+    
+          </form>
+        </div>
+  
+      </ng-template>
+  
+  
+  
+  

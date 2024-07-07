@@ -12,7 +12,6 @@ export interface User {
 })
 export class ProductSubCategorymodel {
   modelForms: FormGroup = this.formBuilder.group({
-    maincompanyid: ['', Validators.required],
     productcategoryid: ['', Validators.required],
     categoryname: ['', [Validators.maxLength(256)]],
     subcategoryname: ['', [Validators.required, Validators.maxLength(256)]]

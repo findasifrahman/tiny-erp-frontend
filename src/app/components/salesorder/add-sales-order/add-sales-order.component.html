@@ -1,1 +1,87 @@
-<p>add-sales-order works!</p>
+<div *ngIf="loading; else content">
+
+    <div class="spinner__loading">
+      <div>
+        <mat-progress-spinner
+          diameter="200"
+          [value]="spinner_value"
+          mode="determinate">
+          </mat-progress-spinner>
+      </div>
+    </div>
+  </div>
+  
+  
+      <ng-template #content>
+        <div class="container">
+            <h3>Add Sales Order</h3>
+            <form class="example-container" [formGroup]="form">
+            <mat-form-field>
+            <mat-label>Customer ID</mat-label>
+                <select matNativeControl formControlName="customerid" (ngModelChange)="customerIDChanged($event)" name="customerid" >   
+                    <option *ngFor="let car of customerID_arr" [value]="car">
+                    {{car}}
+                    </option>
+                </select>
+                <mat-hint>Customer ID</mat-hint>
+            </mat-form-field>
+              <mat-form-field appearance="outline">
+                  <mat-label>Customer Company</mat-label>
+                  <input matInput placeholder="Customer Company" type="text" formControlName="customercompany" readonly>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Sales type</mat-label>
+                <select matNativeControl formControlName="salestype" name="salestype" >   
+                    <option *ngFor="let car of salestype_arr" [value]="car">
+                    {{car}}
+                    </option>
+                </select>
+                <mat-hint>direct or agent</mat-hint>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Sales Agent ID</mat-label>
+                <select matNativeControl formControlName="salesagentid" name="salesagentid" (ngModelChange)="salesAgentIDChanged($event)">   
+                    <option *ngFor="let car of salesagentid_arr" [value]="car">
+                    {{car}}
+                    </option>
+                </select>
+                <mat-hint>Agent Name or Direct sale </mat-hint>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Sales Agent Name</mat-label>
+                <input matInput placeholder="Sales Agent Name" type="text"  formControlName="salesagent" readonly>
+             </mat-form-field>
+            
+              <mat-form-field appearance="outline">
+                  <mat-label>Total Amount</mat-label>
+                  <input matInput placeholder="0" type="number"  formControlName="totalamount" >
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Status</mat-label>
+                <select matNativeControl formControlName="status" name="status" >   
+                    <option *ngFor="let car of status_arr" [value]="car">
+                    {{car}}
+                    </option>
+                </select>
+                <mat-hint>Pending or delivered </mat-hint>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Date</mat-label>
+                <input matInput placeholder="Sales date" type="date"  formControlName="orderdate" >
+              </mat-form-field>
+
+
+              <br/>
+              <div class="input-group btn-group">
+                <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
+              </div>
+    
+          </form>
+        </div>
+  
+      </ng-template>
+  
+  
+  
+  

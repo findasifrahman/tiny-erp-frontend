@@ -11,7 +11,7 @@ import { employeemodel  } from '../../../models/employee.model';
   templateUrl: './add-employee.component.html',
   styleUrl: './add-employee.component.scss'
 })
-export class AddEmployeeComponent {
+export class AddEmployeeComponent implements OnInit{
   categoryName_arr = ["sales_agent","staff","admin"]
   roleName_arr = ["admin","sales","purchase","hr"]
   spinner_value = 50;
