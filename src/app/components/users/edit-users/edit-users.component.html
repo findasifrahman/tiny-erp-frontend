@@ -25,9 +25,15 @@
                 <mat-label>Password</mat-label>
                 <input matInput placeholder="password" type="password" formControlName="password" >
             </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Role</mat-label>
-                <input matInput placeholder="Role ID" type="text" formControlName="roleid" >
+
+            <mat-form-field>
+              <mat-label>Role</mat-label>
+              <select matNativeControl formControlName="roleid" name="roleid" >   
+                <option *ngFor="let car of roleName_arr" [value]="car">
+                  {{car}}
+                </option>
+              </select>
+              <mat-hint>Admin or staff</mat-hint>
             </mat-form-field>
 
             <br/>

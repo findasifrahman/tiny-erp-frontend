@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './list-employee.component.scss'
 })
 export class ListEmployeeComponent {
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   displayedColumns: string[] = ['joiningdate','employeename','age','contactno','address','salary','state','buttons'];
   displayedColumnsName: string[] = ['joiningdate','employeename','age','contactno','address','salary','state','buttons'];
   AllElement: MatTableDataSource<any>;

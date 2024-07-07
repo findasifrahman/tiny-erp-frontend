@@ -5,29 +5,45 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { usersmodel  } from '../../../models/user.model';
+import { RolesService } from '../../../services/roles.service'
 
 @Component({
   selector: 'app-add-users',
   templateUrl: './add-users.component.html',
   styleUrl: './add-users.component.scss'
 })
-export class AddUsersComponent {
-  spinner_value = 50;
+export class AddUsersComponent implements OnInit{
+  spinner_value = 75;
   loading = false;
   form!: FormGroup;
+  roleName_arr: any = []
+  maincompanyid = localStorage.getItem('maincompanyid');
   constructor(private service: UsersService,private snackBar: MatSnackBar,
-    private formBuilder: FormBuilder, private router: Router,
+    private formBuilder: FormBuilder, private router: Router, private rolesService: RolesService,
     private models : usersmodel ) { }
   ngOnInit(): void {
     // Implement the initialization logic here
     this.form = this.models.modelForms;
     this.form.reset();
+
+    this.rolesService.getAll(this.maincompanyid).subscribe({
+      next: response => {
+        for(let i=0; i<response.length; i++){
+          this.roleName_arr.push(response[i]['rolename']);
+        }
+      },
+      error: error => {
+        // handle login error
+        console.log("error getting data", error);
+      }
+
+    });
     
   }
   async onSubmit() {
     // Implement the submit logic here
     const formValue = this.form.value;
-    formValue['maincompanyid'] = localStorage.getItem('maincompanyid');
+    formValue['maincompanyid'] = this.maincompanyid;
 
     console.log(formValue);
    

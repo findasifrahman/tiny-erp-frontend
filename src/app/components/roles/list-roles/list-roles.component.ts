@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './list-roles.component.scss'
 })
 export class ListRolesComponent {
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   displayedColumns: string[] = ['roleid','rolename','maincompanyid','rolepriviledge','buttons'];
   displayedColumnsName: string[] = ['roleid','rolename','maincompanyid','rolepriviledge','buttons'];
   AllElement: MatTableDataSource<any>;

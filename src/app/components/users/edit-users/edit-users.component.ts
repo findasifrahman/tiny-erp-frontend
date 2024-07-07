@@ -5,7 +5,7 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { usersmodel  } from '../../../models/user.model';
-
+import { RolesService } from '../../../services/roles.service'
 @Component({
   selector: 'app-edit-users',
   templateUrl: './edit-users.component.html',
@@ -16,36 +16,52 @@ export class EditUsersComponent {
   loading = false;
   form!: FormGroup;
   id: number;
+  roleName_arr: any = []
+  maincompanyid = localStorage.getItem('maincompanyid');
   constructor(private service: UsersService,private snackBar: MatSnackBar,private route:ActivatedRoute,
-    private formBuilder: FormBuilder, private router: Router,
+    private formBuilder: FormBuilder, private router: Router,private rolesService: RolesService,
     private models : usersmodel ) { }
   ngOnInit(): void {
     // Implement the initialization logic here
      this.form = this.models.modelForms;
      this.form.reset();
+
+     this.rolesService.getAll(this.maincompanyid).subscribe({
+      next: response => {
+        for(let i=0; i<response.length; i++){
+          this.roleName_arr.push(response[i]['rolename']);
+        }
+        this.route.params.subscribe(params => {
+          this.id =  parseInt(params['id']);
+          console.log("update id--" + params['id']);
+          this.service.getbyid(this.id).subscribe({
+            next: response => {
+              console.log("data by id", response);
+              this.form.patchValue(response);
+            },
+            error: error => {
+              // handle login error
+              console.log("error getting data", error);
+            }
+    
+          });
+    
+        })
+      },
+      error: error => {
+        // handle login error
+        console.log("error getting data", error);
+      }
+
+    });
       
-      this.route.params.subscribe(params => {
-        this.id =  parseInt(params['id']);
-        console.log("update id--" + params['id']);
-        this.service.getbyid(this.id).subscribe({
-          next: response => {
-            console.log("data by id", response);
-            this.form.patchValue(response);
-          },
-          error: error => {
-            // handle login error
-            console.log("error getting data", error);
-          }
-  
-        });
-  
-      })
+
     
   }
   async onSubmit() {
     // Implement the submit logic here
     const formValue = this.form.value;
-    formValue['maincompanyid'] = localStorage.getItem('maincompanyid');
+    formValue['maincompanyid'] = this.maincompanyid
 
     console.log(formValue);
    
