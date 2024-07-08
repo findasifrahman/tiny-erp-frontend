@@ -74,4 +74,18 @@ export class SalesOrdersService {
           'Content-Type': 'application/json'});
         return this.http.delete<any>(routeurls.BASE_API_URL + routeurls.SALESORDERS_URL + "/" + id )//, { params: new HttpParams().set('id', parseInt(id)) });
       }
+      getAllbydate(mid:any,dated : string): Observable<any> {
+        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.SALESORDERS_URL + "/getbydate", { params: new HttpParams().set('dated', dated).set('id', mid) } ).pipe(
+          retry(3),
+          map(res => {
+            console.log(res);
+            if (!res) {
+              throw new Error('Value expected!');
+            }
+            console.log(res);
+            return res;
+          }),
+          catchError(err => of([]))
+        );
+      }
 }

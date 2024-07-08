@@ -74,4 +74,5 @@ export class SalesOrdersDetailsService {
           'Content-Type': 'application/json'});
         return this.http.delete<any>(routeurls.BASE_API_URL + routeurls.SALES_ORDER_DETAILS_URL + "/" + id )//, { params: new HttpParams().set('id', parseInt(id)) });
       }
+
 }

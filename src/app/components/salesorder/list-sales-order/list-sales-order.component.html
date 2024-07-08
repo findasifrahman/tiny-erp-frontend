@@ -27,6 +27,10 @@
                     <div class="col-md-12" style="max-width: 100% !important;">
                         <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8" style="width: 80%;max-width: 80% !important;">
                         <!-- Position Column -->
+                        <ng-container matColumnDef="salesorderid">
+                            <mat-header-cell *matHeaderCellDef> Order ID</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.salesorderid}} </mat-cell>
+                        </ng-container>
                         <ng-container matColumnDef="customercompany">
                             <mat-header-cell *matHeaderCellDef> Customer Company</mat-header-cell>
                             <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.customercompany}} </mat-cell>

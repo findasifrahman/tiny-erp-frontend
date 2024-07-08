@@ -14,8 +14,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ListSalesOrderComponent  implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  displayedColumns: string[] = ['customercompany','salestype','salesagent','totalamount','status','orderdate','buttons'];
-  displayedColumnsName: string[] = ['customercompany','salestype','salesagent','totalamount','status','orderdate','buttons'];
+  displayedColumns: string[] = ['salesorderid','customercompany','salestype','salesagent','totalamount','status','orderdate','buttons'];
+  displayedColumnsName: string[] = ['salesorderid','customercompany','salestype','salesagent','totalamount','status','orderdate','buttons'];
   AllElement: MatTableDataSource<any>;
   loading = false;
   spinner_value = 50;

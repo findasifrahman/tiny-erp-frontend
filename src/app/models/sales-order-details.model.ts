@@ -22,8 +22,7 @@ export class SalesOrderDetailsmodel {
     unit: ['kg', [Validators.required, Validators.maxLength(12)]],
     unitprice: [0, [Validators.required, Validators.min(0)]],
     totaldetailprice: [0, [Validators.required, Validators.min(0)]],
-    description: [''],
-    salesdate: ['', Validators.required],
+    description: ['']
   });
 
   constructor(private formBuilder: FormBuilder) {}
@@ -32,5 +31,5 @@ export class SalesOrderDetailsmodel {
 /*
 salesorderdetails: (salesorderdetailid serial primary key, maincompanyid int not null unchangeable), salesorderid INT NOT NULL, productcategoryid INT NOT NULL, 
 productcategoryname varchar(256) not null, productsubcategoryid INT not null, productsubcategoryname varchar(256) not null,  quantity INT NOT NULL, unit VARCHAR(12) not null, 
-unitprice DECIMAL(10, 2) NOT NULL, totaldetailprice DECIMAL(10, 2) NOT NULL, description TEXT, salesdate timestamp_without_timezone not null, createdat TIMESTAMP
+unitprice DECIMAL(10, 2) NOT NULL, totaldetailprice DECIMAL(10, 2) NOT NULL, description TEXT createdat TIMESTAMP
 */
