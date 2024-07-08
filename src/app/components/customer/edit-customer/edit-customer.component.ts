@@ -11,7 +11,7 @@ import { customermodel  } from '../../../models/customers.model';
   templateUrl: './edit-customer.component.html',
   styleUrl: './edit-customer.component.scss'
 })
-export class EditCustomerComponent {
+export class EditCustomerComponent implements OnInit{
   id: number;
   spinner_value = 50;
   loading = false;
@@ -56,7 +56,7 @@ export class EditCustomerComponent {
           next: response => {
             // handle successful login
             console.log("post req successfull");
-            this.snackBar.open('Data Added Successfully', "Remove", {
+            this.snackBar.open('Data Updated Successfully', "Remove", {
               duration: 6000,
               verticalPosition: 'top',
               panelClass: ['blue-snackbar']

@@ -1,1 +1,75 @@
-<p>add-office-expenditure works!</p>
+<div *ngIf="loading; else content">
+
+    <div class="spinner__loading">
+      <div>
+        <mat-progress-spinner
+          diameter="200"
+          [value]="spinner_value"
+          mode="determinate">
+          </mat-progress-spinner>
+      </div>
+    </div>
+  </div>
+  
+  
+      <ng-template #content>
+        <div class="container">
+            <h3>Add Office Expenditure</h3>
+
+            <h5 [hidden]="status_hidden" style="color: blue;">Item Name: {{officeItem}}</h5>
+            <form class="example-container" [formGroup]="form">
+            <mat-form-field>
+            <mat-label>Item purchase ID</mat-label>
+                <select matNativeControl formControlName="officepurchaseitemlistid" (ngModelChange)="officepurchaseitemlistidChanged($event)" name="officepurchaseitemlistid" >   
+                    <option *ngFor="let car of officepurchaseitemlistid_arr" [value]="car">
+                    {{car}}
+                    </option>
+                </select>
+                <mat-hint>Item purchase ID</mat-hint>
+            </mat-form-field>
+              <mat-form-field appearance="outline">
+                  <mat-label>Price</mat-label>
+                  <input matInput placeholder="Price" type="number" formControlName="price" >
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Unit</mat-label>
+                <select matNativeControl formControlName="unit" name="unit" >   
+                  <option *ngFor="let car of unit_arr" [value]="car">
+                    {{car}}
+                  </option>
+                </select>
+                <mat-hint></mat-hint>
+              </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Quantity</mat-label>
+                <input matInput placeholder="Quantity" type="number" formControlName="quantity">
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Total Amount</mat-label>
+                <input matInput placeholder="totalamount" type="number" formControlName="totalamount">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Purchase Date</mat-label>
+              <input matInput placeholder="Date" type="date" formControlName="date">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <input matInput placeholder="description" type="text" formControlName="description">
+            </mat-form-field>
+
+              <br/>
+              <div class="input-group btn-group">
+                <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
+              </div>
+    
+          </form>
+        </div>
+  
+      </ng-template>
+  
+  
+  
+  

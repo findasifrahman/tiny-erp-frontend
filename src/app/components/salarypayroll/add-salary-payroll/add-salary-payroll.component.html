@@ -1,1 +1,77 @@
-<p>add-salary-payroll works!</p>
+<div *ngIf="loading; else content">
+
+    <div class="spinner__loading">
+      <div>
+        <mat-progress-spinner
+          diameter="200"
+          [value]="spinner_value"
+          mode="determinate">
+          </mat-progress-spinner>
+      </div>
+    </div>
+  </div>
+  
+  
+      <ng-template #content>
+        <div class="container">
+            <h3>Add Payroll</h3>
+            <form class="example-container" [formGroup]="form">
+            <mat-form-field>
+            <mat-label>Employee ID</mat-label>
+                <select matNativeControl formControlName="employeeid" (ngModelChange)="employeeidChanged($event)" name="employeeid" >   
+                    <option *ngFor="let car of employeeid_arr" [value]="car">
+                    {{car}}
+                    </option>
+                </select>
+                <mat-hint>Customer ID</mat-hint>
+            </mat-form-field>
+              <mat-form-field appearance="outline">
+                  <mat-label>Employee Name</mat-label>
+                  <input matInput placeholder="Employee Name" type="text" formControlName="employeename" readonly>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Date</mat-label>
+                <input matInput placeholder="date" type="date" formControlName="date">
+            </mat-form-field>
+
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Salary</mat-label>
+                <input matInput placeholder="Salary" type="number" formControlName="salary">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Deduction</mat-label>
+                <input matInput placeholder="Deduction" type="number" formControlName="deduction">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Bonus</mat-label>
+                <input matInput placeholder="Bonus" type="number" formControlName="bonus">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Leave Taken</mat-label>
+                <input matInput placeholder="Leave Taken" type="number" formControlName="leavetaken">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Final Salary paid</mat-label>
+                <input matInput placeholder="Final Salary paid" type="number" formControlName="finalsalarypaid">
+            </mat-form-field>
+
+
+              <br/>
+              <div class="input-group btn-group">
+                <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
+              </div>
+    
+          </form>
+        </div>
+  
+      </ng-template>
+  
+  
+  
+  

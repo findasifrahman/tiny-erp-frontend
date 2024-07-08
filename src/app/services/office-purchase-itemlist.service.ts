@@ -16,8 +16,8 @@ export class OfficePurchaseItemListService {
         //let header = headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         return this.http.post(routeurls.BASE_API_URL + routeurls.OFFICE_PURCHASE_ITEM_LIST_URL,formval,options)
       }
-      getAll(): Observable<any> {
-        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.OFFICE_PURCHASE_ITEM_LIST_URL ).pipe(
+      getAll(mid: any): Observable<any> {
+        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.OFFICE_PURCHASE_ITEM_LIST_URL + "/" + mid ).pipe(
           retry(3),
           map(res => {
             console.log(res);

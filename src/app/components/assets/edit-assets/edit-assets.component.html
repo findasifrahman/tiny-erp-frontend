@@ -1,1 +1,48 @@
-<p>edit-assets works!</p>
+<div *ngIf="loading; else content">
+
+    <div class="spinner__loading">
+      <div>
+        <mat-progress-spinner
+          diameter="200"
+          [value]="spinner_value"
+          mode="determinate">
+          </mat-progress-spinner>
+      </div>
+    </div>
+  </div>
+  
+      <ng-template #content>
+        <div class="container">
+            <h3>Update Asset List</h3>
+            <form class="example-container" [formGroup]="form">
+              <mat-form-field appearance="outline">
+                  <mat-label>Asset Name</mat-label>
+                  <input matInput placeholder="Asset name" type="Text"  formControlName="assetname" >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                  <mat-label>Description</mat-label>
+                  <input matInput placeholder="Description" type="text" formControlName="description" >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                  <mat-label>Asset Value</mat-label>
+                  <input matInput placeholder="Asset Value" type="number"  formControlName="assetvalue" >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                  <mat-label>Purchase Date</mat-label>
+                  <input matInput placeholder="Purchase Date" type="date"  formControlName="purchasedate" >
+              </mat-form-field>
+             
+              <br/>
+              <div class="input-group btn-group">
+                <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
+              </div>
+    
+          </form>
+        </div>
+  
+      </ng-template>
+  
+  
+  
+  
+

@@ -18,7 +18,8 @@ export class officeexpendituretmodel {
     unit: ['', [Validators.required, Validators.maxLength(15)]],
     quantity: [0, [Validators.required, Validators.min(0)]],
     totalamount: [0, [Validators.required, Validators.min(0)]],
-    description: ['',  Validators.maxLength(256)]
+    description: ['',  Validators.maxLength(256)],
+    date: ['', Validators.required],
   });
 
   constructor(private formBuilder: FormBuilder) {}
@@ -26,5 +27,5 @@ export class officeexpendituretmodel {
 } 
 /*
 officeexpenditure: officeexpenditureid Serial primary key, maincompanyid int not null unchangeable, officepurchaseitemlistid INT not null, price INT null, unit not 
-null varchar(15), quantity INT not null, totalamount INT NOT NULL, description text, createdat (TIMESTAMP)
+null varchar(15), quantity INT not null, totalamount INT NOT NULL, description text, createdat (TIMESTAMP),date timestamp
 */

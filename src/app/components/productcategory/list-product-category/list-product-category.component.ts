@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './list-product-category.component.html',
   styleUrl: './list-product-category.component.scss'
 })
-export class ListProductCategoryComponent {
+export class ListProductCategoryComponent implements OnInit{
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   displayedColumns: string[] = ['productcategoryid','categoryname','buttons'];
   displayedColumnsName: string[] = ['productcategoryid','categoryname','buttons'];

@@ -15,8 +15,8 @@ export class AssetsService {
         //let header = headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         return this.http.post(routeurls.BASE_API_URL + routeurls.ASSET_URL,formval,options)
       }
-      getAll(): Observable<any> {
-        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.ASSET_URL ).pipe(
+      getAll(mid:any): Observable<any> {
+        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.ASSET_URL + "/" + mid ).pipe(
           retry(3),
           map(res => {
             console.log(res);
@@ -46,9 +46,6 @@ export class AssetsService {
         );
       }
 
-      // const params = new HttpParams()
-      //              .set('param1', param1Value)
-      //              .set('param2', param2Value);
       update(id: any, obj: any): Observable<any> {
         obj.id = id;
         //console.log("update obj in service--", obj);

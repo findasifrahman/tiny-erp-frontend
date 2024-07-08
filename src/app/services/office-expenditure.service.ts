@@ -16,8 +16,8 @@ export class OfficeExpenditureService {
         //let header = headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         return this.http.post(routeurls.BASE_API_URL + routeurls.OFFICE_EXPENDITURE_URL,formval,options)
       }
-      getAll(): Observable<any> {
-        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.OFFICE_EXPENDITURE_URL ).pipe(
+      getAll(mid: any): Observable<any> {
+        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.OFFICE_EXPENDITURE_URL + "/" + mid ).pipe(
           retry(3),
           map(res => {
             console.log(res);
