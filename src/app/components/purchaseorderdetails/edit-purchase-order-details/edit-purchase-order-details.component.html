@@ -1,1 +1,94 @@
-<p>edit-purchase-order-details works!</p>
+<div *ngIf="loading; else content">
+
+    <div class="spinner__loading">
+      <div>
+        <mat-progress-spinner
+          diameter="200"
+          [value]="spinner_value"
+          mode="determinate">
+          </mat-progress-spinner>
+      </div>
+    </div>
+  </div>
+  
+  
+      <ng-template #content>
+        <div class="container">
+            <h3>Update Purchase Order Details</h3>
+
+            <form class="example-container" [formGroup]="form">
+
+                <mat-form-field>
+                    <mat-label>Select Purchase order ID</mat-label>
+                        <select matNativeControl formControlName="purchaseid"  name="purchaseid" >   
+                            <option *ngFor="let car of purchaseid_arr" [value]="car.purchaseid">
+                            {{car.purchaseid}}
+                            </option>
+                        </select>
+                        <mat-hint>Puchase Order ID</mat-hint>
+                    </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Purchase Category ID</mat-label>
+                <select matNativeControl formControlName="purchasecategoryid" (ngModelChange)="purchasecategoryidChanged($event)" name="purchasecategoryid" >   
+                    <option *ngFor="let car of purchasecategoryid_arr" [value]="car">
+                    {{car}}
+                    </option>
+                </select>
+                <mat-hint>Puchase Category ID</mat-hint>
+            </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label>Purchase Category</mat-label>
+                  <input matInput placeholder="Total Amount" type="text" formControlName="categoryname" readonly>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Purchase Sub Category ID</mat-label>
+                <select matNativeControl formControlName="purchasesubcategoryid" (ngModelChange)="purchasesubcategoryidChanged($event)" name="purchasesubcategoryid" >   
+                    <option *ngFor="let car of purchasesubcategoryid_arr" [value]="car">
+                    {{car}}
+                    </option>
+                </select>
+                <mat-hint>Purchase Sub Category ID</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Purchase Sub Category Name</mat-label>
+                <input matInput placeholder="Sub Category Name" type="text" formControlName="subcategoryname" readonly>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Purchase Amount</mat-label>
+                <input matInput placeholder="Purchase Amount" type="text" formControlName="purchaseamount">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Purchase Quantity</mat-label>
+                <input matInput placeholder="Purchase Quantity" type="text" formControlName="purchasequantity">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Unit</mat-label>
+                <select matNativeControl formControlName="unit" name="unit" >   
+                  <option *ngFor="let car of unit_arr" [value]="car">
+                    {{car}}
+                  </option>
+                </select>
+                <mat-hint></mat-hint>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Total Amount</mat-label>
+                <input matInput placeholder="Total Amount" type="number" formControlName="totalamount">
+              </mat-form-field>
+
+              <br/>
+              <div class="input-group btn-group">
+                <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
+              </div>
+    
+          </form>
+        </div>
+  
+      </ng-template>
+  
+  
+  
+  

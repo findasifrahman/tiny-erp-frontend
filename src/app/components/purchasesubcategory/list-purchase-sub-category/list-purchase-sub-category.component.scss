@@ -1,0 +1,44 @@
+
+.spinner__loading{
+  display: block;
+  position: fixed;
+  z-index: 1031; /* High z-index so it is on top of the page */
+  top: 50%;
+  right: 50%; /* or: left: 50%; */
+  margin-top: -100px; /* half of the elements height */
+  margin-right: -100px; /* half of the elements width */
+}
+  
+  td.mat-cell {
+    /* row padding */
+    padding: 16px 0;
+    /* row border */
+    border-bottom: 1px solid #ffa600;
+    border-top: 1px solid #ffa600;
+   }
+  
+   tr.mat-row {
+    padding: 16px 0;
+    /* row border */
+    border: 2px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+  }
+  
+  .mat-column-title {
+    flex: 2 2 35%;
+  
+  }
+  .mat-column-place {
+    flex: 0 0 10%;
+  }
+
+  .mat-column-id {
+    flex: 0 0 6%;
+}
+.mat-column-category {
+    flex: 0 0 7%;
+    margin-right: 5px;
+}
+  .select-all{
+    margin: 5px 17px;
+  } 

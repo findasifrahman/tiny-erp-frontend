@@ -14,8 +14,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ListEmployeeComponent {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  displayedColumns: string[] = ['joiningdate','employeename','age','contactno','address','salary','state','buttons'];
-  displayedColumnsName: string[] = ['joiningdate','employeename','age','contactno','address','salary','state','buttons'];
+  displayedColumns: string[] = ['employeeid','joiningdate','employeename','age','contactno','address','salary','state','buttons'];
+  displayedColumnsName: string[] = ['employeeid','joiningdate','employeename','age','contactno','address','salary','state','buttons'];
   AllElement: MatTableDataSource<any>;
   loading = false;
   spinner_value = 50;

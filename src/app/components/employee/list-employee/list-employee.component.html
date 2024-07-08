@@ -27,6 +27,10 @@
                     <div class="col-md-12" style="max-width: 100% !important;">
                         <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8" style="width: 80%;max-width: 80% !important;">
                         <!-- Position Column -->
+                        <ng-container matColumnDef="employeeid">
+                            <mat-header-cell *matHeaderCellDef> Employee ID </mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.employeeid}} </mat-cell>
+                        </ng-container>
                         <ng-container matColumnDef="joiningdate">
                             <mat-header-cell *matHeaderCellDef> Joining Date </mat-header-cell>
                             <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.joiningdate}} </mat-cell>

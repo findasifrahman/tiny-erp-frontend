@@ -1,1 +1,56 @@
-<p>add-supplier works!</p>
+<div *ngIf="loading; else content">
+
+    <div class="spinner__loading">
+      <div>
+        <mat-progress-spinner
+          diameter="200"
+          [value]="spinner_value"
+          mode="determinate">
+          </mat-progress-spinner>
+      </div>
+    </div>
+  </div>
+  
+  
+      <ng-template #content>
+        <div class="container">
+            <h3>Add Supplier</h3>
+            <form class="example-container" [formGroup]="form">
+
+            <mat-form-field appearance="outline">
+                  <mat-label>Supplier Company/Shop</mat-label>
+                  <input matInput placeholder="Supplier Company" type="text" formControlName="suppliercompany" >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Contact Person</mat-label>
+                <input matInput placeholder="Contact Person" type="text" formControlName="suppliercontactname" >
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Contact Number</mat-label>
+                <input matInput placeholder="Contact Number" type="text" formControlName="suppliercontactnumber">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Supplier Address</mat-label>
+                <input matInput placeholder="Supplier Address" type="text" formControlName="supplieraddress">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <input matInput placeholder="Description" type="text" formControlName="description" >
+            </mat-form-field>
+
+              <br/>
+              <div class="input-group btn-group">
+                <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
+              </div>
+    
+          </form>
+        </div>
+  
+      </ng-template>
+  
+  
+  
+  

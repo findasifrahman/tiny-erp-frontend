@@ -1,1 +1,84 @@
-<p>list-payment-sales works!</p>
+
+
+<div style="margin-top: 100px; max-width: 180vh !important;">
+    <div class="d-flex justify-content-center h-100 w-100">
+      <div class="card">
+        <div *ngIf="loading; else content">
+
+            <div class="spinner__loading">
+              <div>
+                <mat-progress-spinner
+                  diameter="60"
+                  [value]="spinner_value"
+                  mode="determinate">
+                  </mat-progress-spinner>
+              </div>
+            </div>
+        </div>
+  
+        <ng-template #content>
+                <div fxLayout fxLayoutAlign="center center">
+                    <mat-form-field fxFlex="40%">
+                        <input matInput type="text" (keyup)="doFilter($event)" placeholder="Filter">
+                    </mat-form-field>
+                </div>
+                
+                <div class="row" style="margin-top: 20px;margin-right: 45px;max-width: 100% !important; width: 90%;">
+                    <div class="col-md-12" style="max-width: 100% !important;">
+                        <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8" style="width: 80%;max-width: 80% !important;">
+                        <!-- Position Column -->
+                        <ng-container matColumnDef="paymentid">
+                            <mat-header-cell *matHeaderCellDef> Payment ID</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.paymentid}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="customercompany">
+                            <mat-header-cell *matHeaderCellDef> Company Name </mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.customercompany}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="paymentdate">
+                            <mat-header-cell *matHeaderCellDef>Payment Date</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.paymentdate}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="amount">
+                            <mat-header-cell *matHeaderCellDef> Amount Paid</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.amount}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="receivedby">
+                            <mat-header-cell *matHeaderCellDef>Received By</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.receivedby}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="salesorderid">
+                            <mat-header-cell *matHeaderCellDef>Sales Order ID</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.salesorderid}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="buttons">
+                            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                            <mat-cell *matCellDef="let AllElement" (click)="$event.stopPropagation()">
+                            <button mat-button color="warn" (click)="onDelete(AllElement.paymentid)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                            <button mat-button color="warn" (click)="onUpdate(AllElement.paymentid)">
+                                <mat-icon>update</mat-icon>
+                            </button>
+                            </mat-cell>
+                        </ng-container>
+                    
+                        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                        <mat-row style="background-color:black" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    
+                        </mat-table>
+                        <mat-paginator [pageSize]="10" [pageSizeOptions]="[2, 4, 6, 10, 20]"></mat-paginator>
+                    </div>
+                </div>
+            </ng-template>
+    </div>
+   </div>
+</div>
+<br />
+<br />
+    
+    
+    
+    
+    
+  

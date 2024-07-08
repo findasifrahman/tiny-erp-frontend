@@ -1,1 +1,82 @@
-<p>list-supplier works!</p>
+
+<div *ngIf="loading; else content">
+
+    <div class="spinner__loading">
+      <div>
+        <mat-progress-spinner
+          diameter="60"
+          [value]="spinner_value"
+          mode="determinate">
+          </mat-progress-spinner>
+      </div>
+    </div>
+</div>
+
+
+<div style="margin-top: 100px; max-width: 180vh !important;">
+    <div class="d-flex justify-content-center h-100 w-100">
+      <div class="card">
+  
+        <ng-template #content>
+                <div fxLayout fxLayoutAlign="center center">
+                    <mat-form-field fxFlex="40%">
+                        <input matInput type="text" (keyup)="doFilter($event)" placeholder="Filter">
+                    </mat-form-field>
+                </div>
+                
+                <div class="row" style="margin-top: 20px;max-width: 100% !important; width: 90%;">
+                    <div class="col-md-12" style="max-width: 90% !important;">
+                        <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8" style="width: 80%;max-width: 80% !important;">
+                        <!-- Position Column -->
+                        <ng-container matColumnDef="supplierid">
+                            <mat-header-cell *matHeaderCellDef> Supplier ID</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.supplierid}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="suppliercompany">
+                            <mat-header-cell *matHeaderCellDef>Supplier Company/shop</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.suppliercompany}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="suppliercontactname">
+                            <mat-header-cell *matHeaderCellDef> Contact Name </mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.suppliercontactname}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="suppliercontactnumber">
+                            <mat-header-cell *matHeaderCellDef>Contact Number</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.suppliercontactnumber}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="supplieraddress">
+                            <mat-header-cell *matHeaderCellDef>Address</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.supplieraddress}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="buttons">
+                            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                            <mat-cell *matCellDef="let AllElement" (click)="$event.stopPropagation()">
+                            <button mat-button color="warn" (click)="onDelete(AllElement.supplierid)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                            <button mat-button color="warn" (click)="onUpdate(AllElement.supplierid)">
+                                <mat-icon>update</mat-icon>
+                            </button>
+                            </mat-cell>
+                        </ng-container>
+                    
+                        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                        <mat-row style="background-color:black" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    
+                        </mat-table>
+                        <mat-paginator [pageSize]="10" [pageSizeOptions]="[2, 4, 6, 10, 20]"></mat-paginator>
+                    </div>
+                </div>
+            </ng-template>
+    </div>
+   </div>
+</div>
+<br />
+<br />
+    
+    
+    
+    
+    
+  
