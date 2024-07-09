@@ -68,11 +68,12 @@ export class SalesOrdersService {
           catchError(err => of([]))
         );
       }
-      delete(id: any): Observable<any> {
+
+      delete(id: any, mid: any): Observable<any> {
         console.log("delete id--", id);
         let headers = new HttpHeaders({
           'Content-Type': 'application/json'});
-        return this.http.delete<any>(routeurls.BASE_API_URL + routeurls.SALESORDERS_URL + "/" + id )//, { params: new HttpParams().set('id', parseInt(id)) });
+        return this.http.delete<any>(routeurls.BASE_API_URL + routeurls.SALESORDERS_URL ,{ params: new HttpParams().set('id', parseInt(id)).set('maincompanyid', mid) });
       }
       getAllbydate(mid:any,dated : string): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.SALESORDERS_URL + "/getbydate", { params: new HttpParams().set('dated', dated).set('id', mid) } ).pipe(

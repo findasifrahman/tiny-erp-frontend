@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild,Inject } from '@angular/core';
+import { Component, OnInit,ViewChild,Inject, AfterViewInit } from '@angular/core';
 import { RolesService } from '../../../services/roles.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -12,13 +12,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './list-roles.component.html',
   styleUrl: './list-roles.component.scss'
 })
-export class ListRolesComponent {
+export class ListRolesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   displayedColumns: string[] = ['roleid','rolename','maincompanyid','rolepriviledge','buttons'];
   displayedColumnsName: string[] = ['roleid','rolename','maincompanyid','rolepriviledge','buttons'];
   AllElement: MatTableDataSource<any>;
   loading = false;
   spinner_value = 50;
+  maincompanyid = localStorage.getItem('maincompanyid')
   constructor(private snackBar: MatSnackBar, private service: RolesService, public dialog: MatDialog,
     public _router: Router) { }
 
@@ -31,7 +32,7 @@ export class ListRolesComponent {
   }
 
   async ngAfterViewInit() {
-    this.service.getAll(await localStorage.getItem('maincompanyid')).subscribe((posts) => {
+    this.service.getAll(this.maincompanyid).subscribe((posts) => {
       this.AllElement = new MatTableDataSource(posts as any);
       this.AllElement.paginator = this.paginator;
       //setTimeout(() => this.AllElement.paginator = this.paginator);
@@ -48,11 +49,12 @@ export class ListRolesComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.loading = true;
-        this.service.delete(id).subscribe({
+        this.service.delete(id,this.maincompanyid).subscribe({
           next: response => {
-            this.AllElement = new MatTableDataSource(response as any);
+
+            this.AllElement = new MatTableDataSource(response['data'] as any);
             this.AllElement.paginator = this.paginator;
-            console.log(response);
+            console.log(response.data as any);
             this.loading = false;
             this.snackBar.open('Data Deleted Successfully', "Remove", {
               duration: 6000,

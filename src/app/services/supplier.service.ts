@@ -68,10 +68,10 @@ export class SupplierService {
           catchError(err => of([]))
         );
       }
-      delete(id: any): Observable<any> {
+      delete(id: any, mid: any): Observable<any> {
         console.log("delete id--", id);
         let headers = new HttpHeaders({
           'Content-Type': 'application/json'});
-        return this.http.delete<any>(routeurls.BASE_API_URL + routeurls.SUPPLIER_URL + "/" + id )//, { params: new HttpParams().set('id', parseInt(id)) });
+        return this.http.delete<any>(routeurls.BASE_API_URL + routeurls.SUPPLIER_URL ,{ params: new HttpParams().set('id', parseInt(id)).set('maincompanyid', mid) });
       }
 }

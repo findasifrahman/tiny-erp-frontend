@@ -1,20 +1,22 @@
 
 
+<div *ngIf="loading; else content">
+
+    <div class="spinner__loading">
+      <div>
+        <mat-progress-spinner
+          diameter="60"
+          [value]="spinner_value"
+          mode="determinate">
+          </mat-progress-spinner>
+      </div>
+    </div>
+</div>
+
+
 <div style="margin-top: 100px; max-width: 180vh !important;">
     <div class="d-flex justify-content-center h-100 w-100">
       <div class="card">
-        <div *ngIf="loading; else content">
-
-            <div class="spinner__loading">
-              <div>
-                <mat-progress-spinner
-                  diameter="60"
-                  [value]="spinner_value"
-                  mode="determinate">
-                  </mat-progress-spinner>
-              </div>
-            </div>
-        </div>
   
         <ng-template #content>
                 <div fxLayout fxLayoutAlign="center center">
@@ -23,40 +25,40 @@
                     </mat-form-field>
                 </div>
                 
-                <div class="row">
-                    <div class="col-md-12">
-                        <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8">
-                        <!-- Position Column -->
-                        <ng-container matColumnDef="roleid">
-                            <mat-header-cell *matHeaderCellDef> Role ID </mat-header-cell>
-                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.roleid}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="rolename">
-                            <mat-header-cell *matHeaderCellDef> Role Name </mat-header-cell>
-                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.rolename}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="maincompanyid">
-                            <mat-header-cell *matHeaderCellDef> Company ID </mat-header-cell>
-                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.maincompanyid}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="rolepriviledge">
-                            <mat-header-cell *matHeaderCellDef> Role Priviledge</mat-header-cell>
-                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.rolepriviledge}} </mat-cell>
-                        </ng-container>
-                        <ng-container matColumnDef="buttons">
-                            <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                            <mat-cell *matCellDef="let AllElement" (click)="$event.stopPropagation()">
-                            <button mat-button color="warn" (click)="onDelete(AllElement.roleid)">
-                                <mat-icon>delete</mat-icon>
-                            </button>
-                            <button mat-button color="warn" (click)="onUpdate(AllElement.roleid)">
-                                <mat-icon>update</mat-icon>
-                            </button>
-                            </mat-cell>
-                        </ng-container>
-                    
-                        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-                        <mat-row style="background-color:black" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                <div class="row" style="margin-top: 20px;max-width: 100% !important; width: 90%;">
+                    <div class="col-md-12" style="max-width: 90% !important;">
+                        <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8"  style="width: 80%;max-width: 80% !important;">
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="roleid">
+                                <mat-header-cell *matHeaderCellDef> Role ID </mat-header-cell>
+                                <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.roleid}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="rolename">
+                                <mat-header-cell *matHeaderCellDef> Role Name </mat-header-cell>
+                                <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.rolename}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="maincompanyid">
+                                <mat-header-cell *matHeaderCellDef> Company ID </mat-header-cell>
+                                <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.maincompanyid}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="rolepriviledge">
+                                <mat-header-cell *matHeaderCellDef> Role Priviledge</mat-header-cell>
+                                <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.rolepriviledge}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="buttons">
+                                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                                <mat-cell *matCellDef="let AllElement" (click)="$event.stopPropagation()">
+                                <button mat-button color="warn" (click)="onDelete(AllElement.roleid)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                                <button mat-button color="warn" (click)="onUpdate(AllElement.roleid)">
+                                    <mat-icon>update</mat-icon>
+                                </button>
+                                </mat-cell>
+                            </ng-container>
+                        
+                            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                            <mat-row style="background-color:black" *matRowDef="let row; columns: displayedColumns;"></mat-row>
                     
                         </mat-table>
                         <mat-paginator [pageSize]="10" [pageSizeOptions]="[2, 4, 6, 10, 20]"></mat-paginator>

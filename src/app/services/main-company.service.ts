@@ -71,10 +71,10 @@ export class MainCompanyService {
           catchError(err => of([]))
         );
       }
-      delete(id: any): Observable<any> {
+      delete(id: any,): Observable<any> {
         console.log("delete id--", id);
         let headers = new HttpHeaders({
           'Content-Type': 'application/json'});
-        return this.http.delete<any>(routeurls.BASE_API_URL + routeurls.MAIN_COMPANY_URL + "/" + id )//, { params: new HttpParams().set('id', parseInt(id)) });
+        return this.http.delete<any>(routeurls.BASE_API_URL + routeurls.MAIN_COMPANY_URL ,{ params: new HttpParams().set('id', parseInt(id)) });
       }
 }

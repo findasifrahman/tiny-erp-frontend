@@ -19,7 +19,7 @@ export class RolesService {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.ROLES_URL + "/" + mid ).pipe(
           retry(3),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
@@ -35,7 +35,7 @@ export class RolesService {
         .pipe(
           retry(2),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
@@ -68,10 +68,10 @@ export class RolesService {
           catchError(err => of([]))
         );
       }
-      delete(id: any): Observable<any> {
+      delete(id: any, mid: any): Observable<any> {
         console.log("delete id--", id);
         let headers = new HttpHeaders({
           'Content-Type': 'application/json'});
-        return this.http.delete<any>(routeurls.BASE_API_URL + routeurls.ROLES_URL + "/" + id )//, { params: new HttpParams().set('id', parseInt(id)) });
+        return this.http.delete<any>(routeurls.BASE_API_URL + routeurls.ROLES_URL ,{ params: new HttpParams().set('id', parseInt(id)).set('maincompanyid', mid) });
       }
 }

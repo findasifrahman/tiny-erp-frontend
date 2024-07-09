@@ -33,6 +33,7 @@ export class ListSalesOrderComponent  implements OnInit {
   AllElement: MatTableDataSource<any>;
   loading = false;
   spinner_value = 50;
+  maincompanyid = localStorage.getItem('maincompanyid')
   constructor(private snackBar: MatSnackBar, private service: SalesOrdersService, public dialog: MatDialog,
     public _router: Router) { }
 
@@ -45,7 +46,7 @@ export class ListSalesOrderComponent  implements OnInit {
   }
 
   async ngAfterViewInit() {
-    this.service.getAll(await localStorage.getItem('maincompanyid')).subscribe((posts) => {
+    this.service.getAll(this.maincompanyid).subscribe((posts) => {
       this.AllElement = new MatTableDataSource(posts as any);
       this.AllElement.paginator = this.paginator;
       //setTimeout(() => this.AllElement.paginator = this.paginator);
@@ -62,9 +63,9 @@ export class ListSalesOrderComponent  implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.loading = true;
-        this.service.delete(id).subscribe({
+        this.service.delete(id,this.maincompanyid).subscribe({
           next: response => {
-            this.AllElement = new MatTableDataSource(response as any);
+            this.AllElement = new MatTableDataSource(response.data as any);
             this.AllElement.paginator = this.paginator;
             console.log(response);
             this.loading = false;

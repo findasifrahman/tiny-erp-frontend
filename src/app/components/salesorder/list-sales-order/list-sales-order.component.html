@@ -1,20 +1,20 @@
 
 
+<div *ngIf="loading; else content">
+
+    <div class="spinner__loading">
+      <div>
+        <mat-progress-spinner
+          diameter="60"
+          [value]="spinner_value"
+          mode="determinate">
+          </mat-progress-spinner>
+      </div>
+    </div>
+</div>
 <div style="margin-top: 100px; max-width: 180vh !important;">
     <div class="d-flex justify-content-center h-100 w-100">
       <div class="card">
-        <div *ngIf="loading; else content">
-
-            <div class="spinner__loading">
-              <div>
-                <mat-progress-spinner
-                  diameter="60"
-                  [value]="spinner_value"
-                  mode="determinate">
-                  </mat-progress-spinner>
-              </div>
-            </div>
-        </div>
   
         <ng-template #content>
                 <div fxLayout fxLayoutAlign="center center">
