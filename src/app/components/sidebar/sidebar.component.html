@@ -1,29 +1,29 @@
 
   <!-- Sidebar -->
 <mat-drawer-container class="example-container" fullscreen style=" overflow-y: hidden !important; width: 100% !important;">
-  <h1 style="text-align: center;justify-content: center;">asasddgdsgbdg gsdfgsfgsfgrsg sfg fsga</h1>
+  <h1 style="text-align: center;justify-content: center;"></h1>
         <mat-drawer mode="side" #sidenav opened position="start" id="sidebar"
             [opened]="screenWidth > 240" [mode]="(screenWidth > 240) ? 'side' : 'over'" >
 
             <header style="padding-top: 40px;padding-bottom: 30px;background-color: #006994;">
-              <h6  style="font-size: 18px;color:yellow;text-align: center;justify-content: center;">ERP Panel</h6>
+              <h6  style="font-size: 18px;color:yellow;text-align: center;justify-content: center;">{{Company_name}} ERP Panel</h6>
             </header>
 
 
-            <mat-nav-list>
-              <mat-tree  [dataSource]="dataSource" [treeControl]="treeControl">
-                <mat-tree-node  *matTreeNodeDef="let node" matTreeNodeToggle>
-                  <li *ngIf="node.visible">
+            <mat-nav-list class="custom-mat-tree" class="custom-mat-tree" >
+              <mat-tree   [dataSource]="dataSource" [treeControl]="treeControl" >
+                <mat-tree-node  *matTreeNodeDef="let node" matTreeNodeToggle >
+                  <li *ngIf="node.visible" >
                     <div class="mat-tree-node">
                       <button mat-icon-button disabled></button>
-                      <a [routerLink]="node.link">{{ node.name }}</a>
+                      <a [routerLink]="node.link" >{{ node.name }}</a>
                     </div>
                   </li>
                 </mat-tree-node>
         
-                <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
-                  <li>
-                    <div class="mat-tree-node">
+                <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodePaddingIndent="20">
+                  <li style="font-size: small;">
+                    <div class="mat-tree-node" style="font-size: small;padding: 0 !important;margin: 0 !important;">
                       <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
                         <mat-icon>
                           {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}

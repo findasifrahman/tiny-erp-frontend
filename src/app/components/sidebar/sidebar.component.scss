@@ -11,7 +11,7 @@
     flex: 1;
     background:'#000000';
     .sidenav {
-      padding: 12px;
+      padding: 1px;
       width: 250px;
       background: '#ffffff';
     }
@@ -22,14 +22,6 @@
 }
 
 
-.no-gutters {
-	margin-right: 0;
-	margin-left: 0; }
-	.no-gutters > .col,
-	.no-gutters > [class*="col-"] {
-	  padding-right: 0;
-	  padding-left: 0; }
-
 #viewport {
   padding-left: 200px;
   -webkit-transition: all 0.5s ease;
@@ -39,13 +31,13 @@
 }
 
 #sidebar {
-//z-index: 1000;
+z-index: 1000;
   position: fixed;
   left: 200px;
-  width: 300px;
-  height: 100%;
+  width: '100%';//250px;
+  height: '130%';
   margin-left: -200px;
-  //overflow-y: auto;
+
 
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -53,6 +45,7 @@
   transition: all 0.5s ease;
 
   overflow-x: hidden;
+  overflow-y: hidden;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
 }
@@ -60,8 +53,7 @@
   background-color: #000000;
   font-size: 20px;
   line-height: 52px;
-  //text-align: ;
-  padding-left: 40px;
+  text-align: center;
 }
 #sidebar header a {
   color: #fff;
@@ -97,33 +89,132 @@
 }
 
 
-
-
-
-.mat-card {
-    color: #fff;
-    margin-bottom: 0 !important;
-    padding-bottom: 10 !important;
-    margin-top: 0 !important;
-    padding-top: 10 !important;
-    .mat-card-header {
-      width: 100%;
-      margin-bottom: 0 !important;
-      padding-bottom: 0 !important;
-    }
-    .mat-card-title {
-      font-size: 30px !important;
-      margin-bottom: 0 !important;
-      padding-bottom: 0 !important;
-    }
-    .mat-card-subtitle {
-      color: #fff;
-      white-space: nowrap;
-      margin-bottom: 0 !important;
-      padding-bottom: 0 !important;
-    }
+/* Style the sidenav links and the dropdown button */
+.dropdown-btn {
+  padding: 2px 2px 2px 2px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
 }
 
-.example-card {
-    max-width: 400px;
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 2px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+button.mat-button .mat-icon,
+a.mat-button .mat-icon,
+a.mat-raised-button .mat-icon,
+a.mat-flat-button .mat-icon,
+a.mat-stroked-button .mat-icon {
+  vertical-align: top;
+  font-size: 1.25em;
+}
+
+#sidebar-wrapper{
+  overflow-y: hidden;
+ }
+
+ .mat-drawer-inner-container::-webkit-scrollbar {
+  display: none;
+
+ }
+ .ng-tns-c191-0::-webkit-scrollbar{
+  overflow-y: hidden;
+  overflow: hidden;
+  display: none;
+ }
+
+ #sidebar.mat-drawer-inner-container{
+  //height: 4000px;
+  width: '130%';
+}
+.mat-sidenav::-webkit-scrollbar {
+
+  display: none;
+}
+.mat-drawer-side::-webkit-scrollbar {
+
+  display: none;
+}
+
+#sidebar::-webkit-scrollbar {
+
+  display: none;
+} 
+
+
+
+
+
+a {
+
+  text-decoration: none; /* no underline */
+  font-size: small;
+}
+
+a:hover {
+  color: blue;
+  text-decoration: none;
+}
+
+.custom-mat-tree .tree-node {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.custom-mat-tree .mat-tree-node {
+  display: flex;
+  align-items: center;
+}
+.custom-mat-tree .mat-tree-node button {
+  margin-right: 4px; /* Adjust this value to reduce the space between the icon and the text */
+  padding: 0; /* Remove any padding inside the button */
+  min-width: 12px; /* Minimal button width */
+  width: 22px; /* Fixed width to avoid additional padding */
+  height: 22px; /* Fixed height to avoid additional padding */
+}
+
+.custom-mat-tree .mat-tree-node a {
+  text-decoration: none;
+  padding-left: 2em;
+}
+
+.custom-mat-tree .example-tree-invisible {
+  display: none;
+}
+
+.custom-mat-tree .mat-tree-node li {
+  margin-bottom: 2px; /* Adjust this value to control the spacing between nodes */
+}
+
+.custom-mat-tree .mat-tree-node ul {
+  margin-left: 4px; /* Adjust this value to control the indentation of child nodes */
 }

@@ -33,3 +33,22 @@
   .select-all{
     margin: 5px 17px;
   } 
+
+
+  .example-element-row {
+    cursor: pointer;
+  }
+  
+  .example-expanded-row {
+    background-color: #f5f5f5;
+  }
+  
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+  }
+  
+  .example-element-detail-inner {
+    padding: 16px;
+  }

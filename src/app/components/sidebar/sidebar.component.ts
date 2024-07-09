@@ -217,7 +217,7 @@ export class SidebarComponent {
   screenWidth: number;
   isShowSettingsli: boolean = false
   isShowSettings = true;
-
+  Company_name =localStorage.getItem('maincompanyname');
 
       
     constructor(public authService: AuthService, private router: Router) {

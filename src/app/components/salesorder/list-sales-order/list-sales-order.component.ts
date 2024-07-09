@@ -6,16 +6,30 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ConfirmationdialogComponent } from '../../commoncomponents/confirmationdialog/confirmationdialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+
 
 @Component({
   selector: 'app-list-sales-order',
   templateUrl: './list-sales-order.component.html',
-  styleUrl: './list-sales-order.component.scss'
+  styleUrl: './list-sales-order.component.scss',
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class ListSalesOrderComponent  implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  expandedElement: any | null;
+
   displayedColumns: string[] = ['salesorderid','customercompany','salestype','salesagent','totalamount','status','orderdate','buttons'];
   displayedColumnsName: string[] = ['salesorderid','customercompany','salestype','salesagent','totalamount','status','orderdate','buttons'];
+
+  detailColumns: string[] = ['productcategoryname', 'quantity', 'price'];
+
   AllElement: MatTableDataSource<any>;
   loading = false;
   spinner_value = 50;
