@@ -81,8 +81,8 @@ import { purchaseorderdetailsmodel } from './models/purchase-order-details.model
 import { salarypayrollmodel } from './models/salary-payroll.model';
 import { officepurchaseitemlistmodel } from './models/office-purchase-itemlist.model';
 import { officeexpendituretmodel } from './models/office-expenditure.model';
+import { ProductStockmodel } from './models/product-stock.model';
 import { assetsmodel } from './models/assets.model';
-
 //components
 
 import { AddEmployeeComponent } from './components/employee/add-employee/add-employee.component';
@@ -132,12 +132,16 @@ import { ListOfficeExpenditureComponent } from './components/officeexpenditure/l
 import { AddAssetsComponent } from './components/assets/add-assets/add-assets.component';
 import { EditAssetsComponent } from './components/assets/edit-assets/edit-assets.component';
 import { ListAssetsComponent } from './components/assets/list-assets/list-assets.component';
-
+import { AddProductStockComponent } from './components/productstock/add-product-stock/add-product-stock.component';
+import { EditProductStockComponent } from './components/productstock/edit-product-stock/edit-product-stock.component';
+import { ListProductStockComponent } from './components/productstock/list-product-stock/list-product-stock.component';
 /////////////////////// others
 import { ConfirmationdialogComponent } from './components/commoncomponents/confirmationdialog/confirmationdialog.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
+
+
 
 
 
@@ -206,6 +210,9 @@ import { RoleGuard } from './guards/role.guard';
     AddAssetsComponent,
     EditAssetsComponent,
     ListAssetsComponent,
+    AddProductStockComponent,
+    EditProductStockComponent,
+    ListProductStockComponent
 
   ],
   imports: [
@@ -266,7 +273,7 @@ import { RoleGuard } from './guards/role.guard';
     officepurchaseitemlistmodel,
     officeexpendituretmodel,
     assetsmodel,
-    
+    ProductStockmodel,
     HttpClientModule
     
   ],

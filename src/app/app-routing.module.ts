@@ -64,6 +64,9 @@ import { ListOfficeExpenditureComponent } from './components/officeexpenditure/l
 import { AddAssetsComponent } from './components/assets/add-assets/add-assets.component';
 import { EditAssetsComponent } from './components/assets/edit-assets/edit-assets.component';
 import { ListAssetsComponent } from './components/assets/list-assets/list-assets.component';
+import { AddProductStockComponent } from './components/productstock/add-product-stock/add-product-stock.component';
+import { EditProductStockComponent } from './components/productstock/edit-product-stock/edit-product-stock.component';
+import { ListProductStockComponent } from './components/productstock/list-product-stock/list-product-stock.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
@@ -400,6 +403,23 @@ const routes: Routes = [
           expectedRole: ['superadmin']
         }
       },
+        ///////////////////////////ProductStock///////////////////////////
+        { path: 'AddStock', component: AddProductStockComponent, canActivate: [AuthGuard,RoleGuard], 
+          data: {
+            expectedRole: ['superadmin']
+          }
+        },
+        { 
+          path: 'editStock/:id', component: EditProductStockComponent, canActivate: [AuthGuard,RoleGuard],
+          data: {
+            expectedRole: ['superadmin']
+          }
+        },
+        { path: 'ListStock', component: ListProductStockComponent, canActivate: [AuthGuard,RoleGuard], 
+          data: {
+            expectedRole: ['superadmin']
+          }
+        },
     ]
   },
 

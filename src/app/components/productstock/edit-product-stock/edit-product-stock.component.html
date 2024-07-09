@@ -1,0 +1,92 @@
+<div *ngIf="loading; else content">
+
+    <div class="spinner__loading">
+      <div>
+        <mat-progress-spinner
+          diameter="200"
+          [value]="spinner_value"
+          mode="determinate">
+          </mat-progress-spinner>
+      </div>
+    </div>
+  </div>
+  
+  
+      <ng-template #content>
+        <div class="container">
+            <h3>Update Stock</h3>
+            <h5 [hidden]="!productCatShow"> Product Category -- {{productCatName}} </h5>
+            <h5 [hidden]="!productSubCatShow"> Product Sub Category -- {{productSubCatName}} </h5>
+            <form class="example-container" [formGroup]="form">
+
+                <mat-form-field>
+                    <mat-label>Product Category ID</mat-label>
+                    <select matNativeControl formControlName="productcategoryid" (ngModelChange)="productcategoryidChanged($event)"  name="productcategoryid" >   
+                      <option *ngFor="let car of productcategoryid_arr" [value]="car">
+                        {{car}}
+                      </option>
+                    </select>
+                    <mat-hint>Product Sub Category ID</mat-hint>
+              </mat-form-field>                
+
+
+
+              <mat-form-field>
+                <mat-label>Sub Category</mat-label>
+                <select matNativeControl formControlName="productsubcategoryid" (ngModelChange)="productsubcategoryidChanged($event)" name="productsubcategoryid" >   
+                  <option *ngFor="let car of productsubcategoryid_arr" [value]="car">
+                    {{car}}
+                  </option>
+                </select>
+                <mat-hint></mat-hint>
+              </mat-form-field>
+
+
+              <mat-form-field appearance="outline">
+                <mat-label>Quantity</mat-label>
+                <input matInput placeholder="Quantity" type="number"  formControlName="quantity" >
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Unit</mat-label>
+                <select matNativeControl formControlName="unit" name="unit" >   
+                  <option *ngFor="let car of unit_arr" [value]="car">
+                    {{car}}
+                  </option>
+                </select>
+                <mat-hint></mat-hint>
+              </mat-form-field>
+
+              
+              <mat-form-field appearance="outline">
+                <mat-label>Entry Date</mat-label>
+                <input matInput placeholder=" Entry Date" type="date"  formControlName="entrydate" >
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>State</mat-label>
+                <select matNativeControl formControlName="status" name="status" >   
+                  <option *ngFor="let car of status_arr" [value]="car">
+                    {{car}}
+                  </option>
+                </select>
+                <mat-hint></mat-hint>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <input matInput placeholder="Description" type="text"  formControlName="description" >
+              </mat-form-field>
+              <br/>
+              <div class="input-group btn-group">
+                <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
+              </div>
+    
+          </form>
+        </div>
+  
+      </ng-template>
+  
+  
+  
+  

@@ -188,6 +188,14 @@ const TREE_DATA: MenuNode[] = [
         ]
       },
       {
+        name: 'Product Stock',
+        visible: true,
+        children: [
+          { name: 'Add Stock', link: '/AddStock',  visible: true},
+          { name: 'Stock List', link: '/ListStock', visible: true}
+        ]
+      },
+      {
         name: 'Fixed Assets',
         visible: true,
         children: [

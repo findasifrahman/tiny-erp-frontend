@@ -20,5 +20,6 @@ export const routeurls = Object.freeze({
     OFFICE_PURCHASE_ITEM_LIST_URL: "/officepurchaseitemlist",
     OFFICE_EXPENDITURE_URL: "/officeexpenditure",
     ASSET_URL: "/assets",
+    PRODUCT_STOCK_URL: "/productstock",
   });
   
