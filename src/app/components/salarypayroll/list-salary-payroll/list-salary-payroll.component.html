@@ -3,7 +3,7 @@
     <div class="spinner__loading">
       <div>
         <mat-progress-spinner
-          diameter="60"
+          diameter="200"
           [value]="spinner_value"
           mode="determinate">
           </mat-progress-spinner>
@@ -11,8 +11,8 @@
     </div>
 </div>
 
-<div style="margin-top: 100px; max-width: 180vh !important;">
-    <div class="d-flex justify-content-center h-100 w-100">
+<div style="margin-top: 100px; max-width: 120vh !important;">
+    <div class="d-flex justify-content-center h-100">
       <div class="card">
   
         <ng-template #content>
@@ -22,9 +22,9 @@
                     </mat-form-field>
                 </div>
                 
-                <div class="row" style="margin-top: 20px;margin-right: 45px;max-width: 100% !important; width: 90%;">
+                <div class="row" style="margin-top: 20px;margin-right: 45px;max-width: 80% !important; width: 80%;">
                     <div class="col-md-12" style="max-width: 100% !important;">
-                        <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8" style="width: 80%;max-width: 80% !important;">
+                        <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8" style="width: 80%;max-width: 70% !important;">
                         <!-- Position Column -->
                         <ng-container matColumnDef="payrollid">
                             <mat-header-cell *matHeaderCellDef> Payroll ID</mat-header-cell>

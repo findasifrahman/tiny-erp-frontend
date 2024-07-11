@@ -10,6 +10,79 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body class="mat-typography">
-  <app-root></app-root>
+  <app-root>
+    <style>
+      *,
+      *::after,
+      *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 10px;
+      }
+
+      body {
+        background-color: #111111;
+        overflow: hidden;
+      }
+
+      .myLoader-container {
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .myLoader-loader-container {
+        height: 18em;
+        width: 18em;
+        position: relative;
+        display: block;
+      }
+
+      .myLoader-cicle-loader {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        border: 1em solid rgba(256, 256, 256, 0.1);
+        border-radius: 50%;
+
+        animation: rotating 1.5s 1s infinite both;
+      }
+
+      .myLoader-cicle-loader::after {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: -1em;
+        left: -1em;
+        display: inline-block;
+        border: 1em solid transparent;
+        border-top-color: green;
+        border-radius: 50%;
+        box-sizing: content-box;
+
+        animation: rotating 1.5s infinite both;
+      }
+
+      @keyframes rotating {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </app-root>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 </html>

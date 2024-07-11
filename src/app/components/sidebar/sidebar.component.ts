@@ -219,7 +219,10 @@ const TREE_DATA: MenuNode[] = [
   styleUrls: ['./sidebar.component.scss']
 })
 
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
+
+  hide:boolean;
+
   isHandset: boolean = false;
   currentUrl: string;
   screenWidth: number;
