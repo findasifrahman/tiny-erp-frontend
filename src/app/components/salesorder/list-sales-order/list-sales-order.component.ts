@@ -28,7 +28,7 @@ export class ListSalesOrderComponent  implements OnInit {
   displayedColumns: string[] = ['salesorderid','customercompany','salestype','salesagent','totalamount','status','orderdate','buttons'];
   displayedColumnsName: string[] = ['salesorderid','customercompany','salestype','salesagent','totalamount','status','orderdate','buttons'];
 
-  detailColumns: string[] = ['productcategoryname', 'quantity', 'price'];
+  detailColumns: string[] = ['productcategoryname','productsubcategoryname', 'quantity','unit', 'price'];
 
   AllElement: MatTableDataSource<any>;
   loading = false;

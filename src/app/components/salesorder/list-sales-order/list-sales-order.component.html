@@ -5,16 +5,14 @@
     <div class="spinner__loading">
       <div>
         <mat-progress-spinner
-          diameter="60"
+          diameter="200"
           [value]="spinner_value"
           mode="determinate">
           </mat-progress-spinner>
       </div>
     </div>
 </div>
-<div style="margin-top: 100px; max-width: 180vh !important;">
-    <div class="d-flex justify-content-center h-100 w-100">
-      <div class="card">
+
   
         <ng-template #content>
                 <div fxLayout fxLayoutAlign="center center">
@@ -23,7 +21,7 @@
                     </mat-form-field>
                 </div>
                 
-                <div class="row" style="margin-top: 20px;margin-right: 45px;max-width: 100% !important; width: 90%;">
+                <div class="row" style="margin-top: 20px;margin-right: 45px;max-width: 90% !important; width: 80%;">
                     <div class="col-md-12" style="max-width: 100% !important;">
                         <mat-table [dataSource]="AllElement" multiTemplateDataRows  class="mat-elevation-z8" style="width: 80%;max-width: 80% !important;">
                         <!-- Position Column -->
@@ -73,10 +71,18 @@
                                 <div class="example-element-detail"
                                     [@detailExpand]="Element == expandedElement ? 'expanded' : 'collapsed'">
                                     <div class="example-element-detail-inner">
-                                    <table mat-table [dataSource]="Element.details" class="mat-elevation-z8" multiTemplateDataRows>
+                                    <mat-table [dataSource]="Element.details" class="mat-elevation-z8" multiTemplateDataRows style="width: 80%;max-width: 80% !important;">
                                         <ng-container matColumnDef="productcategoryname">
-                                            <mat-header-cell *matHeaderCellDef> category </mat-header-cell>
+                                            <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
                                             <mat-cell *matCellDef="let detail"> {{detail.productcategoryname}} </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="productsubcategoryname">
+                                            <mat-header-cell *matHeaderCellDef>Sub Category </mat-header-cell>
+                                            <mat-cell *matCellDef="let detail"> {{detail.productsubcategoryname}} </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="unit">
+                                            <mat-header-cell *matHeaderCellDef> Unit </mat-header-cell>
+                                            <mat-cell *matCellDef="let detail"> {{detail.unit}} </mat-cell>
                                         </ng-container>
                                         <ng-container matColumnDef="quantity">
                                             <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
@@ -87,8 +93,8 @@
                                             <mat-cell *matCellDef="let detail"> {{detail.price}} </mat-cell>
                                         </ng-container>
                                         <mat-header-row *matHeaderRowDef="detailColumns"></mat-header-row>
-                                        <mat-row *matRowDef="let row; columns: detailColumns;"></mat-row>
-                                    </table>
+                                        <mat-row  *matRowDef="let row; columns: detailColumns;"></mat-row>
+                                    </mat-table>
                                     </div>
                                 </div>
                                 </mat-cell>
@@ -108,9 +114,7 @@
                     </div>
                 </div>
             </ng-template>
-    </div>
-   </div>
-</div>
+
 <br />
 <br />
     
