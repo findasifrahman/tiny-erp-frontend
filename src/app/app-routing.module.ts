@@ -132,292 +132,292 @@ const routes: Routes = [
       ///////////////////////////Customer///////////////////////////
       { path: 'AddCustomer', component: AddCustomerComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','sales']
         }
       },
       { 
         path: 'editCustomer/:id', component: EditCustomerComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','sales']
         }
       },
       { path: 'ListCustomer', component: ListCustomerComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer','sales']
         }
       },
       ///////////////////////////Employee///////////////////////////
       { path: 'AddEmployee', component: AddEmployeeComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin']
         }
       },
       { 
         path: 'editEmployee/:id', component: EditEmployeeComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin']
         }
       },
       { path: 'ListEmployee', component: ListEmployeeComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer']
         }
       },
       ///////////////////////////Sales Order///////////////////////////
       { path: 'AddSalesOrder', component: AddSalesOrderComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','sales']
         }
       },
       { 
         path: 'editSalesOrder/:id', component: EditSalesOrderComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','sales']
         }
       },
       { path: 'ListSalesOrder', component: ListSalesOrderComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer','sales']
         }
       },
 
       ///////////////////////////Product Category///////////////////////////
       { path: 'AddProductCategory', component: AddProductCategoryComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','sales']
         }
       },
       { 
         path: 'editProductCategory/:id', component: EditProductCategoryComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','sales']
         }
       },
       { path: 'ListProductCategory', component: ListProductCategoryComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer','sales']
         }
       },
       ///////////////////////////Product Sub Category///////////////////////////
       { path: 'AddProductSubCategory', component: AddProductSubCategoryComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','sales']
         }
       },
       { 
         path: 'editProductSubCategory/:id', component: EditProductSubCategoryComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','sales']
         }
       },
       { path: 'ListProductSubCategory', component: ListProductSubCategoryComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer','sales']
         }
       },
       ///////////////////////////Sales Order Details///////////////////////////
       { path: 'AddSalesOrderDetails', component: AddSalesOrderDetailsComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','sales']
         }
       },
       { 
         path: 'editSalesOrderDetails/:id', component: EditSalesOrderDetailsComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','sales']
         }
       },
       { path: 'ListSalesOrderDetails', component: ListSalesOrderDetailsComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer','sales']
         }
       },
       ///////////////////////////Payment Sales///////////////////////////
       { path: 'AddPaymentSales', component: AddPaymentSalesComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','sales']
         }
       },
       { 
         path: 'editPaymentSales/:id', component: EditPaymentSalesComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','sales']
         }
       },
       { path: 'ListPaymentSales', component: ListPaymentSalesComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer','sales']
         }
       },
       ///////////////////////////Purchase Category///////////////////////////
       { path: 'AddPurchaseCategory', component: AddPurchaseCategoryComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','purchase']
         }
       },
       { 
         path: 'editPurchaseCategory/:id', component: EditPurchaseCategoryComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','purchase']
         }
       },
       { path: 'ListPurchaseCategory', component: ListPurchaseCategoryComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer','purchase']
         }
       },
       ///////////////////////////Purchase Sub Category///////////////////////////
       { path: 'AddPurchaseSubCategory', component: AddPurchaseSubCategoryComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','purchase']
         }
       },
       { 
         path: 'editPurchaseSubCategory/:id', component: EditPurchaseSubCategoryComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','purchase']
         }
       },
       { path: 'ListPurchaseSubCategory', component: ListPurchaseSubCategoryComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer','purchase']
         }
       },
 
       ///////////////////////////Supplier///////////////////////////
       { path: 'AddSupplier', component: AddSupplierComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','purchase']
         }
       },
       { 
         path: 'editSupplier/:id', component: EditSupplierComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','purchase']
         }
       },
       { path: 'ListSupplier', component: ListSupplierComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer','purchase']
         }
       },
       ///////////////////////////Purchase Order///////////////////////////
       { path: 'AddPurchaseOrder', component: AddPurchaseOrderComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','purchase']
         }
       },
       { 
         path: 'editPurchaseOrder/:id', component: EditPurchaseOrderComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','purchase']
         }
       },
       { path: 'ListPurchaseOrder', component: ListPurchaseOrderComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer','purchase']
         }
       },
       ///////////////////////////Purchase Order Details///////////////////////////
       { path: 'AddPurchaseOrderDetails', component: AddPurchaseOrderDetailsComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','purchase']
         }
       },
       { 
         path: 'editPurchaseOrderDetails/:id', component: EditPurchaseOrderDetailsComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','purchase']
         }
       },
       { path: 'ListPurchaseOrderDetails', component: ListPurchaseOrderDetailsComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer','purchase']
         }
       },
       ///////////////////////////Salary Payroll///////////////////////////
       { path: 'AddSalaryPayroll', component: AddSalaryPayrollComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','hr']
         }
       },
       { 
         path: 'editSalaryPayroll/:id', component: EditSalaryPayrollComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','hr']
         }
       },
       { path: 'ListSalaryPayroll', component: ListSalaryPayrollComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer','hr']
         }
       },
       ///////////////////////////Office Purchase Item List///////////////////////////
       { path: 'AddOfficePurchaseItemList', component: AddOfficePurchaseItemListComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','hr']
         }
       },
       { 
         path: 'editOfficePurchaseItemList/:id', component: EditOfficePurchaseItemListComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','hr']
         }
       },
       { path: 'ListOfficePurchaseItemList', component: ListOfficePurchaseItemListComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer']
         }
       },
       ///////////////////////////Office Expenditure///////////////////////////
       { path: 'AddOfficeExpenditure', component: AddOfficeExpenditureComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','hr']
         }
       },
       { 
         path: 'editOfficeExpenditure/:id', component: EditOfficeExpenditureComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','hr']
         }
       },
       { path: 'ListOfficeExpenditure', component: ListOfficeExpenditureComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer','hr']
         }
       },
       ///////////////////////////Assets///////////////////////////
       { path: 'AddAssets', component: AddAssetsComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','hr']
         }
       },
       { 
         path: 'editAssets/:id', component: EditAssetsComponent, canActivate: [AuthGuard,RoleGuard],
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','hr']
         }
       },
       { path: 'ListAssets', component: ListAssetsComponent, canActivate: [AuthGuard,RoleGuard], 
         data: {
-          expectedRole: ['superadmin']
+          expectedRole: ['superadmin','admin','viewer','hr']
         }
       },
         ///////////////////////////ProductStock///////////////////////////
         { path: 'AddStock', component: AddProductStockComponent, canActivate: [AuthGuard,RoleGuard], 
           data: {
-            expectedRole: ['superadmin']
+            expectedRole: ['superadmin','admin','hr']
           }
         },
         { 
           path: 'editStock/:id', component: EditProductStockComponent, canActivate: [AuthGuard,RoleGuard],
           data: {
-            expectedRole: ['superadmin']
+            expectedRole: ['superadmin','admin','hr']
           }
         },
         { path: 'ListStock', component: ListProductStockComponent, canActivate: [AuthGuard,RoleGuard], 
           data: {
-            expectedRole: ['superadmin']
+            expectedRole: ['superadmin','admin','viewer', 'hr','inventory']
           }
         },
     ]

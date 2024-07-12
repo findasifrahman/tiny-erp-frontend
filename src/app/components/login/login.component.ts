@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
           console.log("role", role);
           console.log('user', this.authService.getUser())
           this.loading = false;
-          this.router.navigate(['/AddMainCompany']);
+          this.router.navigate(['/ListSalesOrder']);
         },
         error: error => {
           // handle login error

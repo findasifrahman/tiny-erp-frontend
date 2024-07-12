@@ -17,7 +17,7 @@ export class AuthService {
 
  
   changePassword(passwordData: { username: string, oldPassword: string, newPassword: string }): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/change-password`, passwordData);
+    return this.http.post<any>(routeurls.BASE_API_URL  + '/change-password', passwordData);
   }
   /////
   login(form: any) : Observable<any>  {

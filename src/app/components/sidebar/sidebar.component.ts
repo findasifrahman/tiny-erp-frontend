@@ -11,10 +11,10 @@ interface MenuNode {
   name: string;
   link?: string;
   visible: boolean;
-  children?: MenuNode[];
+  children?: MenuNode[]
 }
 
-const TREE_DATA: MenuNode[] = [
+const INITIAL_TREE_DATA: MenuNode[] = [
   {
     name: 'Company',
     visible: true,
@@ -230,6 +230,7 @@ export class SidebarComponent implements OnInit {
   isShowSettings = true;
   Company_name =localStorage.getItem('maincompanyname');
 
+  TREE_DATA: MenuNode[] = [...INITIAL_TREE_DATA];
       
     constructor(public authService: AuthService, private router: Router) {
       this.screenWidth = window.innerWidth;
@@ -237,12 +238,9 @@ export class SidebarComponent implements OnInit {
         // set screenWidth on screen size change
         this.screenWidth = window.innerWidth;
       };
-      this.dataSource.data = TREE_DATA;
-      /*this.router.events.pipe(filter(event => event instanceof NavigationEnd))
-        .subscribe((event: any) => {
-          const navigationEndEvent = event as NavigationEnd;
-          this.currentUrl = navigationEndEvent.urlAfterRedirects;
-        });*/
+      //this.dataSource.data = TREE_DATA;
+      this.dataSource.data = this.TREE_DATA;
+
     }
     ///////////////////
 
@@ -288,8 +286,26 @@ export class SidebarComponent implements OnInit {
   }
   ngOnInit() {
     let username = this.authService.getUser()
-    if(username.includes("asifa")){
+    if(username.includes("asif")){
       this.isShowSettingsli = true
+    }
+    if(this.authService.getrole() !== "superadmin"){
+      this.updateNodeVisibility('Add Main Company', false);  // Example to hide 'Add Main Company'
+      this.updateNodeVisibility('User List', false);  // Example to hide 'User List'
+      this.updateNodeVisibility('Roles List', false);  // Example to hide 'Roles List'
+      this.updateNodeVisibility('Main Company List', false);  // Example to hide 'Company List'
+      this.updateNodeVisibility('Add Users', false);  // Example to hide 'User Add'
+      this.updateNodeVisibility('Add Roles', false);
+      this.dataSource.data = this.TREE_DATA; // Refresh the data source
+    }
+    else{
+      this.updateNodeVisibility('Add Main Company', true);  // Example to hide 'Add Main Company'
+      this.updateNodeVisibility('User List', true);  // Example to hide 'User List'
+      this.updateNodeVisibility('Roles List', true);  // Example to hide 'Roles List'
+      this.updateNodeVisibility('Main Company List', true);  // Example to hide 'Company List'
+      this.updateNodeVisibility('Add Users', true);  // Example to hide 'User Add'
+      this.updateNodeVisibility('Add Roles', true);
+      this.dataSource.data = this.TREE_DATA; // Refresh the data source
     }
   }
 
@@ -301,6 +317,24 @@ export class SidebarComponent implements OnInit {
     localStorage.removeItem('isLoggedin');
     this.router.navigate(['/login']);
   }
+
+  ///
+  updateNodeVisibility(nodeName: string, visible: boolean) {
+    const updateVisibility = (nodes: MenuNode[]) => {
+      nodes.forEach(node => {
+        if (node.name === nodeName) {
+          node.visible = visible;
+        }
+        if (node.children) {
+          updateVisibility(node.children);
+        }
+      });
+    };
+
+    updateVisibility(this.TREE_DATA);
+    this.dataSource.data = this.TREE_DATA; // Refresh the data source
+  }
+  /////////
 }
 interface MenuFlatNode {
   expandable: boolean;
@@ -308,4 +342,5 @@ interface MenuFlatNode {
   link: string | undefined;
   visible: boolean;
   level: number;
+  
 }
