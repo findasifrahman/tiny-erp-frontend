@@ -30,6 +30,8 @@ export class EditSalesOrderDetailsComponent {
   loading = false;
   form!: FormGroup;
   maincompanyid = localStorage.getItem('maincompanyid');
+  
+  filteredSubCategories: any[] = [];
   constructor(private service: SalesOrdersDetailsService,private snackBar: MatSnackBar,private route:ActivatedRoute,
     private formBuilder: FormBuilder, private router: Router, private salesOrdersService:SalesOrdersService,private productCategoryService:ProductCategoryService,
     private productSubCategoryService:ProductSubCategoryService,
@@ -40,6 +42,17 @@ export class EditSalesOrderDetailsComponent {
     this.form.reset();
 
     //////////////////////
+        /////////////////////new
+        // Watch for changes in the product category field
+        this.form.get('productcategoryid')?.valueChanges.subscribe(categoryId => {
+          this.onProductCategoryChange(categoryId);
+        });
+    
+        // Watch for changes in the product subcategory field
+        this.form.get('productsubcategoryid')?.valueChanges.subscribe(subCategoryId => {
+          this.onProductSubCategoryChange(subCategoryId);
+        });
+    ///////////////////////////
     
     this.route.params.subscribe(params => {
       this.id =  parseInt(params['id']);
@@ -61,6 +74,7 @@ export class EditSalesOrderDetailsComponent {
               //console.log("employees", posts, this.salesagentid_arr);
             })
             this.productSubCategoryService.getAll(this.maincompanyid).subscribe((posts) => {
+              this.filteredSubCategories = posts
               for(let i=0;i<posts.length;i++){
                 this.productsubcategoryid_arr.push(posts[i]['productsubcategoryid']);
                 this.productsubcategory_arr.push(posts[i])
@@ -83,23 +97,47 @@ export class EditSalesOrderDetailsComponent {
 
     
   }
-  productcategoryidChanged(event: any){
 
-    this.productcategory_arr.map((item: any, index: any) => {
-      console.log("this.selected--", item['productcategoryid'], event)
-      if(item['productcategoryid'] == event){
-        this.form.controls['productcategoryname'].setValue(item['categoryname']);
+    ///////////////////
+    onProductCategoryChange(categoryId: any) {
+      const selectedCategory = this.productcategory_arr.find(item => item.productcategoryid == categoryId);
+      if (selectedCategory) {
+        console.log("selectedCategory--", selectedCategory)
+        this.form.controls['productcategoryname'].setValue(selectedCategory.categoryname);
+        
       }
-    })
-  }
-  productsubcategoryidChanged(event: any){
-    console.log("this.selected--", event)
-    this.productsubcategory_arr.map((item: any, index: any) => {
-      if(item['productsubcategoryid'] == event){
-        this.form.controls['productsubcategoryname'].setValue(item['subcategoryname']);
+      //
+      this.filteredSubCategories = this.productsubcategory_arr.filter(item => item.productcategoryid == categoryId);
+      /*let temparr: any[] = []
+      this.productsubcategory_arr.map((item: any, index: any) => {
+        if(item['productsubcategoryid'] == categoryId){
+          temparr.push(item['productsubcategoryid']);
+        }
+        if(index == this.productsubcategory_arr.length-1){
+          console.log("temparr--", temparr)
+          //this.productsubcategoryid_arr = temparr
+          this.form.controls['productsubcategoryid'].setValue(temparr)
+  
+        }
+      })*/
+      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //this.filteredSubCategories = this.productsubcategory_arr.filter(item => item.productcategoryid === categoryId);
+      if (this.filteredSubCategories.length > 0) {
+        this.form.controls['productsubcategoryid'].setValue(this.filteredSubCategories);//this.filteredSubCategories[0].productsubcategoryid);
+      } else {
+        this.form.controls['productsubcategoryid'].setValue(null);
+        this.form.controls['productsubcategoryname'].setValue('');
+        this.form.controls['price'].setValue('');
       }
-    })
-  }
+    }
+  
+    onProductSubCategoryChange(subCategoryId: any) {
+      const selectedSubCategory = this.filteredSubCategories.find(item => item.productsubcategoryid == subCategoryId);
+      if (selectedSubCategory) {
+        this.form.controls['productsubcategoryname'].setValue(selectedSubCategory.subcategoryname);
+        this.form.controls['unitprice'].setValue(selectedSubCategory.price);
+      }
+    }
 
   async onSubmit() {
     // Implement the submit logic here

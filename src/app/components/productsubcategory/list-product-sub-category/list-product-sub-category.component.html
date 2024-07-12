@@ -24,7 +24,7 @@
                     </mat-form-field>
                 </div>
                 
-                <div class="row" style="margin-top: 20px;margin-right: 45px;max-width: 100% !important; width: 90%;">
+                <div class="row" style="margin-top: 20px;margin-right: 45px;max-width: 100% !important; width: 80%;">
                     <div class="col-md-12" style="max-width: 100% !important;">
                         <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8" style="width: 80%;max-width: 80% !important;">
                         <!-- Position Column -->
@@ -39,6 +39,10 @@
                         <ng-container matColumnDef="subcategoryname">
                             <mat-header-cell *matHeaderCellDef>Sub Product Category</mat-header-cell>
                             <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.subcategoryname}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="price">
+                            <mat-header-cell *matHeaderCellDef>Unit Price</mat-header-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.price}} </mat-cell>
                         </ng-container>
 
                         <ng-container matColumnDef="buttons">

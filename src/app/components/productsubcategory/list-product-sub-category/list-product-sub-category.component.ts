@@ -14,8 +14,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ListProductSubCategoryComponent {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  displayedColumns: string[] = ['categoryname','productsubcategoryid','subcategoryname','buttons'];
-  displayedColumnsName: string[] = ['categoryname','productsubcategoryid','subcategoryname','buttons'];
+  displayedColumns: string[] = ['categoryname','productsubcategoryid','subcategoryname','price','buttons'];
+  displayedColumnsName: string[] = ['categoryname','productsubcategoryid','subcategoryname','price','buttons'];
   AllElement: MatTableDataSource<any>;
   loading = false;
   spinner_value = 50;

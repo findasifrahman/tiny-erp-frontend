@@ -6,16 +6,27 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ConfirmationdialogComponent } from '../../commoncomponents/confirmationdialog/confirmationdialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { trigger, state, style, transition, animate } from '@angular/animations';
 @Component({
   selector: 'app-list-purchase-order',
   templateUrl: './list-purchase-order.component.html',
-  styleUrl: './list-purchase-order.component.scss'
+  styleUrl: './list-purchase-order.component.scss',
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class ListPurchaseOrderComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  expandedElement: any | null;
   displayedColumns: string[] = ['purchaseid','suppliercompany','totalamount','purchasedby','date','buttons'];
   displayedColumnsName: string[] = ['purchaseid','suppliercompany','totalamount','purchasedby','date','buttons'];
+
+  detailColumns: string[] = ['categoryname','subcategoryname', 'purchasequantity','unit', 'totalamount'];
+
   AllElement: MatTableDataSource<any>;
   loading = false;
   spinner_value = 50;

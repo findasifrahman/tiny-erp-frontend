@@ -4,7 +4,7 @@
     <div class="spinner__loading">
       <div>
         <mat-progress-spinner
-          diameter="60"
+          diameter="200"
           [value]="spinner_value"
           mode="determinate">
           </mat-progress-spinner>
@@ -24,7 +24,7 @@
                     </mat-form-field>
                 </div>
                 
-                <div class="row" style="margin-top: 20px;max-width: 100% !important; width: 90%;">
+                <div class="row" style="margin-top: 20px;max-width: 100% !important; width: 80%;">
                     <div class="col-md-12" style="max-width: 90% !important;">
                         <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8" style="width: 80%;max-width: 80% !important;">
                         <!-- Position Column -->
@@ -60,10 +60,53 @@
                             </button>
                             </mat-cell>
                         </ng-container>
+                            <!-- Expandable Row Column -->
+                            <ng-container matColumnDef="expandedDetail">
+                            <mat-cell *matCellDef="let Element" [attr.colspan]="displayedColumns.length">
+                            <div class="example-element-detail"
+                                [@detailExpand]="Element == expandedElement ? 'expanded' : 'collapsed'">
+                                <div class="example-element-detail-inner">
+                                <mat-table [dataSource]="Element.details" class="mat-elevation-z8" multiTemplateDataRows style="width: 80%;max-width: 80% !important;">
+                                    <ng-container matColumnDef="categoryname">
+                                        <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+                                        <mat-cell *matCellDef="let detail"> {{detail.categoryname}} </mat-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="subcategoryname">
+                                        <mat-header-cell *matHeaderCellDef>Sub Category </mat-header-cell>
+                                        <mat-cell *matCellDef="let detail"> {{detail.subcategoryname}} </mat-cell>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="purchasequantity">
+                                        <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+                                        <mat-cell *matCellDef="let detail"> {{detail.purchasequantity}} </mat-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="unit">
+                                        <mat-header-cell *matHeaderCellDef> Unit </mat-header-cell>
+                                        <mat-cell *matCellDef="let detail"> {{detail.unit}} </mat-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="totalamount">
+                                        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+                                        <mat-cell *matCellDef="let detail"> {{detail.totalamount}} </mat-cell>
+                                    </ng-container>
+                                    <mat-header-row *matHeaderRowDef="detailColumns"></mat-header-row>
+                                    <mat-row  *matRowDef="let row; columns: detailColumns;"></mat-row>
+                                </mat-table>
+                                </div>
+                            </div>
+                            </mat-cell>
+                        </ng-container>
+
+                        
+                    <!------------------------------------------------------------------>
                     
                         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-                        <mat-row style="background-color:black" *matRowDef="let row; columns: displayedColumns;"></mat-row>
-                    
+                        <mat-row style="background-color:black" *matRowDef="let row; columns: displayedColumns;"
+                        class="example-element-row"
+                        [class.example-expanded-row]="expandedElement === row"
+                        (click)="expandedElement = expandedElement === row ? null : row"
+                        ></mat-row>
+                        <mat-row *matRowDef="let row; columns: ['expandedDetail']"></mat-row>
+
                         </mat-table>
                         <mat-paginator [pageSize]="10" [pageSizeOptions]="[2, 4, 6, 10, 20]"></mat-paginator>
                     </div>

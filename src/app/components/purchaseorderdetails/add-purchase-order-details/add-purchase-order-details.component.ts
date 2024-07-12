@@ -73,6 +73,7 @@ export class AddPurchaseOrderDetailsComponent implements OnInit {
     this.purchasesubcategory_arr.map((item: any, index: any) => {
       if(item['purchasesubcategoryid'] == event){
         this.form.controls['subcategoryname'].setValue(item['subcategoryname']);
+        this.form.controls['purchaseamount'].setValue(item['price']);
       }
     })
   }

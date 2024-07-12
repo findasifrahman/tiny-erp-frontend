@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewChecked, ChangeDetectorRef  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SalesOrdersDetailsService } from '../../../services/sales-order-details.service';
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ import { ProductSubCategoryService } from '../../../services/product-sub-categor
   templateUrl: './add-sales-order-details.component.html',
   styleUrl: './add-sales-order-details.component.scss'
 })
-export class AddSalesOrderDetailsComponent implements OnInit{
+export class AddSalesOrderDetailsComponent implements OnInit,AfterViewChecked {
   categoryName_arr = ["sales_agent","staff","admin"]
   roleName_arr = ["admin","sales","purchase","hr"]
   productcategoryid_arr : any[] = [];
@@ -28,15 +28,34 @@ export class AddSalesOrderDetailsComponent implements OnInit{
   spinner_value = 50;
   loading = false;
   form!: FormGroup;
+
+  filteredSubCategories: any[] = [];
+
   maincompanyid = localStorage.getItem('maincompanyid');
   constructor(private service: SalesOrdersDetailsService,private snackBar: MatSnackBar,
     private formBuilder: FormBuilder, private router: Router, private salesOrdersService:SalesOrdersService,private productCategoryService:ProductCategoryService,
-    private productSubCategoryService:ProductSubCategoryService,
+    private productSubCategoryService:ProductSubCategoryService,private readonly changeDetectorRef: ChangeDetectorRef,
     private models : SalesOrderDetailsmodel ) { }
+
+  ngAfterViewChecked(): void {
+      this.changeDetectorRef.detectChanges();
+  }
   ngOnInit(): void {
     // Implement the initialization logic here
     this.form = this.models.modelForms;
     this.form.reset();
+
+    /////////////////////new
+        // Watch for changes in the product category field
+        this.form.get('productcategoryid')?.valueChanges.subscribe(categoryId => {
+          this.onProductCategoryChange(categoryId);
+        });
+    
+        // Watch for changes in the product subcategory field
+        this.form.get('productsubcategoryid')?.valueChanges.subscribe(subCategoryId => {
+          this.onProductSubCategoryChange(subCategoryId);
+        });
+    ///////////////////////////
 
     this.salesOrdersService.getAllbydate(this.maincompanyid, moment().subtract(7,'d').format('YYYY-MM-DD').toString()).subscribe((posts) => {
       console.log("salesorderid_arr", posts);
@@ -53,29 +72,54 @@ export class AddSalesOrderDetailsComponent implements OnInit{
           this.productsubcategoryid_arr.push(posts[i]['productsubcategoryid']);
           this.productsubcategory_arr.push(posts[i])
         }
+        this.changeDetectorRef.detectChanges();
         //console.log("employees", posts, this.salesagentid_arr);
       })
 
     });  
     
   }
-  productcategoryidChanged(event: any){
-
-    this.productcategory_arr.map((item: any, index: any) => {
-      console.log("this.selected--", item['productcategoryid'], event)
-      if(item['productcategoryid'] == event){
-        this.form.controls['productcategoryname'].setValue(item['categoryname']);
-      }
-    })
-  }
-  productsubcategoryidChanged(event: any){
-    console.log("this.selected--", event)
+  ///////////////////
+  onProductCategoryChange(categoryId: any) {
+    const selectedCategory = this.productcategory_arr.find(item => item.productcategoryid == categoryId);
+    if (selectedCategory) {
+      console.log("selectedCategory--", selectedCategory)
+      this.form.controls['productcategoryname'].setValue(selectedCategory.categoryname);
+      
+    }
+    //
+    this.filteredSubCategories = this.productsubcategory_arr.filter(item => item.productcategoryid == categoryId);
+    /*let temparr: any[] = []
     this.productsubcategory_arr.map((item: any, index: any) => {
-      if(item['productsubcategoryid'] == event){
-        this.form.controls['productsubcategoryname'].setValue(item['subcategoryname']);
+      if(item['productsubcategoryid'] == categoryId){
+        temparr.push(item['productsubcategoryid']);
       }
-    })
+      if(index == this.productsubcategory_arr.length-1){
+        console.log("temparr--", temparr)
+        //this.productsubcategoryid_arr = temparr
+        this.form.controls['productsubcategoryid'].setValue(temparr)
+
+      }
+    })*/
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //this.filteredSubCategories = this.productsubcategory_arr.filter(item => item.productcategoryid === categoryId);
+    if (this.filteredSubCategories.length > 0) {
+      this.form.controls['productsubcategoryid'].setValue(this.filteredSubCategories);//this.filteredSubCategories[0].productsubcategoryid);
+    } else {
+      this.form.controls['productsubcategoryid'].setValue(null);
+      this.form.controls['productsubcategoryname'].setValue('');
+      this.form.controls['price'].setValue('');
+    }
   }
+
+  onProductSubCategoryChange(subCategoryId: any) {
+    const selectedSubCategory = this.filteredSubCategories.find(item => item.productsubcategoryid == subCategoryId);
+    if (selectedSubCategory) {
+      this.form.controls['productsubcategoryname'].setValue(selectedSubCategory.subcategoryname);
+      this.form.controls['unitprice'].setValue(selectedSubCategory.price);
+    }
+  }
+  /////////////////////
 
   async onSubmit() {
     // Implement the submit logic here

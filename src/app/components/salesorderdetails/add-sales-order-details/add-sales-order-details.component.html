@@ -30,7 +30,7 @@
 
               <mat-form-field>
                 <mat-label>Product Category</mat-label>
-                <select matNativeControl formControlName="productcategoryid" (ngModelChange)="productcategoryidChanged($event)" name="productcategoryid" >   
+                <select matNativeControl formControlName="productcategoryid"  name="productcategoryid" >   
                   <option *ngFor="let car of productcategoryid_arr" [value]="car">
                     {{car}}
                   </option>
@@ -45,9 +45,9 @@
 
               <mat-form-field>
                 <mat-label>Sub Category</mat-label>
-                <select matNativeControl formControlName="productsubcategoryid" (ngModelChange)="productsubcategoryidChanged($event)" name="productsubcategoryid" >   
-                  <option *ngFor="let car of productsubcategoryid_arr" [value]="car">
-                    {{car}}
+                <select matNativeControl formControlName="productsubcategoryid"  name="productsubcategoryid" >   
+                  <option *ngFor="let car of filteredSubCategories" [value]="car.productsubcategoryid">
+                    {{car.productsubcategoryid}}
                   </option>
                 </select>
                 <mat-hint></mat-hint>
@@ -77,7 +77,7 @@
               
               <mat-form-field appearance="outline">
                 <mat-label>Unit Price</mat-label>
-                <input matInput placeholder="unitprice" type="number"  formControlName="unitprice" >
+                <input matInput placeholder="unitprice" type="number"  formControlName="unitprice" readonly="">
               </mat-form-field>
 
               <mat-form-field appearance="outline">

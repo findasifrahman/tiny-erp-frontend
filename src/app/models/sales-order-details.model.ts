@@ -17,7 +17,7 @@ export class SalesOrderDetailsmodel {
     productcategoryid: ['', Validators.required],
     productcategoryname: ['', [Validators.required, Validators.maxLength(256)]],
     productsubcategoryid: ['', Validators.required],
-    productsubcategoryname: ['',  Validators.maxLength(256)],
+    productsubcategoryname: ['',  [Validators.required,Validators.maxLength(256)]],
     quantity: [0, [Validators.required, Validators.min(0)]],
     unit: ['kg', [Validators.required, Validators.maxLength(12)]],
     unitprice: [0, [Validators.required, Validators.min(0)]],
