@@ -17,7 +17,7 @@ export class UsersService {
       }
       getAll(mid: any): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.USERS_URL + "/" + mid).pipe(
-          retry(3),
+          retry(1),
           map(res => {
             console.log(res);
             if (!res) {
@@ -31,9 +31,9 @@ export class UsersService {
       }
 
       getbyid(id: number): Observable<any> {
-        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.USERS_URL + "/getbyid", { params: new HttpParams().set('id', id) })
+        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.USERS_URL + "-getbyid", { params: new HttpParams().set('id', id) })
         .pipe(
-          retry(3),
+          retry(1),
           map(res => {
             console.log(res);
             if (!res) {
@@ -54,9 +54,9 @@ export class UsersService {
           'Content-Type': 'application/json'});
           let options = { headers: headers };
         console.log(obj);
-        return this.http.post(routeurls.BASE_API_URL + routeurls.USERS_URL + "/update" , obj, options)
+        return this.http.post(routeurls.BASE_API_URL + routeurls.USERS_URL + "-update" , obj, options)
         .pipe(
-          retry(3),
+          retry(1),
           map(res => {
             console.log(res);
             if (!res) {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 import { map } from 'rxjs/operators';
@@ -13,16 +13,20 @@ export class AuthService {
   private apiUrl = 'your-backend-api-url';
   currentUser!: User;
 
+
   constructor(private http: HttpClient,private jwtHelper: JwtHelperService) {}
 
  
   changePassword(passwordData: { username: string, oldPassword: string, newPassword: string }): Observable<any> {
-    return this.http.post<any>(routeurls.BASE_API_URL  + '/change-password', passwordData);
+    return this.http.post<any>(routeurls.BASE_API_URL  + '-change-password', passwordData);
   }
   /////
   login(form: any) : Observable<any>  {
     let credentials = form;//JSON.stringify(form.value);
-    return this.http.post(routeurls.BASE_API_URL +  routeurls.LOGIN_URL, credentials);
+    return this.http.post(routeurls.BASE_API_URL +  routeurls.LOGIN_URL, credentials,{
+      headers: { 'Content-Type': 'application/json','Access-Control-Allow-Origin': '*' }
+      
+    });
   }
   getUserLogStatus() {
     const token = localStorage.getItem('jwt');

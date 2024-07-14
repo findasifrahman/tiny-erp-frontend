@@ -32,7 +32,7 @@ export class OfficePurchaseItemListService {
       }
 
       getbyid(id: number): Observable<any> {
-        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.OFFICE_PURCHASE_ITEM_LIST_URL + "/getbyid", { params: new HttpParams().set('id', id) })
+        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.OFFICE_PURCHASE_ITEM_LIST_URL + "-getbyid", { params: new HttpParams().set('id', id) })
         .pipe(
           retry(3),
           map(res => {
@@ -57,7 +57,7 @@ export class OfficePurchaseItemListService {
           'Content-Type': 'application/json'});
           let options = { headers: headers };
         console.log(obj);
-        return this.http.post(routeurls.BASE_API_URL + routeurls.OFFICE_PURCHASE_ITEM_LIST_URL + "/update" , obj, options)
+        return this.http.post(routeurls.BASE_API_URL + routeurls.OFFICE_PURCHASE_ITEM_LIST_URL + "-update" , obj, options)
         .pipe(
           retry(3),
           map(res => {

@@ -31,7 +31,7 @@ export class PurchaseOrderService {
       }
 
       getbyid(id: number): Observable<any> {
-        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.PURCHASE_ORDERS_URL + "/getbyid" , { params: new HttpParams().set('id', id) })
+        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.PURCHASE_ORDERS_URL + "-getbyid" , { params: new HttpParams().set('id', id) })
         .pipe(
           retry(2),
           map(res => {
@@ -54,7 +54,7 @@ export class PurchaseOrderService {
           'Content-Type': 'application/json'});
           let options = { headers: headers };
         console.log(obj);
-        return this.http.post(routeurls.BASE_API_URL + routeurls.PURCHASE_ORDERS_URL + "/update" , obj, options)
+        return this.http.post(routeurls.BASE_API_URL + routeurls.PURCHASE_ORDERS_URL + "-update" , obj, options)
         .pipe(
           retry(3),
           map(res => {
@@ -76,7 +76,7 @@ export class PurchaseOrderService {
         return this.http.delete<any>(routeurls.BASE_API_URL + routeurls.PURCHASE_ORDERS_URL ,{ params: new HttpParams().set('id', parseInt(id)).set('maincompanyid', mid) });
       }
       getAllbydate(mid:any,dated : string): Observable<any> {
-        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.PURCHASE_ORDERS_URL + "/getbydate", { params: new HttpParams().set('dated', dated).set('id', mid) } ).pipe(
+        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.PURCHASE_ORDERS_URL + "-getbydate", { params: new HttpParams().set('dated', dated).set('id', mid) } ).pipe(
           retry(3),
           map(res => {
             console.log(res);
