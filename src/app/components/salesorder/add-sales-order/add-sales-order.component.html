@@ -67,8 +67,10 @@
                 <mat-hint>Pending or delivered </mat-hint>
               </mat-form-field>
               <mat-form-field appearance="outline">
-                <mat-label>Date</mat-label>
-                <input matInput placeholder="Sales date" type="date"  formControlName="orderdate" >
+                <mat-label>Order Date</mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="Date" formControlName="orderdate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
 
 

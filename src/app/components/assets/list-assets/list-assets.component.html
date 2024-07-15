@@ -42,7 +42,7 @@
                         </ng-container>
                         <ng-container matColumnDef="purchasedate">
                             <mat-header-cell *matHeaderCellDef> Purchase Date</mat-header-cell>
-                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.purchasedate}} </mat-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.purchasedate | date: 'dd/MM/yyyy'}} </mat-cell>
                         </ng-container>
                        
                         <ng-container matColumnDef="buttons">

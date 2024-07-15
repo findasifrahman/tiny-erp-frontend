@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { employeemodel  } from '../../../models/employee.model';
-
+import { DateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-add-employee',
   templateUrl: './add-employee.component.html',
@@ -18,8 +18,10 @@ export class AddEmployeeComponent implements OnInit{
   loading = false;
   form!: FormGroup;
   constructor(private service: EmployeeService,private snackBar: MatSnackBar,
-    private formBuilder: FormBuilder, private router: Router,
-    private models : employeemodel ) { }
+    private formBuilder: FormBuilder, private router: Router,private dateAdapter: DateAdapter<Date>,
+    private models : employeemodel ) { 
+      this.dateAdapter.setLocale('en-GB');
+    }
   ngOnInit(): void {
     // Implement the initialization logic here
     this.form = this.models.modelForms;

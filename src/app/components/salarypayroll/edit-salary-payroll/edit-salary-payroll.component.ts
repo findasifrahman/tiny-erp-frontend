@@ -7,6 +7,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { salarypayrollmodel  } from '../../../models/salary-payroll.model';
 import { EmployeeService } from '../../../services/employee.service';
 import moment from 'moment';
+import { DateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-edit-salary-payroll',
   templateUrl: './edit-salary-payroll.component.html',
@@ -22,9 +23,11 @@ export class EditSalaryPayrollComponent implements OnInit {
   spinner_value = 50;
   loading = false;
   form!: FormGroup;
-  constructor(private service: SalaryPayrollService,private snackBar: MatSnackBar,private route:ActivatedRoute,
+  constructor(private service: SalaryPayrollService,private snackBar: MatSnackBar,private route:ActivatedRoute,private dateAdapter: DateAdapter<Date>,
     private formBuilder: FormBuilder, private router: Router, private employeeService: EmployeeService,
-    private models : salarypayrollmodel ) { }
+    private models : salarypayrollmodel ) { 
+      this.dateAdapter.setLocale('en-GB');
+    }
 
   ngOnInit(): void {
       // Implement the initialization logic here

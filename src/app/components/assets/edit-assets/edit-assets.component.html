@@ -28,8 +28,10 @@
                   <input matInput placeholder="Asset Value" type="number"  formControlName="assetvalue" >
               </mat-form-field>
               <mat-form-field appearance="outline">
-                  <mat-label>Purchase Date</mat-label>
-                  <input matInput placeholder="Purchase Date" type="date"  formControlName="purchasedate" >
+                <mat-label>Purchase Date</mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="Purchase Date" formControlName="purchasedate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
              
               <br/>

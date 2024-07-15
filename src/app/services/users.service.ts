@@ -19,7 +19,7 @@ export class UsersService {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.USERS_URL + "/" + mid).pipe(
           retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
@@ -35,7 +35,7 @@ export class UsersService {
         .pipe(
           retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
@@ -53,16 +53,16 @@ export class UsersService {
         let headers = new HttpHeaders({
           'Content-Type': 'application/json'});
           let options = { headers: headers };
-        console.log(obj);
+        //console.log(obj);
         return this.http.post(routeurls.BASE_API_URL + routeurls.USERS_URL + "-update" , obj, options)
         .pipe(
           retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))

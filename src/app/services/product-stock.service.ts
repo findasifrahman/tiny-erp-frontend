@@ -17,13 +17,13 @@ export class ProductStockService {
       }
       getAll(mid: any): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.PRODUCT_STOCK_URL + "/" + mid ).pipe(
-          retry(3),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))
@@ -33,13 +33,13 @@ export class ProductStockService {
       getbyid(id: number): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.PRODUCT_STOCK_URL + "-getbyid" , { params: new HttpParams().set('id', id) })
         .pipe(
-          retry(2),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))
@@ -53,16 +53,16 @@ export class ProductStockService {
         let headers = new HttpHeaders({
           'Content-Type': 'application/json'});
           let options = { headers: headers };
-        console.log(obj);
+        //console.log(obj);
         return this.http.post(routeurls.BASE_API_URL + routeurls.PRODUCT_STOCK_URL + "-update" , obj, options)
         .pipe(
-          retry(3),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))
@@ -70,9 +70,25 @@ export class ProductStockService {
       }
 
       delete(id: any, mid: any): Observable<any> {
-        console.log("delete id--", id);
+        //console.log("delete id--", id);
         let headers = new HttpHeaders({
           'Content-Type': 'application/json'});
         return this.http.delete<any>(routeurls.BASE_API_URL + routeurls.PRODUCT_STOCK_URL ,{ params: new HttpParams().set('id', parseInt(id)).set('maincompanyid', mid) });
+      }
+
+      getStock(mid: any,categoryid: any, subcategoryid: any): Observable<any> {
+        return this.http.get<any>(routeurls.BASE_API_URL + routeurls.PRODUCT_STOCK_URL + "-getstock" , { params: new HttpParams().set('maincompanyid', mid).set('categoryid', categoryid).set('subcategoryid', subcategoryid) })
+        .pipe(
+          retry(1),
+          map(res => {
+            //console.log(res);
+            if (!res) {
+              throw new Error('Value expected!');
+            }
+            //console.log(res);
+            return res;
+          }),
+          catchError(err => of([]))
+        );
       }
 }

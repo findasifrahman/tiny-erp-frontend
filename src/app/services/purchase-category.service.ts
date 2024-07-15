@@ -17,7 +17,7 @@ export class PurchaseCategoryService {
       }
       getAll(mid: any): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.PURCHASE_CATEGORY_URL + "/" + mid ).pipe(
-          retry(3),
+          retry(1),
           map(res => {
             console.log(res);
             if (!res) {
@@ -33,7 +33,7 @@ export class PurchaseCategoryService {
       getbyid(id: number): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.PURCHASE_CATEGORY_URL + "-getbyid" , { params: new HttpParams().set('id', id) })
         .pipe(
-          retry(2),
+          retry(1),
           map(res => {
             console.log(res);
             if (!res) {
@@ -56,7 +56,7 @@ export class PurchaseCategoryService {
         console.log(obj);
         return this.http.post(routeurls.BASE_API_URL + routeurls.PURCHASE_CATEGORY_URL + "-update" , obj, options)
         .pipe(
-          retry(3),
+          retry(1),
           map(res => {
             console.log(res);
             if (!res) {

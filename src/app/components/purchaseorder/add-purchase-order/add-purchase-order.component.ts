@@ -6,7 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { purchaseordermodel  } from '../../../models/purchase-order.model';
 import { SupplierService } from '../../../services/supplier.service';
-
+import { DateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-add-purchase-order',
   templateUrl: './add-purchase-order.component.html',
@@ -24,8 +24,10 @@ export class AddPurchaseOrderComponent implements OnInit{
   supplierCompany: any;
   status_hidden = true;
   constructor(private service: PurchaseOrderService,private snackBar: MatSnackBar, private supplierService: SupplierService,
-    private formBuilder: FormBuilder, private router: Router,
-    private models : purchaseordermodel ) { }
+    private formBuilder: FormBuilder, private router: Router,private dateAdapter: DateAdapter<Date>,
+    private models : purchaseordermodel ) {
+      this.dateAdapter.setLocale('en-GB');
+     }
 
   ngOnInit(): void {
       // Implement the initialization logic here

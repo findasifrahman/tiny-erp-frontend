@@ -7,6 +7,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { purchaseordermodel  } from '../../../models/purchase-order.model';
 import { SupplierService } from '../../../services/supplier.service';
 import moment from 'moment';
+import { DateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-edit-purchase-order',
   templateUrl: './edit-purchase-order.component.html',
@@ -25,8 +26,10 @@ export class EditPurchaseOrderComponent implements OnInit{
   supplierCompany: any;
   status_hidden = true;
   constructor(private service: PurchaseOrderService,private snackBar: MatSnackBar, private supplierService: SupplierService,
-    private formBuilder: FormBuilder, private router: Router,private route:ActivatedRoute,
-    private models : purchaseordermodel ) { }
+    private formBuilder: FormBuilder, private router: Router,private route:ActivatedRoute,private dateAdapter: DateAdapter<Date>,
+    private models : purchaseordermodel ) { 
+      this.dateAdapter.setLocale('en-GB');
+    }
 
   ngOnInit(): void {
       // Implement the initialization logic here

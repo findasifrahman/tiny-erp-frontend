@@ -17,13 +17,13 @@ export class AssetsService {
       }
       getAll(mid:any): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.ASSET_URL + "/" + mid ).pipe(
-          retry(3),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))
@@ -33,13 +33,13 @@ export class AssetsService {
       getbyid(id: number): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.ASSET_URL + "-getbyid", { params: new HttpParams().set('id', id) })
         .pipe(
-          retry(3),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))
@@ -55,13 +55,13 @@ export class AssetsService {
         console.log(obj);
         return this.http.post(routeurls.BASE_API_URL + routeurls.ASSET_URL + "-update" , obj, options)
         .pipe(
-          retry(3),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))

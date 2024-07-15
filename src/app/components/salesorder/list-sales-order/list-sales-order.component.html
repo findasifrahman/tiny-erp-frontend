@@ -51,7 +51,7 @@
                         </ng-container>
                         <ng-container matColumnDef="orderdate">
                             <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
-                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.orderdate}} </mat-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.orderdate | date: 'dd/MM/yyyy'}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="buttons">
                             <mat-header-cell *matHeaderCellDef></mat-header-cell>

@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { employeemodel  } from '../../../models/employee.model';
 import moment from 'moment';
+import { DateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-edit-employee',
   templateUrl: './edit-employee.component.html',
@@ -19,8 +20,10 @@ export class EditEmployeeComponent {
   loading = false;
   form!: FormGroup;
   constructor(private service: EmployeeService,private snackBar: MatSnackBar,private route:ActivatedRoute,
-    private formBuilder: FormBuilder, private router: Router,
-    private models : employeemodel ) { }
+    private formBuilder: FormBuilder, private router: Router,private dateAdapter: DateAdapter<Date>,
+    private models : employeemodel ) { 
+      this.dateAdapter.setLocale('en-GB');
+    }
   ngOnInit(): void {
     // Implement the initialization logic here
     this.form = this.models.modelForms;
@@ -29,10 +32,8 @@ export class EditEmployeeComponent {
           
         this.route.params.subscribe(params => {
           this.id =  parseInt(params['id']);
-          console.log("update id--" + params['id']);
           this.service.getbyid(this.id).subscribe({
             next: response => {
-              console.log("data by id", response);
               response["joiningdate"] = moment(response['joiningdate']).format("YYYY-MM-DD")
               this.form.patchValue(response);
             },
@@ -56,7 +57,7 @@ export class EditEmployeeComponent {
 
     if(formValue.maincompanyid != null){
       this.loading = true;
-        await this.service.Add(formValue).subscribe({
+        await this.service.update(this.id,formValue).subscribe({
           next: response => {
             // handle successful login
             console.log("post req successfull");

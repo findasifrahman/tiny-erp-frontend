@@ -7,7 +7,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SalesOrdersmodel  } from '../../../models/sales-orders.model';
 import { CustomerService } from '../../../services/customer.service'
 import { EmployeeService } from '../../../services/employee.service';
-
+import { DateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-add-sales-order',
   templateUrl: './add-sales-order.component.html',
@@ -25,9 +25,11 @@ export class AddSalesOrderComponent {
   spinner_value = 50;
   loading = false;
   form!: FormGroup;
-  constructor(private service: SalesOrdersService,private snackBar: MatSnackBar,
+  constructor(private service: SalesOrdersService,private snackBar: MatSnackBar,private dateAdapter: DateAdapter<Date>,
     private formBuilder: FormBuilder, private router: Router, private customerService: CustomerService, private employeeService: EmployeeService,
-    private models : SalesOrdersmodel ) { }
+    private models : SalesOrdersmodel ) { 
+      this.dateAdapter.setLocale('en-GB');
+    }
 
   ngOnInit(): void {
       // Implement the initialization logic here

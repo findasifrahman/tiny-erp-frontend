@@ -18,13 +18,13 @@ export class MainCompanyService {
       }
       getAll(): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.MAIN_COMPANY_URL ).pipe(
-          retry(3),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))
@@ -34,13 +34,13 @@ export class MainCompanyService {
       getbyid(id: number): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.MAIN_COMPANY_URL + "-getbyid", { params: new HttpParams().set('id', id) })
         .pipe(
-          retry(3),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))
@@ -59,20 +59,20 @@ export class MainCompanyService {
         console.log(obj);
         return this.http.post(routeurls.BASE_API_URL + routeurls.MAIN_COMPANY_URL + "-update" , obj, options)
         .pipe(
-          retry(3),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))
         );
       }
       delete(id: any,): Observable<any> {
-        console.log("delete id--", id);
+        //console.log("delete id--", id);
         let headers = new HttpHeaders({
           'Content-Type': 'application/json'});
         return this.http.delete<any>(routeurls.BASE_API_URL + routeurls.MAIN_COMPANY_URL ,{ params: new HttpParams().set('id', parseInt(id)) });

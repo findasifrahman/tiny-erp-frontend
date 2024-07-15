@@ -32,7 +32,10 @@
               </mat-form-field>
               <mat-form-field appearance="outline">
                 <mat-label>Date</mat-label>
-                <input matInput placeholder="Payment date" type="date"  formControlName="paymentdate" >
+                <input matInput [matDatepicker]="picker" placeholder="Payment Date" formControlName="paymentdate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+
               </mat-form-field>
 
               <mat-form-field appearance="outline">

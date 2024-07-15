@@ -24,7 +24,7 @@
                     </mat-form-field>
                 </div>
                 
-                <div class="row" style="margin-top: 20px;max-width: 100% !important; width: 90%;">
+                <div class="row" style="margin-top: 20px;max-width: 80% !important; width: 80%;">
                     <div class="col-md-12" style="max-width: 90% !important;">
                         <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8" style="width: 80%;max-width: 80% !important;">
                         <!-- Position Column -->
@@ -34,7 +34,7 @@
                         </ng-container>
                         <ng-container matColumnDef="joiningdate">
                             <mat-header-cell *matHeaderCellDef> Joining Date </mat-header-cell>
-                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.joiningdate}} </mat-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.joiningdate | date: 'dd/MM/yyyy'}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="employeename">
                             <mat-header-cell *matHeaderCellDef> Employeename </mat-header-cell>

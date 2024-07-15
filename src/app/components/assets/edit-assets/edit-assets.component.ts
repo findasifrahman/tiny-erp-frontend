@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { assetsmodel  } from '../../../models/assets.model';
 import moment from 'moment';
+import { DateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-edit-assets',
   templateUrl: './edit-assets.component.html',
@@ -17,11 +18,14 @@ export class EditAssetsComponent implements OnInit {
   loading = false;
   form!: FormGroup;
   constructor(private service: AssetsService,private snackBar: MatSnackBar,private route:ActivatedRoute,
-    private formBuilder: FormBuilder, private router: Router,
-    private models : assetsmodel ) { }
+    private formBuilder: FormBuilder, private router: Router,private dateAdapter: DateAdapter<Date>,
+    private models : assetsmodel ) { 
+      this.dateAdapter.setLocale('bd');
+    }
   ngOnInit(): void {
     // Implement the initialization logic here
     this.form = this.models.modelForms;
+    console.log("asset form", this.form);
     this.form.reset();
       
       this.route.params.subscribe(params => {

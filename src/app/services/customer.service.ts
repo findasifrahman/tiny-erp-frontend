@@ -17,13 +17,13 @@ export class CustomerService {
       }
       getAll(mid:any): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.CUSTOMER_URL + "/" + mid ).pipe(
-          retry(3),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))
@@ -33,13 +33,13 @@ export class CustomerService {
       getbyid(id: number): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.CUSTOMER_URL + "-getbyid", { params: new HttpParams().set('id', id) })
         .pipe(
-          retry(3),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))
@@ -53,16 +53,16 @@ export class CustomerService {
         let headers = new HttpHeaders({
           'Content-Type': 'application/json'});
           let options = { headers: headers };
-        console.log(obj);
+        //console.log(obj);
         return this.http.post(routeurls.BASE_API_URL + routeurls.CUSTOMER_URL + "-update" , obj, options)
         .pipe(
-          retry(3),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))
@@ -70,7 +70,7 @@ export class CustomerService {
       }
 
       delete(id: any, mid: any): Observable<any> {
-        console.log("delete id--", id);
+        //console.log("delete id--", id);
         let headers = new HttpHeaders({
           'Content-Type': 'application/json'});
         return this.http.delete<any>(routeurls.BASE_API_URL + routeurls.CUSTOMER_URL ,{ params: new HttpParams().set('id', parseInt(id)).set('maincompanyid', mid) });

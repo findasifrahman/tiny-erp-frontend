@@ -38,7 +38,7 @@
                         </ng-container>
                         <ng-container matColumnDef="paymentdate">
                             <mat-header-cell *matHeaderCellDef>Payment Date</mat-header-cell>
-                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.paymentdate}} </mat-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.paymentdate | date: 'dd/MM/yyyy'}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="amount">
                             <mat-header-cell *matHeaderCellDef> Amount Paid</mat-header-cell>

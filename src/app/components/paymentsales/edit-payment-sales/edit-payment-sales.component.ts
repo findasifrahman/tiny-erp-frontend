@@ -8,6 +8,7 @@ import { PaymentSalesmodel  } from '../../../models/payment-sales.model';
 import { CustomerService } from '../../../services/customer.service'
 import { EmployeeService } from '../../../services/employee.service';
 import moment from 'moment';
+import { DateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-edit-payment-sales',
   templateUrl: './edit-payment-sales.component.html',
@@ -24,9 +25,11 @@ export class EditPaymentSalesComponent {
   loading = false;
   form!: FormGroup;
   maincompanyid = localStorage.getItem('maincompanyid');
-  constructor(private service: PaymentSalesService,private snackBar: MatSnackBar,private route:ActivatedRoute,
+  constructor(private service: PaymentSalesService,private snackBar: MatSnackBar,private route:ActivatedRoute,private dateAdapter: DateAdapter<Date>,
     private formBuilder: FormBuilder, private router: Router,private customerService: CustomerService, private employeeService: EmployeeService,
-    private models : PaymentSalesmodel ) { }
+    private models : PaymentSalesmodel ) { 
+      this.dateAdapter.setLocale('en-GB');
+    }
   ngOnInit(): void {
     // Implement the initialization logic here
     this.form = this.models.modelForms;

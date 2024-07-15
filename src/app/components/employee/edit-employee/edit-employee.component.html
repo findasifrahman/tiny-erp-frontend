@@ -17,8 +17,10 @@
           <h3>Edit Employee</h3>
           <form class="example-container" [formGroup]="form">
             <mat-form-field appearance="outline">
-                <mat-label>Joining Date</mat-label>
-                <input matInput placeholder="Joining Date" type="date"  formControlName="joiningdate" >
+              <mat-label>joining date</mat-label>
+              <input matInput [matDatepicker]="picker" placeholder="joining date" formControlName="joiningdate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>employee Name</mat-label>

@@ -52,7 +52,9 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
               <mat-label>Purchase Date</mat-label>
-              <input matInput placeholder="Date" type="date" formControlName="date">
+              <input matInput [matDatepicker]="picker" placeholder="Purchase Date" formControlName="date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field appearance="outline">

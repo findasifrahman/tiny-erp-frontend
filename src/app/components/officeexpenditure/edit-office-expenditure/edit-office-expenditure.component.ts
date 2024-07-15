@@ -7,6 +7,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { officeexpendituretmodel  } from '../../../models/office-expenditure.model';
 import { OfficePurchaseItemListService } from '../../../services/office-purchase-itemlist.service';
 import moment from 'moment';
+import { DateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-edit-office-expenditure',
   templateUrl: './edit-office-expenditure.component.html',
@@ -26,8 +27,10 @@ export class EditOfficeExpenditureComponent implements OnInit {
   status_hidden = true;
   unit_arr: any[] = ["kg","g","pcs","liter"];
   constructor(private service: OfficeExpenditureService,private snackBar: MatSnackBar, private officePurchaseItemListService: OfficePurchaseItemListService,
-    private formBuilder: FormBuilder, private router: Router,private route:ActivatedRoute,
-    private models : officeexpendituretmodel ) { }
+    private formBuilder: FormBuilder, private router: Router,private route:ActivatedRoute,private dateAdapter: DateAdapter<Date>,
+    private models : officeexpendituretmodel ) { 
+      this.dateAdapter.setLocale('en-GB');
+    }
 
   ngOnInit(): void {
       // Implement the initialization logic here

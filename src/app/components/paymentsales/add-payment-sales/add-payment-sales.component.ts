@@ -7,6 +7,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { PaymentSalesmodel  } from '../../../models/payment-sales.model';
 import { CustomerService } from '../../../services/customer.service'
 import { EmployeeService } from '../../../services/employee.service';
+import { DateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-add-payment-sales',
   templateUrl: './add-payment-sales.component.html',
@@ -22,9 +23,11 @@ export class AddPaymentSalesComponent implements OnInit{
   loading = false;
   form!: FormGroup;
   maincompanyid = localStorage.getItem('maincompanyid');
-  constructor(private service: PaymentSalesService,private snackBar: MatSnackBar,
+  constructor(private service: PaymentSalesService,private snackBar: MatSnackBar,private dateAdapter: DateAdapter<Date>,
     private formBuilder: FormBuilder, private router: Router,private customerService: CustomerService, private employeeService: EmployeeService,
-    private models : PaymentSalesmodel ) { }
+    private models : PaymentSalesmodel ) { 
+      this.dateAdapter.setLocale('en-GB');
+    }
   ngOnInit(): void {
     // Implement the initialization logic here
     this.form = this.models.modelForms;

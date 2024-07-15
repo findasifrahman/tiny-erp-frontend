@@ -1,23 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AssetsService } from '../../../services/assets.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { assetsmodel  } from '../../../models/assets.model';
-
+import { DateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-add-assets',
   templateUrl: './add-assets.component.html',
   styleUrl: './add-assets.component.scss'
 })
 export class AddAssetsComponent implements OnInit{
+
   spinner_value = 50;
   loading = false;
   form!: FormGroup;
+  
   constructor(private service: AssetsService,private snackBar: MatSnackBar,
-    private formBuilder: FormBuilder, private router: Router,
-    private models : assetsmodel ) { }
+    private formBuilder: FormBuilder, private router: Router,private dateAdapter: DateAdapter<Date>,
+    private models : assetsmodel ) { 
+      //this.purchasedate = this.datePipe.transform(new Date(), 'dd-MM-yyyy');
+      this.dateAdapter.setLocale('en-GB');
+    }
   ngOnInit(): void {
     // Implement the initialization logic here
     this.form = this.models.modelForms;

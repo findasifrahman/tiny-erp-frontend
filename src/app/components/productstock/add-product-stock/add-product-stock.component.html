@@ -59,8 +59,10 @@
 
               
               <mat-form-field appearance="outline">
-                <mat-label>Entry Date</mat-label>
-                <input matInput placeholder=" Entry Date" type="date"  formControlName="entrydate" >
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="Entry Date" formControlName="entrydate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
 
               <mat-form-field>

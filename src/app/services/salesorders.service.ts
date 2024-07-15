@@ -17,13 +17,13 @@ export class SalesOrdersService {
       }
       getAll(mid:any): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.SALESORDERS_URL + "/" + mid ).pipe(
-          retry(3),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))
@@ -33,13 +33,13 @@ export class SalesOrdersService {
       getbyid(id: number): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.SALESORDERS_URL + "-getbyid", { params: new HttpParams().set('id', id) })
         .pipe(
-          retry(3),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))
@@ -53,16 +53,16 @@ export class SalesOrdersService {
         let headers = new HttpHeaders({
           'Content-Type': 'application/json'});
           let options = { headers: headers };
-        console.log(obj);
+        //console.log(obj);
         return this.http.post(routeurls.BASE_API_URL + routeurls.SALESORDERS_URL + "-update" , obj, options)
         .pipe(
-          retry(3),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))
@@ -77,13 +77,13 @@ export class SalesOrdersService {
       }
       getAllbydate(mid:any,dated : string): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.SALESORDERS_URL + "-getbydate", { params: new HttpParams().set('dated', dated).set('id', mid) } ).pipe(
-          retry(3),
+          retry(1),
           map(res => {
-            console.log(res);
+            //console.log(res);
             if (!res) {
               throw new Error('Value expected!');
             }
-            console.log(res);
+            //console.log(res);
             return res;
           }),
           catchError(err => of([]))

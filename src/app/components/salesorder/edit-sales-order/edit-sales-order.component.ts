@@ -8,6 +8,7 @@ import { SalesOrdersmodel  } from '../../../models/sales-orders.model';
 import { CustomerService } from '../../../services/customer.service'
 import { EmployeeService } from '../../../services/employee.service';
 import moment from 'moment';
+import { DateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-edit-sales-order',
   templateUrl: './edit-sales-order.component.html',
@@ -26,9 +27,11 @@ export class EditSalesOrderComponent {
   spinner_value = 50;
   loading = false;
   form!: FormGroup;
-  constructor(private service: SalesOrdersService,private snackBar: MatSnackBar,private route:ActivatedRoute,
+  constructor(private service: SalesOrdersService,private snackBar: MatSnackBar,private route:ActivatedRoute,private dateAdapter: DateAdapter<Date>,
     private formBuilder: FormBuilder, private router: Router, private customerService: CustomerService, private employeeService: EmployeeService,
-    private models : SalesOrdersmodel ) { }
+    private models : SalesOrdersmodel ) { 
+      this.dateAdapter.setLocale('en-GB');
+    }
 
   ngOnInit(): void {
       // Implement the initialization logic here
@@ -103,7 +106,7 @@ export class EditSalesOrderComponent {
           next: response => {
             // handle successful login
             console.log("post req successfull");
-            this.snackBar.open('Data Added Successfully', "Remove", {
+            this.snackBar.open('Data Updated Successfully', "Remove", {
               duration: 6000,
               verticalPosition: 'top',
               panelClass: ['blue-snackbar']

@@ -49,7 +49,7 @@
                         </ng-container>
                         <ng-container matColumnDef="entrydate">
                             <mat-header-cell *matHeaderCellDef>Entry Date</mat-header-cell>
-                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.entrydate}} </mat-cell>
+                            <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.entrydate | date: 'dd/MM/yyyy'}} </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="status">
                             <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>

@@ -1,6 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import moment from 'moment';
 
 export interface User {
   username: string;
@@ -16,7 +17,7 @@ export class assetsmodel {
     assetname: ['', [Validators.required, Validators.maxLength(256)]],
     description: ['',  Validators.maxLength(256)],
     assetvalue: [0, [Validators.required, Validators.min(0)]],
-    purchasedate: ['', [Validators.required]],
+    purchasedate: [moment().format('YYYY-MM-DD'), [Validators.required]],
     image: ['']
   });
 

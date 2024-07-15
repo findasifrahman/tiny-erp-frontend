@@ -8,7 +8,7 @@ import { ProductStockmodel  } from '../../../models/product-stock.model';
 import moment from 'moment';
 import { ProductCategoryService } from '../../../services/product-category.service'
 import { ProductSubCategoryService } from '../../../services/product-sub-category.service'
-
+import { DateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-add-product-stock',
   templateUrl: './add-product-stock.component.html',
@@ -35,10 +35,12 @@ export class AddProductStockComponent implements OnInit{
   loading = false;
   form!: FormGroup;
   maincompanyid = localStorage.getItem('maincompanyid');
-  constructor(private service: ProductStockService,private snackBar: MatSnackBar,
+  constructor(private service: ProductStockService,private snackBar: MatSnackBar,private dateAdapter: DateAdapter<Date>,
     private formBuilder: FormBuilder, private router: Router, private productCategoryService:ProductCategoryService,
     private productSubCategoryService:ProductSubCategoryService,
-    private models : ProductStockmodel ) { }
+    private models : ProductStockmodel ) { 
+      this.dateAdapter.setLocale('en-GB');
+    }
   ngOnInit(): void {
     // Implement the initialization logic here
     this.form = this.models.modelForms;

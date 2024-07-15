@@ -9,13 +9,15 @@ import moment from 'moment';
 import { SalesOrdersService } from '../../../services/salesorders.service'
 import { ProductCategoryService } from '../../../services/product-category.service'
 import { ProductSubCategoryService } from '../../../services/product-sub-category.service'
-
+import { ProductStockService } from '../../../services/product-stock.service'
 @Component({
   selector: 'app-add-sales-order-details',
   templateUrl: './add-sales-order-details.component.html',
   styleUrl: './add-sales-order-details.component.scss'
 })
 export class AddSalesOrderDetailsComponent implements OnInit,AfterViewChecked {
+  product_stock = 0
+
   categoryName_arr = ["sales_agent","staff","admin"]
   roleName_arr = ["admin","sales","purchase","hr"]
   productcategoryid_arr : any[] = [];
@@ -29,10 +31,11 @@ export class AddSalesOrderDetailsComponent implements OnInit,AfterViewChecked {
   loading = false;
   form!: FormGroup;
 
+  stockView = true;
   filteredSubCategories: any[] = [];
 
   maincompanyid = localStorage.getItem('maincompanyid');
-  constructor(private service: SalesOrdersDetailsService,private snackBar: MatSnackBar,
+  constructor(private service: SalesOrdersDetailsService,private snackBar: MatSnackBar, private productStockService: ProductStockService,
     private formBuilder: FormBuilder, private router: Router, private salesOrdersService:SalesOrdersService,private productCategoryService:ProductCategoryService,
     private productSubCategoryService:ProductSubCategoryService,private readonly changeDetectorRef: ChangeDetectorRef,
     private models : SalesOrderDetailsmodel ) { }
@@ -118,6 +121,24 @@ export class AddSalesOrderDetailsComponent implements OnInit,AfterViewChecked {
       this.form.controls['productsubcategoryname'].setValue(selectedSubCategory.subcategoryname);
       this.form.controls['unitprice'].setValue(selectedSubCategory.price);
     }
+  }
+
+  viewStock(){
+    if(this.form.value.productsubcategoryid != null && this.form.value.productsubcategoryid != "" && this.form.value.productcategoryid != null && this.form.value.productcategoryid != ""){
+      this.productStockService.getStock(this.maincompanyid,this.form.value.productcategoryid, this.form.value.productsubcategoryid).subscribe((posts) => {
+        console.log("product_stock", posts['data']);
+        this.product_stock = posts['data']
+        this.stockView = true
+      });
+    }else{
+      this.snackBar.open('Please set Product Sub Category', "Remove", {
+        duration: 6000,
+        verticalPosition: 'top',
+        panelClass: ['red-snackbar']
+      });
+      this.stockView = false
+    }
+    //this.stockView = true
   }
   /////////////////////
 
