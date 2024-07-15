@@ -147,41 +147,50 @@ export class AddSalesOrderDetailsComponent implements OnInit,AfterViewChecked {
     const formValue = this.form.value;
     formValue['maincompanyid'] = this.maincompanyid;
 
-    console.log(formValue);
-
-    if(formValue.maincompanyid != null || formValue.salesorderid != null || formValue.productcategoryid != null || formValue.productsubcategoryid != null ){
-      this.loading = true;
-        await this.service.Add(formValue).subscribe({
-          next: response => {
-            // handle successful login
-            console.log("post req successfull");
-            this.snackBar.open('Data Added Successfully', "Remove", {
-              duration: 6000,
-              verticalPosition: 'top',
-              panelClass: ['blue-snackbar']
-            });
-            this.loading = false;
-            this.router.navigate(["/ListSalesOrderDetails"]);
-          },
-          error: error => {
-            // handle login error
-            console.log("error post", error);
-            this.snackBar.open('Unsuccessfull', "Remove", {
-              duration: 6000,
-              verticalPosition: 'top',
-              panelClass: ['red-snackbar']
-            });
-            this.loading = false;
-          }
-        });
-    }
-    else{
-      this.snackBar.open('Please set Main Company ID', "Remove", {
+    //console.log(formValue);
+    if(this.product_stock < formValue.quantity){
+      this.snackBar.open('Quantity is more than Stock', "Remove", {
         duration: 6000,
         verticalPosition: 'top',
         panelClass: ['red-snackbar']
       });
+      return;
+    }
+    else{
+        if(formValue.maincompanyid != null || formValue.salesorderid != null || formValue.productcategoryid != null || formValue.productsubcategoryid != null ){
+          this.loading = true;
+            await this.service.Add(formValue).subscribe({
+              next: response => {
+                // handle successful login
+                console.log("post req successfull");
+                this.snackBar.open('Data Added Successfully', "Remove", {
+                  duration: 6000,
+                  verticalPosition: 'top',
+                  panelClass: ['blue-snackbar']
+                });
+                this.loading = false;
+                this.router.navigate(["/ListSalesOrderDetails"]);
+              },
+              error: error => {
+                // handle login error
+                console.log("error post", error);
+                this.snackBar.open('Unsuccessfull', "Remove", {
+                  duration: 6000,
+                  verticalPosition: 'top',
+                  panelClass: ['red-snackbar']
+                });
+                this.loading = false;
+              }
+            });
+        }
+        else{
+          this.snackBar.open('Please set Main Company ID', "Remove", {
+            duration: 6000,
+            verticalPosition: 'top',
+            panelClass: ['red-snackbar']
+          });
 
+        }
     }
     
     /**/
