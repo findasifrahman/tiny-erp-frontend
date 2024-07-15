@@ -69,7 +69,6 @@ export class UsersService {
         );
       }
       delete(id: any, mid: any): Observable<any> {
-        console.log("delete id--", id);
         let headers = new HttpHeaders({
           'Content-Type': 'application/json'});
         return this.http.delete<any>(routeurls.BASE_API_URL + routeurls.USERS_URL ,{ params: new HttpParams().set('id', parseInt(id)).set('maincompanyid', mid) });

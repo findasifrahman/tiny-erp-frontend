@@ -17,7 +17,7 @@ export class SupplierService {
       }
       getAll(mid: any): Observable<any> {
         return this.http.get<any>(routeurls.BASE_API_URL + routeurls.SUPPLIER_URL + "/" + mid ).pipe(
-          retry(3),
+          retry(1),
           map(res => {
             console.log(res);
             if (!res) {
@@ -56,7 +56,7 @@ export class SupplierService {
         console.log(obj);
         return this.http.post(routeurls.BASE_API_URL + routeurls.SUPPLIER_URL + "-update" , obj, options)
         .pipe(
-          retry(3),
+          retry(1),
           map(res => {
             console.log(res);
             if (!res) {
