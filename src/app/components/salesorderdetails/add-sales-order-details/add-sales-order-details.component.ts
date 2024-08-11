@@ -60,7 +60,7 @@ export class AddSalesOrderDetailsComponent implements OnInit,AfterViewChecked {
         });
     ///////////////////////////
 
-    this.salesOrdersService.getAllbydate(this.maincompanyid, moment().subtract(7,'d').format('YYYY-MM-DD').toString()).subscribe((posts) => {
+    this.salesOrdersService.getAllbydate(this.maincompanyid, moment().subtract(60,'d').format('YYYY-MM-DD').toString()).subscribe((posts) => {
       console.log("salesorderid_arr", posts);
       this.salesorderid_arr = posts
       this.productCategoryService.getAll(this.maincompanyid).subscribe((posts) => {

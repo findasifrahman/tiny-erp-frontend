@@ -1,6 +1,6 @@
 export const routeurls = Object.freeze({
-    //BASE_API_URL: 'http://localhost:7071/api',
-    BASE_API_URL: 'https://tinyerpfunction.azurewebsites.net/api',
+    BASE_API_URL: 'http://localhost:7071/api',
+    //BASE_API_URL: 'https://tinyerpfunction.azurewebsites.net/api',
     MAIN_COMPANY_URL: "/maincompany",
     ROLES_URL: "/roles",
     USERS_URL: "/users",
