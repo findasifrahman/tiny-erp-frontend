@@ -21,8 +21,6 @@
                     </mat-form-field>
                 </div>
                 
-                <div class="row" style="margin-top: 20px;margin-right: 45px;max-width: 90% !important; width: 80%;">
-                    <div class="col-md-12" style="max-width: 100% !important;">
                         <mat-table [dataSource]="AllElement" multiTemplateDataRows  class="mat-elevation-z8" style="width: 80%;max-width: 80% !important;">
                         <!-- Position Column -->
                         <ng-container matColumnDef="salesorderid">
@@ -111,8 +109,7 @@
                         <mat-row *matRowDef="let row; columns: ['expandedDetail']"></mat-row>
                         </mat-table>
                         <mat-paginator [pageSize]="10" [pageSizeOptions]="[2, 4, 6, 10, 20]"></mat-paginator>
-                    </div>
-                </div>
+                    
             </ng-template>
 
 <br />

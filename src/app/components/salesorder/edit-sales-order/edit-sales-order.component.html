@@ -13,10 +13,11 @@
 
 
     <ng-template #content>
-      <div class="container">
-          <h3>Edit Order</h3>
-          <form class="example-container" [formGroup]="form">
-          <mat-form-field>
+      <h3>Edit Sales Order</h3>
+      <div class="container" >
+          
+        <form class="example-container" [formGroup]="form" fxLayout="column" fxLayout.lt-md="column" fxFlexFill>
+          <mat-form-field fxFlex="100" fxFlex.lt-md="100">
           <mat-label>Customer ID</mat-label>
               <select matNativeControl formControlName="customerid" (ngModelChange)="customerIDChanged($event)" name="customerid" >   
                   <option *ngFor="let car of customerID_arr" [value]="car">
@@ -24,12 +25,12 @@
                   </option>
               </select>
               <mat-hint>Customer ID</mat-hint>
-          </mat-form-field>
-            <mat-form-field appearance="outline">
+          </mat-form-field >
+            <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>Customer Company</mat-label>
                 <input matInput placeholder="Customer Company" type="text" formControlName="customercompany" readonly>
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field fxFlex="100" fxFlex.lt-md="100">
               <mat-label>Sales type</mat-label>
               <select matNativeControl formControlName="salestype" name="salestype" >   
                   <option *ngFor="let car of salestype_arr" [value]="car">
@@ -38,7 +39,7 @@
               </select>
               <mat-hint>direct or agent</mat-hint>
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field fxFlex="100" fxFlex.lt-md="100" fxFlex="100" fxFlex.lt-md="100">
               <mat-label>Sales Agent ID</mat-label>
               <select matNativeControl formControlName="salesagentid" name="salesagentid" (ngModelChange)="salesAgentIDChanged($event)">   
                   <option *ngFor="let car of salesagentid_arr" [value]="car">
@@ -48,16 +49,16 @@
               <mat-hint>Agent Name or Direct sale </mat-hint>
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
               <mat-label>Sales Agent Name</mat-label>
               <input matInput placeholder="Sales Agent Name" type="text"  formControlName="salesagent" readonly>
            </mat-form-field>
           
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>Total Amount</mat-label>
                 <input matInput placeholder="0" type="number"  formControlName="totalamount" >
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field fxFlex="100" fxFlex.lt-md="100">
               <mat-label>Status</mat-label>
               <select matNativeControl formControlName="status" name="status" >   
                   <option *ngFor="let car of status_arr" [value]="car">
@@ -66,15 +67,13 @@
               </select>
               <mat-hint>Pending or delivered </mat-hint>
             </mat-form-field>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
               <mat-label>Order Date</mat-label>
               <input matInput [matDatepicker]="picker" placeholder="Date" formControlName="orderdate">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
 
-
-            <br/>
             <div class="input-group btn-group">
               <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
             </div>

@@ -14,8 +14,6 @@
 
 
 <div style="margin-top: 100px; max-width: 180vh !important;">
-    <div class="d-flex justify-content-center h-100 w-100">
-      <div class="card">
   
         <ng-template #content>
                 <div fxLayout fxLayoutAlign="center center">
@@ -24,9 +22,7 @@
                     </mat-form-field>
                 </div>
                 
-                <div class="row" style="margin-top: 20px;max-width: 100% !important; width: 90%;">
-                    <div class="col-md-12" style="max-width: 90% !important;">
-                        <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8" style="width: 80%;max-width: 80% !important;">
+                    <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8" style="width: 80%;max-width: 80% !important;">
                         <!-- Position Column -->
                         <ng-container matColumnDef="officeexpenditureid">
                             <mat-header-cell *matHeaderCellDef>Expenditure ID</mat-header-cell>
@@ -74,11 +70,9 @@
                     
                         </mat-table>
                         <mat-paginator [pageSize]="10" [pageSizeOptions]="[2, 4, 6, 10, 20]"></mat-paginator>
-                    </div>
-                </div>
+                    
             </ng-template>
-    </div>
-   </div>
+    
 </div>
 <br />
 <br />

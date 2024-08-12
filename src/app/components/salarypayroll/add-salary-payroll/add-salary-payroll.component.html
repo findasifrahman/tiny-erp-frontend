@@ -13,10 +13,10 @@
   
   
       <ng-template #content>
+        <h3>Add Payroll</h3>
         <div class="container">
-            <h3>Add Payroll</h3>
-            <form class="example-container" [formGroup]="form">
-            <mat-form-field>
+            <form class="example-container" [formGroup]="form" fxLayout="column" fxLayout.lt-md="column" fxFlexFill>
+            <mat-form-field fxFlex="100" fxFlex.lt-md="100">
             <mat-label>Employee ID</mat-label>
                 <select matNativeControl formControlName="employeeid" (ngModelChange)="employeeidChanged($event)" name="employeeid" >   
                     <option *ngFor="let car of employeeid_arr" [value]="car">
@@ -25,12 +25,12 @@
                 </select>
                 <mat-hint>Customer ID</mat-hint>
             </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                   <mat-label>Employee Name</mat-label>
                   <input matInput placeholder="Employee Name" type="text" formControlName="employeename" readonly>
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>Date</mat-label>
                 <input matInput [matDatepicker]="picker" placeholder="Date" formControlName="date">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -38,33 +38,31 @@
             </mat-form-field>
 
             
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>Salary</mat-label>
                 <input matInput placeholder="Salary" type="number" formControlName="salary">
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>Deduction</mat-label>
                 <input matInput placeholder="Deduction" type="number" formControlName="deduction">
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>Bonus</mat-label>
                 <input matInput placeholder="Bonus" type="number" formControlName="bonus">
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>Leave Taken</mat-label>
                 <input matInput placeholder="Leave Taken" type="number" formControlName="leavetaken">
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>Final Salary paid</mat-label>
                 <input matInput placeholder="Final Salary paid" type="number" formControlName="finalsalarypaid">
             </mat-form-field>
 
-
-              <br/>
               <div class="input-group btn-group">
                 <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
               </div>

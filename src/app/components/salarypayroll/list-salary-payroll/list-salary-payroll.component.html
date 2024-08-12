@@ -11,9 +11,7 @@
     </div>
 </div>
 
-<div style="margin-top: 100px; max-width: 120vh !important;">
-    <div class="d-flex justify-content-center h-100">
-      <div class="card">
+<div style="margin-top: 100px; max-width: 180vh !important;">
   
         <ng-template #content>
                 <div fxLayout fxLayoutAlign="center center">
@@ -21,10 +19,7 @@
                         <input matInput type="text" (keyup)="doFilter($event)" placeholder="Filter">
                     </mat-form-field>
                 </div>
-                
-                <div class="row" style="margin-top: 20px;margin-right: 45px;max-width: 80% !important; width: 80%;">
-                    <div class="col-md-12" style="max-width: 100% !important;">
-                        <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8" style="width: 80%;max-width: 70% !important;">
+                     <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8" style="width: 80%;max-width: 70% !important;">
                         <!-- Position Column -->
                         <ng-container matColumnDef="payrollid">
                             <mat-header-cell *matHeaderCellDef> Payroll ID</mat-header-cell>
@@ -75,11 +70,9 @@
                     
                         </mat-table>
                         <mat-paginator [pageSize]="10" [pageSizeOptions]="[2, 4, 6, 10, 20]"></mat-paginator>
-                    </div>
-                </div>
+                    
             </ng-template>
-    </div>
-   </div>
+    
 </div>
 <br />
 <br />

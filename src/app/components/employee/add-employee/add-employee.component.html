@@ -13,45 +13,46 @@
   
   
       <ng-template #content>
+        
+        <h3>Add New Employee</h3>
         <div class="container">
-            <h3>Add New Employee</h3>
-            <form class="example-container" [formGroup]="form">
-              <mat-form-field appearance="outline">
+            <form class="example-container" [formGroup]="form" fxLayout="column" fxLayout.lt-md="column" fxFlexFill>
+              <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>joining date</mat-label>
                 <input matInput [matDatepicker]="picker" placeholder="joining date" formControlName="joiningdate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                   <mat-label>employee Name</mat-label>
                   <input matInput placeholder="Employee Name" type="text" formControlName="employeename" >
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                   <mat-label>Age</mat-label>
                   <input matInput placeholder="Age" type="number"  formControlName="age" >
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                   <mat-label>Contact Number</mat-label>
                   <input matInput placeholder="Contact Number" type="text"  formControlName="contactno" >
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                   <mat-label>Address</mat-label>
                   <input matInput placeholder="address" type="text"  formControlName="address" >
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                   <mat-label>Nid Number</mat-label>
                   <input matInput placeholder="Nid Number" type="text"  formControlName="nidnumber" >
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>Salary</mat-label>
                 <input matInput placeholder="Salary" type="number"  formControlName="salary" >
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>Employee Grade</mat-label>
                 <input matInput placeholder="Employee Grade" type="text"  formControlName="grade" >
               </mat-form-field>
 
-              <mat-form-field>
+              <mat-form-field fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>Role</mat-label>
                 <select matNativeControl formControlName="roleid" name="roleid" >   
                   <option *ngFor="let car of roleName_arr" [value]="car">
@@ -61,7 +62,7 @@
                 <mat-hint>Admin or staff</mat-hint>
               </mat-form-field>
 
-              <mat-form-field>
+              <mat-form-field fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>Employee Type</mat-label>
                 <select matNativeControl formControlName="state" name="state" >   
                   <option *ngFor="let car of categoryName_arr" [value]="car">
@@ -71,15 +72,15 @@
                 <mat-hint>Sales_Agent or Direct</mat-hint>
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>Description</mat-label>
                 <input matInput placeholder="Description" type="text"  formControlName="description" >
               </mat-form-field>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>Image</mat-label>
                 <input matInput placeholder="Image" type="text"  formControlName="image" >
               </mat-form-field>
-              <br/>
+              
               <div class="input-group btn-group">
                 <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
               </div>

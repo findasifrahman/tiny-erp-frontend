@@ -10,42 +10,43 @@
     </div>
   </div>
   
-      <ng-template #content>
-        <div class="container">
-            <h3>Add Product Sub Category</h3>
-            <form class="example-container" [formGroup]="form">
-              <mat-form-field>
+      <ng-template #content  >
+        
+        <h3 >Add Product Sub Category</h3>
+        
+            <form class="example-container"  [formGroup]="form" fxLayout="column" fxLayout.lt-md="column" fxFlexFill>
+              <mat-form-field fxFlex="100" fxFlex.lt-md="100">
                <mat-label>Product Category ID</mat-label>
                     <select matNativeControl formControlName="productcategoryid" (ngModelChange)="productcategoryIDChanged($event)" name="customerid" >   
-                        <option *ngFor="let car of productcategoryID_arr" [value]="car">
-                        {{car}}
+                        <option *ngFor="let car of productcategory_arr" [value]="car.productcategoryid">
+                        {{car.categoryname}}
                         </option>
                     </select>
                     <mat-hint>Product Category ID</mat-hint>
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                   <mat-label>Category Name</mat-label>
                   <input matInput placeholder="Product Category Name" type="text" formControlName="categoryname" readonly>
               </mat-form-field>
 
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
                 <mat-label>Sub Category Name</mat-label>
                 <input matInput placeholder="Sub Category Name" type="text"  formControlName="subcategoryname">
              </mat-form-field>
 
-             <mat-form-field appearance="outline">
+             <mat-form-field appearance="outline" fxFlex="100" fxFlex.lt-md="100">
               <mat-label>Unit Price</mat-label>
               <input matInput placeholder="Unit Price" type="number"  formControlName="price">
             </mat-form-field>
 
-              <br/>
-              <div class="input-group btn-group">
+              
+              <div class="input-group btn-group" fxFlex="100" fxFlex.lt-md="100">
                 <button type="submit" (click)="onSubmit()" class="form-control btn" style="height:40px;width:800px;background-color:black;color:whitesmoke" [disabled]="!form.valid">Submit</button>
               </div>
     
           </form>
-        </div>
+      
   
       </ng-template>
   
