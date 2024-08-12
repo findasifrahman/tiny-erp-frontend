@@ -125,7 +125,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 --------------------------------------------------------------------------------
-Package: @angular/flex-layout
+Package: @ngbracket/ngx-layout
 License: "MIT"
 
 
