@@ -139,60 +139,71 @@ export class AddSalesOrderDetailsComponent implements OnInit,AfterViewChecked {
       this.stockView = false
     }
     //this.stockView = true
+    
   }
   /////////////////////
 
   async onSubmit() {
     // Implement the submit logic here
-    const formValue = this.form.value;
-    formValue['maincompanyid'] = this.maincompanyid;
 
-    //console.log(formValue);
-    if(this.product_stock < formValue.quantity){
-      this.snackBar.open('Quantity is more than Stock', "Remove", {
-        duration: 6000,
-        verticalPosition: 'top',
-        panelClass: ['red-snackbar']
-      });
-      return;
-    }
-    else{
-        if(formValue.maincompanyid != null || formValue.salesorderid != null || formValue.productcategoryid != null || formValue.productsubcategoryid != null ){
-          this.loading = true;
-            await this.service.Add(formValue).subscribe({
-              next: response => {
-                // handle successful login
-                console.log("post req successfull");
-                this.snackBar.open('Data Added Successfully', "Remove", {
-                  duration: 6000,
-                  verticalPosition: 'top',
-                  panelClass: ['blue-snackbar']
-                });
-                this.loading = false;
-                this.router.navigate(["/ListSalesOrderDetails"]);
-              },
-              error: error => {
-                // handle login error
-                console.log("error post", error);
-                this.snackBar.open('Unsuccessfull', "Remove", {
-                  duration: 6000,
-                  verticalPosition: 'top',
-                  panelClass: ['red-snackbar']
-                });
-                this.loading = false;
-              }
-            });
-        }
-        else{
-          this.snackBar.open('Please set Main Company ID', "Remove", {
-            duration: 6000,
-            verticalPosition: 'top',
-            panelClass: ['red-snackbar']
-          });
-
-        }
-    }
+    if(this.form.value.productsubcategoryid != null && this.form.value.productsubcategoryid != "" && this.form.value.productcategoryid != null && this.form.value.productcategoryid != ""){
+      this.productStockService.getStock(this.maincompanyid,this.form.value.productcategoryid, this.form.value.productsubcategoryid).subscribe((posts) => {
+        console.log("product_stock", posts['data']);
+        this.product_stock = posts['data']
+        this.stockView = true
+      
     
-    /**/
+
+        const formValue = this.form.value;
+        formValue['maincompanyid'] = this.maincompanyid;
+            //console.log(formValue);
+            if(this.product_stock < formValue.quantity){
+              this.snackBar.open('Quantity is more than Stock', "Remove", {
+                duration: 6000,
+                verticalPosition: 'top',
+                panelClass: ['red-snackbar']
+              });
+              return;
+            }
+            else{
+                if(formValue.maincompanyid != null || formValue.salesorderid != null || formValue.productcategoryid != null || formValue.productsubcategoryid != null ){
+                  this.loading = true;
+                    this.service.Add(formValue).subscribe({
+                      next: response => {
+                        // handle successful login
+                        console.log("post req successfull");
+                        this.snackBar.open('Data Added Successfully', "Remove", {
+                          duration: 6000,
+                          verticalPosition: 'top',
+                          panelClass: ['blue-snackbar']
+                        });
+                        this.loading = false;
+                        this.router.navigate(["/ListSalesOrderDetails"]);
+                      },
+                      error: error => {
+                        // handle login error
+                        console.log("error post", error);
+                        this.snackBar.open('Unsuccessfull', "Remove", {
+                          duration: 6000,
+                          verticalPosition: 'top',
+                          panelClass: ['red-snackbar']
+                        });
+                        this.loading = false;
+                      }
+                    });
+                }
+                else{
+                  this.snackBar.open('Please set Main Company ID', "Remove", {
+                    duration: 6000,
+                    verticalPosition: 'top',
+                    panelClass: ['red-snackbar']
+                  });
+
+                }
+            }
+        
+        });
+        /**/
+      }
   }
 }
