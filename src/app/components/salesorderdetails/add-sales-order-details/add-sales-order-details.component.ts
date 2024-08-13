@@ -147,6 +147,7 @@ export class AddSalesOrderDetailsComponent implements OnInit,AfterViewChecked {
     // Implement the submit logic here
 
     if(this.form.value.productsubcategoryid != null && this.form.value.productsubcategoryid != "" && this.form.value.productcategoryid != null && this.form.value.productcategoryid != ""){
+      this.loading = true;
       this.productStockService.getStock(this.maincompanyid,this.form.value.productcategoryid, this.form.value.productsubcategoryid).subscribe((posts) => {
         console.log("product_stock", posts['data']);
         this.product_stock = posts['data']
@@ -167,7 +168,7 @@ export class AddSalesOrderDetailsComponent implements OnInit,AfterViewChecked {
             }
             else{
                 if(formValue.maincompanyid != null || formValue.salesorderid != null || formValue.productcategoryid != null || formValue.productsubcategoryid != null ){
-                  this.loading = true;
+                  
                     this.service.Add(formValue).subscribe({
                       next: response => {
                         // handle successful login
