@@ -67,6 +67,10 @@ import { ListAssetsComponent } from './components/assets/list-assets/list-assets
 import { AddProductStockComponent } from './components/productstock/add-product-stock/add-product-stock.component';
 import { EditProductStockComponent } from './components/productstock/edit-product-stock/edit-product-stock.component';
 import { ListProductStockComponent } from './components/productstock/list-product-stock/list-product-stock.component';
+import { AddPurchasePaymentComponent } from './components/purchasepayments/add-purchase-payment/add-purchase-payment.component';
+import { EditPurchasePaymentComponent } from './components/purchasepayments/edit-purchase-payment/edit-purchase-payment.component';
+import { ListPurchasePaymentComponent } from './components/purchasepayments/list-purchase-payment/list-purchase-payment.component';
+
 
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
@@ -420,6 +424,23 @@ const routes: Routes = [
             expectedRole: ['superadmin','admin','viewer', 'hr','inventory']
           }
         },
+          ///////////////////////////PurchasePayments///////////////////////////
+          { path: 'AddPurchasePayment', component: AddPurchasePaymentComponent, canActivate: [AuthGuard,RoleGuard], 
+            data: {
+              expectedRole: ['superadmin','admin','hr']
+            }
+          },
+          { 
+            path: 'editPurchasePayment/:id', component: EditPurchasePaymentComponent, canActivate: [AuthGuard,RoleGuard],
+            data: {
+              expectedRole: ['superadmin','admin','hr']
+            }
+          },
+          { path: 'ListPurchasePayment', component: ListPurchasePaymentComponent, canActivate: [AuthGuard,RoleGuard], 
+            data: {
+              expectedRole: ['superadmin','admin','viewer', 'hr','inventory']
+            }
+          },
     ]
   },
 

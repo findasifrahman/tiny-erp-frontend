@@ -83,6 +83,7 @@ import { officepurchaseitemlistmodel } from './models/office-purchase-itemlist.m
 import { officeexpendituretmodel } from './models/office-expenditure.model';
 import { ProductStockmodel } from './models/product-stock.model';
 import { assetsmodel } from './models/assets.model';
+import { purchapaymentsmodel } from './models/purchase-payments.model'
 //components
 
 import { AddEmployeeComponent } from './components/employee/add-employee/add-employee.component';
@@ -135,13 +136,17 @@ import { ListAssetsComponent } from './components/assets/list-assets/list-assets
 import { AddProductStockComponent } from './components/productstock/add-product-stock/add-product-stock.component';
 import { EditProductStockComponent } from './components/productstock/edit-product-stock/edit-product-stock.component';
 import { ListProductStockComponent } from './components/productstock/list-product-stock/list-product-stock.component';
+import { AddPurchasePaymentComponent } from './components/purchasepayments/add-purchase-payment/add-purchase-payment.component';
+import { EditPurchasePaymentComponent } from './components/purchasepayments/edit-purchase-payment/edit-purchase-payment.component';
+import { ListPurchasePaymentComponent } from './components/purchasepayments/list-purchase-payment/list-purchase-payment.component';
+
+
+
 /////////////////////// others
 import { ConfirmationdialogComponent } from './components/commoncomponents/confirmationdialog/confirmationdialog.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
-
-
 
 
 
@@ -212,7 +217,10 @@ import { RoleGuard } from './guards/role.guard';
     ListAssetsComponent,
     AddProductStockComponent,
     EditProductStockComponent,
-    ListProductStockComponent
+    ListProductStockComponent,
+    AddPurchasePaymentComponent,
+    EditPurchasePaymentComponent,
+    ListPurchasePaymentComponent
 
   ],
   imports: [
@@ -273,6 +281,7 @@ import { RoleGuard } from './guards/role.guard';
     officepurchaseitemlistmodel,
     officeexpendituretmodel,
     assetsmodel,
+    purchapaymentsmodel,
     ProductStockmodel,
     HttpClientModule
     

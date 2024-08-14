@@ -127,6 +127,15 @@ const INITIAL_TREE_DATA: MenuNode[] = [
           { name: 'Purchase Order Detail List', link: '/ListPurchaseOrderDetails', visible: true}
         ]
       },
+      //
+      {
+        name: 'Purchase Payments',
+        visible: true,
+        children: [
+          { name: 'Add Payment', link: '/AddPurchasePayment',  visible: true},
+          { name: 'Payment LIst', link: '/ListPurchasePayment', visible: true}
+        ]
+      },
     ]
   },
   {
